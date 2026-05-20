@@ -1,0 +1,15 @@
+{
+  "slug": "shanto-mathew-portfolio",
+  "name": "Shanto Mathew Portfolio",
+  "description": "Personal achievements, skills, and live demo gallery for Shanto Mathew.",
+  "status": "in-progress",
+  "domain": "ShantoMathew.com",
+  "productionUrl": "https://shanto-mathew-portfolio.netlify.app",
+  "repoUrl": "https://github.com/shanto12/shanto-mathew-portfolio",
+  "dataPolicy": "Public-safe profile and demo summaries only. Sensitive recruiter, identity, phone, compensation, and private client details are excluded.",
+  "routes": ["/", "/api/health", "/api/contact"],
+  "netlify": {
+    "siteId": null,
+    "deployId": null
+  }
+}
