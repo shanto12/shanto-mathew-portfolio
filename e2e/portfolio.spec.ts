@@ -35,16 +35,45 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
   await expect(page.getByRole('link', { name: /View demo gallery/i })).toBeVisible()
   await expect(page.getByRole('link', { name: /Get in touch/i })).toBeVisible()
 
+  if (!isMobile) {
+    for (const section of ['Achievements', 'Skills', 'Demos', 'Approach', 'Contact']) {
+      await page.getByRole('link', { name: section }).click()
+      await expect(page).toHaveURL(new RegExp(`#${section.toLowerCase()}`))
+    }
+  }
+
   await page.getByRole('link', { name: /View demo gallery/i }).click()
   await expect(page.getByRole('heading', { name: /Live Netlify demo gallery/i })).toBeInViewport()
+
+  await page.getByRole('button', { name: 'Security AI' }).click()
+  await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Grok Medical Front Desk' })).toHaveCount(0)
+
   await page.getByRole('button', { name: 'Voice AI' }).click()
   await expect(page.getByRole('heading', { name: 'Grok Medical Front Desk' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
+
+  await page.getByRole('button', { name: 'Revenue AI' }).click()
+  await expect(page.getByRole('heading', { name: 'Agentic Marketing Operations Workbench' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Flux Atlas' })).toHaveCount(0)
+
+  await page.getByRole('button', { name: 'Creative Systems' }).click()
+  await expect(page.getByRole('heading', { name: 'Flux Atlas' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
+
   await page.getByRole('button', { name: 'All' }).click()
   await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
 
   const liveLinks = page.getByRole('link', { name: /Open live demo/i })
+  await expect(liveLinks).toHaveCount(9)
   await expect(liveLinks.first()).toHaveAttribute('href', /https:\/\/.+\.netlify\.app/)
+  if (productionTarget) {
+    const demoUrls = await liveLinks.evaluateAll((links) => links.map((link) => (link as HTMLAnchorElement).href))
+    for (const url of demoUrls) {
+      const response = await page.request.get(url, { timeout: 20000 })
+      expect(response.status(), `${url} should be reachable`).toBeLessThan(400)
+    }
+  }
 
   await page.getByRole('link', { name: /Get in touch/i }).click()
   await expect(page.getByRole('heading', { name: /Let us build something inspectable/i })).toBeInViewport()

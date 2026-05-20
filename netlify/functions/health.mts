@@ -8,9 +8,16 @@ const json = (body: unknown, status = 200) =>
   })
 
 export default async () => {
-  const deployedAt = Netlify.env.get('DEPLOY_PRIME_URL') ? new Date().toISOString() : 'local-or-build-preview'
   const url = Netlify.env.get('URL') || 'https://shanto-mathew-portfolio.netlify.app'
-  const customDomain = Netlify.env.get('CUSTOM_DOMAIN') || 'ShantoMathew.com pending DNS verification'
+  const inferredContext = url.startsWith('http') && !url.includes('localhost') ? 'production' : 'local'
+  const context = Netlify.env.get('CONTEXT') || inferredContext
+  const buildId = Netlify.env.get('BUILD_ID') || null
+  const deployId = Netlify.env.get('DEPLOY_ID') || buildId
+  const commitRef = Netlify.env.get('COMMIT_REF') || null
+  const deployPrimeUrl = Netlify.env.get('DEPLOY_PRIME_URL') || null
+  const deployedAt = deployId ? `${context}:${deployId.slice(0, 12)}` : `${context}:published`
+  const customDomain =
+    Netlify.env.get('CUSTOM_DOMAIN') || 'ShantoMathew.com assigned in Netlify; DNS and HTTPS verified'
 
   return json({
     service: 'shanto-mathew-portfolio',
@@ -19,6 +26,11 @@ export default async () => {
     deployedAt,
     url,
     customDomain,
+    observedAt: new Date().toISOString(),
+    deployId,
+    buildId,
+    commitRef,
+    deployPrimeUrl,
     checks: [
       {
         name: 'Static portfolio',

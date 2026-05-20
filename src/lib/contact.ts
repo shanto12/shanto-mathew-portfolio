@@ -27,6 +27,9 @@ const validateLocally = (payload: ContactPayload): ContactResult | null => {
   return null
 }
 
+const isLocalRuntime = () =>
+  typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname)
+
 export async function submitContact(payload: ContactPayload): Promise<ContactResult> {
   let result: ContactResult
 
@@ -51,11 +54,24 @@ export async function submitContact(payload: ContactPayload): Promise<ContactRes
   if (!result.ok) return result
 
   try {
-    await fetch('/', {
+    const formResponse = await fetch('/', {
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       body: encodeForm(payload),
     })
+    if (!formResponse.ok) {
+      if (isLocalRuntime()) {
+        return {
+          ok: true,
+          id: result.id,
+          message: 'Message validated in local preview. Production uses Netlify Forms capture.',
+        }
+      }
+      return {
+        ok: false,
+        message: `Contact API validated the message, but Netlify Forms returned ${formResponse.status}.`,
+      }
+    }
   } catch {
     return {
       ok: true,

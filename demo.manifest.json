@@ -2,14 +2,22 @@
   "slug": "shanto-mathew-portfolio",
   "name": "Shanto Mathew Portfolio",
   "description": "Personal achievements, skills, and live demo gallery for Shanto Mathew.",
-  "status": "in-progress",
+  "status": "deployed",
   "domain": "ShantoMathew.com",
   "productionUrl": "https://shanto-mathew-portfolio.netlify.app",
+  "customDomainUrl": "https://shantomathew.com",
   "repoUrl": "https://github.com/shanto12/shanto-mathew-portfolio",
   "dataPolicy": "Public-safe profile and demo summaries only. Sensitive recruiter, identity, phone, compensation, and private client details are excluded.",
   "routes": ["/", "/api/health", "/api/contact"],
   "netlify": {
-    "siteId": null,
-    "deployId": null
+    "siteId": "1b3456d2-1ff2-4dd3-b802-c6d97309336a",
+    "deployId": "6a0e2d2ffabb5714e3ad086b",
+    "buildId": "6a0e2d2ffabb5714e3ad0869",
+    "siteUrl": "https://shantomathew.com",
+    "domainStatus": "IONOS DNS, Netlify DNS verification, HTTPS certificate, apex route, and www redirect verified on 2026-05-20."
+  },
+  "verification": {
+    "lastEvidenceUpdate": "2026-05-20 05:04 PM CDT",
+    "evidenceMatrix": "docs/test-evidence.md"
   }
 }

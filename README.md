@@ -2,8 +2,8 @@
 
 Personal website for `ShantoMathew.com`, built to present Shanto's public-safe achievements, skills, and Netlify-hosted AI/security demos.
 
-Live URL after deploy: `https://shanto-mathew-portfolio.netlify.app`
-Custom domain target: `https://ShantoMathew.com`
+Primary URL: `https://shantomathew.com`
+Netlify URL: `https://shanto-mathew-portfolio.netlify.app`
 
 ## What It Includes
 
@@ -21,6 +21,7 @@ Custom domain target: `https://ShantoMathew.com`
 npm install
 npm run verify
 npm run e2e
+npm run verify:production
 npm run dev
 ```
 

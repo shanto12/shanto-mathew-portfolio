@@ -10,11 +10,19 @@
     <title>Shanto Mathew | AI Security Automation</title>
   </head>
   <body>
-    <form name="portfolio-contact" netlify netlify-honeypot="bot-field" hidden>
+    <form
+      name="portfolio-contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="portfolio-contact" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="text" name="company" />
       <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
     </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

@@ -14,8 +14,11 @@
     "test:watch": "vitest",
     "e2e": "playwright test",
     "e2e:prod": "PLAYWRIGHT_BASE_URL=https://shanto-mathew-portfolio.netlify.app playwright test",
+    "e2e:custom": "PLAYWRIGHT_BASE_URL=https://shantomathew.com playwright test",
+    "audit:prod": "npm audit --omit=dev",
     "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
-    "verify:release": "npm run verify && npm run e2e"
+    "verify:release": "npm run verify && npm run e2e && npm run audit:prod",
+    "verify:production": "npm run audit:prod && npm run e2e:prod && npm run e2e:custom"
   },
   "dependencies": {
     "lucide-react": "^1.11.0",
