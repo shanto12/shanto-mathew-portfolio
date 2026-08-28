@@ -32,6 +32,10 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
   await page.goto('/')
 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await expect(page.getByRole('img', { name: /Shanto Mathew smiling in a suit/i })).toHaveAttribute(
+    'src',
+    /shanto-mathew-headshot\.jpeg$/,
+  )
   await expect(page.getByRole('link', { name: /Explore the work/i })).toBeVisible()
   await expect(page.getByRole('link', { name: /Start a conversation/i })).toBeVisible()
 
