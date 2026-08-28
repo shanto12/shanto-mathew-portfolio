@@ -19,7 +19,7 @@ Last updated: 2026-08-28 01:53 PM CDT.
 | Production dependency audit | PASS | `npm audit --omit=dev --audit-level=high`: 0 vulnerabilities. | npm CLI |
 | GitHub source of truth | PASS | Repository [shanto12/shanto-mathew-portfolio](https://github.com/shanto12/shanto-mathew-portfolio) is clean, pushed on `main` at commit `5eaa725`. | Git + GitHub |
 | Custom domain `shantomathew.com` | BLOCKED | Netlify is configured with the custom domain, but current DNS lookup returns no apex or `www` records. WHOIS reports `clientHold`. | Netlify API, `dig`, WHOIS |
-| Registrar account access | BLOCKED | Registrar is IONOS SE. The signed-in IONOS Chrome account shows no owned domains; searching the target says it is taken and offers transfer. No purchase or transfer was initiated. | User's Chrome + WHOIS |
+| Registrar account access | BLOCKED | Registrar is IONOS SE. The signed-in IONOS Chrome account has one Instant Domain contract and Domain Guard, but no attached domain; searching the target says it is taken and offers transfer. No purchase or transfer was initiated. | User's Chrome + WHOIS |
 | HTTPS on custom domain | BLOCKED | Cannot verify until IONOS clears `clientHold` and DNS becomes authoritative. The Netlify fallback URL is serving HTTPS correctly. | curl/DNS |
 | Auth/login/logout | N/A | The public portfolio has no authentication surface. | App review |
 | Backend/runner jobs | N/A | Backend is synchronous Netlify Functions only (`/api/health`, `/api/contact`). | Source + production endpoints |
