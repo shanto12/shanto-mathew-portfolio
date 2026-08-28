@@ -17,6 +17,7 @@ Last updated: 2026-08-28 01:53 PM CDT.
 | `/api/contact` | PASS | Synthetic JSON POST returned HTTP 200 and `ok: true`; no real personal data was used. | curl + Netlify Function |
 | Security headers/CSP | PASS | Netlify URL includes CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, and Permissions-Policy. | curl response headers |
 | Production dependency audit | PASS | `npm audit --omit=dev --audit-level=high`: 0 vulnerabilities. | npm CLI |
+| GitHub source of truth | PASS | Repository [shanto12/shanto-mathew-portfolio](https://github.com/shanto12/shanto-mathew-portfolio) is clean, pushed on `main` at commit `5eaa725`. | Git + GitHub |
 | Custom domain `shantomathew.com` | BLOCKED | Netlify is configured with the custom domain, but current DNS lookup returns no apex or `www` records. WHOIS reports `clientHold`. | Netlify API, `dig`, WHOIS |
 | Registrar account access | BLOCKED | Registrar is IONOS SE. The signed-in IONOS Chrome account shows no owned domains; searching the target says it is taken and offers transfer. No purchase or transfer was initiated. | User's Chrome + WHOIS |
 | HTTPS on custom domain | BLOCKED | Cannot verify until IONOS clears `clientHold` and DNS becomes authoritative. The Netlify fallback URL is serving HTTPS correctly. | curl/DNS |
@@ -26,7 +27,8 @@ Last updated: 2026-08-28 01:53 PM CDT.
 ## Deployment evidence
 
 - Netlify site ID: `1b3456d2-1ff2-4dd3-b802-c6d97309336a`
-- Latest production deploy ID: `6a91d7bb59eebd35fb393e16`
+- Latest production deploy ID: `6a91d8ce26f95b375de9646f`
+- GitHub release commit: `5eaa7257599bd3f4b42fbf4f69b34e6da57d623b`
 - Published fallback URL: [shanto-mathew-portfolio.netlify.app](https://shanto-mathew-portfolio.netlify.app/)
 - Intended custom URL: [shantomathew.com](https://shantomathew.com/) (currently DNS-blocked)
 - GitHub source: [github.com/shanto12/shanto-mathew-portfolio](https://github.com/shanto12/shanto-mathew-portfolio)
