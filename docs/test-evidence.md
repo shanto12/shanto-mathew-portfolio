@@ -1,72 +1,47 @@
-# Test Evidence
+# Production Evidence Matrix
 
-Last updated: 2026-05-20 05:04 PM CDT.
+Last updated: 2026-08-28 01:53 PM CDT.
 
-## Release Matrix
+## Release matrix
 
-| Requirement | Status | Evidence | Notes |
+| Requirement | Status | Current evidence | Verification surface |
 |---|---|---|---|
-| Local lint/type/unit/build | Pass | `npm run verify:release` | Lint, typecheck, 3 Vitest tests, production build, desktop/mobile Playwright, and prod audit passed. |
-| Local browser desktop/mobile | Pass | `npm run e2e` inside `verify:release` | Desktop and mobile clicked visible local controls, filters, contact workflow, and checked overflow and target sizes. |
-| Netlify production URL | Pass | `npm run verify:production`; `curl -I https://shanto-mathew-portfolio.netlify.app/` | Netlify URL returned HTTP 200 and passed desktop/mobile Playwright. |
-| Custom domain production URL | Pass | `PLAYWRIGHT_BASE_URL=https://shantomathew.com npx playwright test`; `curl -I https://shantomathew.com/` | Apex returned HTTP 200 from Netlify and passed desktop/mobile Playwright. |
-| `www` redirect | Pass | `curl -I https://www.shantomathew.com/` | HTTP 301 redirects to `https://shantomathew.com/`. |
-| `/api/health` backend | Pass | `curl https://shantomathew.com/api/health` | Returned `status: ready`, `mode: portfolio-production-boundary`, and `customDomain: DNS and HTTPS verified`. |
-| `/api/contact` backend | Pass | JSON POST to `https://shantomathew.com/api/contact` | Returned `ok: true` and production validation message. |
-| Netlify Forms capture | Pass | Encoded POST to `/`; Netlify plugin `get-forms-for-project` | POST returned HTTP 200 thank-you page. Netlify form `portfolio-contact` exists with honeypot and `submission_count: 10`; `last_submission_at: 2026-05-20T21:54:18.693+00:00`. |
-| Real Chrome profile final pass | Pass | Computer Use on the user's actual Google Chrome profile | Loaded production site, clicked nav/demo filters, filled the contact form, submitted it, and observed the production success message. LastPass/password-manager extension was present; no login/auth workflow exists. |
-| Primary controls and workflows | Pass | Updated Playwright suite plus real Chrome pass | Desktop clicks top nav sections; desktop/mobile click hero CTAs, all demo filters, contact form, and submit. Production tests verify all 9 visible Netlify demo URLs are reachable. |
-| Demo links | Pass | Production Playwright URL checks and standalone fetch pass | All 9 linked Netlify demos returned HTTP 200. |
-| Desktop layout | Pass | Playwright desktop project, real Chrome desktop | No horizontal overflow; visible target sizes meet thresholds. |
-| Mobile layout | Pass | Playwright mobile project | Single-column mobile path passes without overflow; desktop-only nav is intentionally hidden. |
-| Console, page, and network errors | Pass | Playwright failure collectors in production tests | Production tests fail on own-site `pageerror`, console error, failed request, or HTTP 400+ response; none occurred. |
-| Security headers and CSP | Pass | `curl -I https://shantomathew.com/` | CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy, and `nosniff` present. |
-| HTTPS certificate | Pass | `openssl s_client -servername shantomathew.com` | Certificate subject `CN=shantomathew.com`; SAN includes `DNS:shantomathew.com` and `DNS:www.shantomathew.com`. |
-| DNS | Pass | `dig` | Apex A record resolves to `75.2.60.5`; `www` CNAME resolves to `shanto-mathew-portfolio.netlify.app`. |
-| Production npm audit | Pass | `npm audit --omit=dev` | Found 0 vulnerabilities. |
-| GitHub source | Pass | `https://github.com/shanto12/shanto-mathew-portfolio` | Standalone app repo pushed under `shanto12`; parent demo factory docs were not pushed. |
-| Auth/login/logout | Not applicable | App review | The portfolio has no authentication surface. |
-| Backend/runner jobs | Not applicable | App review | Backend consists of synchronous Netlify Functions only: `/api/health` and `/api/contact`. |
+| Lint, typecheck, unit tests, production build | PASS | `npm run verify` completed successfully; 3 Vitest tests passed. | Local CLI |
+| Local desktop/mobile browser flow | PASS | `npm run e2e` passed 2/2 projects. | Playwright Desktop Chrome + Pixel 7 |
+| Production Netlify URL | PASS | `https://shanto-mathew-portfolio.netlify.app/` returned HTTP 200 after deploy `6a91d7bb59eebd35fb393e16`. | Netlify + curl |
+| Production browser flow | PASS | Same primary-controls suite passed 2/2 against the real Netlify URL; all 9 demo links were checked for HTTP <400. | Playwright production |
+| Real Chrome profile final pass | PASS | User Chrome loaded the production URL; nav, hero CTAs, 4 delivery stages, 4 skill tabs, 4 method tabs, 5 gallery filters, contact fields, and submit flow were exercised. Success message: `Message validated.` | User's Chrome |
+| Mobile layout and overflow | PASS | Pixel 7 flow passed with no horizontal overflow; visible control sizing checks passed. | Playwright |
+| Console/page/network failures | PASS | Production failure collector reported no page errors, console errors, failed requests, or same-origin HTTP 400+ responses. | Playwright production |
+| `/api/health` | PASS | Returned HTTP 200 and `status: ready` from the published Netlify function. It truthfully reports registrar DNS verification as pending. | curl + Netlify Function |
+| `/api/contact` | PASS | Synthetic JSON POST returned HTTP 200 and `ok: true`; no real personal data was used. | curl + Netlify Function |
+| Security headers/CSP | PASS | Netlify URL includes CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, and Permissions-Policy. | curl response headers |
+| Production dependency audit | PASS | `npm audit --omit=dev --audit-level=high`: 0 vulnerabilities. | npm CLI |
+| Custom domain `shantomathew.com` | BLOCKED | Netlify is configured with the custom domain, but current DNS lookup returns no apex or `www` records. WHOIS reports `clientHold`. | Netlify API, `dig`, WHOIS |
+| Registrar account access | BLOCKED | Registrar is IONOS SE. The signed-in IONOS Chrome account shows no owned domains; searching the target says it is taken and offers transfer. No purchase or transfer was initiated. | User's Chrome + WHOIS |
+| HTTPS on custom domain | BLOCKED | Cannot verify until IONOS clears `clientHold` and DNS becomes authoritative. The Netlify fallback URL is serving HTTPS correctly. | curl/DNS |
+| Auth/login/logout | N/A | The public portfolio has no authentication surface. | App review |
+| Backend/runner jobs | N/A | Backend is synchronous Netlify Functions only (`/api/health`, `/api/contact`). | Source + production endpoints |
 
-## Deployment Evidence
+## Deployment evidence
 
-- Netlify site ID: `1b3456d2-1ff2-4dd3-b802-c6d97309336a`.
-- Latest production deploy ID: `6a0e2d2ffabb5714e3ad086b`.
-- Latest build ID: `6a0e2d2ffabb5714e3ad0869`.
-- Primary site URL: `https://shantomathew.com`.
-- Netlify URL: `https://shanto-mathew-portfolio.netlify.app`.
-- GitHub repo: `https://github.com/shanto12/shanto-mathew-portfolio`.
+- Netlify site ID: `1b3456d2-1ff2-4dd3-b802-c6d97309336a`
+- Latest production deploy ID: `6a91d7bb59eebd35fb393e16`
+- Published fallback URL: [shanto-mathew-portfolio.netlify.app](https://shanto-mathew-portfolio.netlify.app/)
+- Intended custom URL: [shantomathew.com](https://shantomathew.com/) (currently DNS-blocked)
+- GitHub source: [github.com/shanto12/shanto-mathew-portfolio](https://github.com/shanto12/shanto-mathew-portfolio)
 
-## Demo URL Reachability
+## Domain evidence
 
-All linked demo websites returned HTTP 200 during the final production pass:
+- Registrar: IONOS SE.
+- Domain status: `clientHold`, `clientTransferProhibited`.
+- Registry expiry: `2027-05-20T20:04:32Z`.
+- Nameservers: `NS1028.UI-DNS.ORG`, `NS1042.UI-DNS.DE`, `NS1065.UI-DNS.COM`, `NS1104.UI-DNS.BIZ`.
+- Netlify site configuration still declares `shantomathew.com` as its custom domain, but Netlify reports no managed DNS zone and live `dig` returns no records.
 
-| Demo | URL |
-|---|---|
-| SOC AI Agent Demo | `https://security-ops-playbook-analyzer.netlify.app/` |
-| Grok Medical Front Desk | `https://grok-medical-frontdesk.netlify.app/` |
-| Grok Experience Navigator | `https://grok-experience-navigator.netlify.app/` |
-| Nocturne Hotel / Poe Concierge | `https://nocturne-ai-hotel.netlify.app/` |
-| Y22 Roleplay | `https://y22-ai-sales-roleplay.netlify.app/` |
-| Enterprise Voice AI Launch Console | `https://elevenlabs-forward-deployed-engineer.netlify.app/` |
-| ForwardOps Voice Pilot Command Center | `https://vapi-pilot-command-center.netlify.app/` |
-| Agentic Marketing Operations Workbench | `https://gp-agentic-revenue-ops.netlify.app/` |
-| Flux Atlas | `https://flux-atlas-demo.netlify.app/` |
+## Visual evidence
 
-## Local Visual Evidence
+- [modern-local-desktop.png](../output/playwright/modern-local-desktop.png)
+- [modern-local-mobile.png](../output/playwright/modern-local-mobile.png)
 
-- Design concept: `docs/evidence/design-concept.png` (`864x1821`).
-- Local desktop full-page screenshot: `docs/evidence/local-desktop-fullpage.png` (`1536px` viewport).
-- Local mobile full-page screenshot: `docs/evidence/local-mobile-fullpage.png` (`390px` viewport).
-- Concept-width local screenshot: `docs/evidence/local-concept-width-fullpage.png` (`864px` viewport).
-
-## Fidelity Ledger
-
-| Comparison Point | Concept Evidence | Render Evidence | Result |
-|---|---|---|---|
-| First viewport identity | Large `Shanto Mathew` hero with direct positioning | Render keeps name dominant, positioning directly underneath, and two primary actions | Pass |
-| Visual system | Light security/automation command-map imagery with teal accents | Generated command-map hero asset is integrated with teal/emerald accents and restrained amber | Pass |
-| Section order | Hero, achievements, skills, demos, approach, contact | Same order, with public-safe data policy added under approach | Pass |
-| Demo gallery | Card grid with live demo CTAs | Actual Netlify-hosted demo cards, filters, live links, and source link where known | Pass |
-| Sensitive data handling | Concept avoided phone/private data | Render excludes phone, full address, DOB, rates, recruiter details, and identity docs | Pass |
-| Mobile layout | Responsive-friendly section rhythm required | Mobile screenshot shows single-column layout with no horizontal overflow | Pass |
+The current release is a dark, high-contrast, colorful FDE portfolio with animated delivery-loop artwork, interactive stages, skills, method principles, proof metrics, demo filters, and a production contact boundary.

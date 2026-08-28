@@ -41,11 +41,11 @@ describe('Shanto Mathew portfolio', () => {
     render(<App />)
 
     expect(screen.getByRole('link', { name: /shanto mathew home/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Shanto Mathew' })).toBeInTheDocument()
-    expect(screen.getByText(/Senior AI Security Automation Engineer/i)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /view demo gallery/i })).toHaveAttribute('href', '#demos')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/I make complex systems.*feel inevitable/i)
+    expect(screen.getByText(/Forward-deployed AI engineer/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /explore the work/i })).toHaveAttribute('href', '#work')
 
-    const gallery = screen.getByRole('heading', { name: /live netlify demo gallery/i }).closest('section')
+    const gallery = screen.getByRole('heading', { name: /open systems/i }).closest('section')
     expect(gallery).not.toBeNull()
     expect(within(gallery!).getAllByRole('link', { name: /Open live demo/i })[0]).toHaveAttribute(
       'href',
@@ -61,11 +61,11 @@ describe('Shanto Mathew portfolio', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await user.click(screen.getByRole('button', { name: 'Security AI' }))
+    await user.click(screen.getByRole('button', { name: /Security AI/ }))
     expect(screen.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeInTheDocument()
     expect(screen.queryByRole('heading', { name: 'Flux Atlas' })).not.toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Creative Systems' }))
+    await user.click(screen.getByRole('button', { name: /Creative Systems/ }))
     expect(screen.getByRole('heading', { name: 'Flux Atlas' })).toBeInTheDocument()
     expect(screen.queryByRole('heading', { name: 'SOC AI Agent Demo' })).not.toBeInTheDocument()
   })
@@ -76,9 +76,9 @@ describe('Shanto Mathew portfolio', () => {
 
     await user.type(screen.getByLabelText('Name'), 'Avery Recruiter')
     await user.type(screen.getByLabelText('Email'), 'avery@example.com')
-    await user.type(screen.getByLabelText('Company or context'), 'Security platform role')
+    await user.type(screen.getByLabelText('Context'), 'Security platform role')
     await user.type(screen.getByLabelText('Message'), 'I would like to discuss an AI security automation role.')
-    await user.click(screen.getByRole('button', { name: /send message/i }))
+    await user.click(screen.getByRole('button', { name: /send the signal/i }))
 
     expect(await screen.findByText('Message validated.')).toBeInTheDocument()
     expect(fetch).toHaveBeenCalledWith('/api/contact', expect.objectContaining({ method: 'POST' }))

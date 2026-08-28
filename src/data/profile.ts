@@ -37,24 +37,24 @@ export const achievements: Achievement[] = [
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'AI Engineering',
-    summary: 'LLM systems that are grounded, observable, and useful in operational workflows.',
-    items: ['Agentic AI', 'RAG', 'LangGraph-style orchestration', 'LangChain', 'MCP tooling', 'Structured outputs'],
+    title: 'AI/ML',
+    summary: 'Agentic systems, retrieval-augmented generation, and LLM orchestration.',
+    items: ['LangGraph', 'LangChain', 'LlamaIndex', 'RAG', 'LLM fine-tuning', 'Voice AI', 'MCP', 'Agentic AI'],
   },
   {
     title: 'Security Automation',
-    summary: 'SOAR and SOC workflows that remove toil while preserving human approval.',
-    items: ['Cortex XSOAR', 'Cortex XSIAM', 'Splunk SOAR', 'Playbook engineering', 'Incident response', 'Audit trails'],
+    summary: 'SOAR platforms and SOC automation with structured playbooks and incident response.',
+    items: ['Splunk SOAR', 'Cortex XSOAR', 'Cortex XSIAM', 'MITRE ATT&CK', 'Threat intelligence', 'Playbook automation'],
   },
   {
-    title: 'Platform & APIs',
-    summary: 'Python-heavy integration work across cloud, security tooling, and data workflows.',
-    items: ['Python', 'REST/JSON APIs', 'FastAPI patterns', 'AWS Bedrock/Lambda', 'CI/CD', 'Observability'],
+    title: 'Python & Cloud',
+    summary: 'Python expert; integration and API work across AWS, Azure, and GCP.',
+    items: ['Python (FastAPI, Flask, transformers, openai, pandas, numpy, sklearn)', 'AWS (EC2, Lambda, SageMaker, Bedrock, Glue, S3)', 'Azure', 'GCP'],
   },
   {
-    title: 'Product Delivery',
-    summary: 'Public-safe, recruiter-ready software artifacts that can be opened, tested, and reviewed.',
-    items: ['React', 'TypeScript', 'Netlify Functions', 'CSP/security headers', 'Vitest', 'Playwright'],
+    title: 'Data & Backends',
+    summary: 'Data engineering and persistence for operational workflows.',
+    items: ['Snowflake', 'PostgreSQL', 'Pinecone', 'Weaviate', 'FAISS'],
   },
 ]
 

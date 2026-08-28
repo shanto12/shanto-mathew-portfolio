@@ -31,37 +31,56 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
   const failures = collectFailures(page)
   await page.goto('/')
 
-  await expect(page.getByRole('heading', { name: 'Shanto Mathew' })).toBeVisible()
-  await expect(page.getByRole('link', { name: /View demo gallery/i })).toBeVisible()
-  await expect(page.getByRole('link', { name: /Get in touch/i })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await expect(page.getByRole('link', { name: /Explore the work/i })).toBeVisible()
+  await expect(page.getByRole('link', { name: /Start a conversation/i })).toBeVisible()
 
   if (!isMobile) {
-    for (const section of ['Achievements', 'Skills', 'Demos', 'Approach', 'Contact']) {
-      await page.getByRole('link', { name: section }).click()
+    for (const section of ['Work', 'Skills', 'Method', 'Contact']) {
+      await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: section, exact: true }).click()
       await expect(page).toHaveURL(new RegExp(`#${section.toLowerCase()}`))
     }
   }
 
-  await page.getByRole('link', { name: /View demo gallery/i }).click()
-  await expect(page.getByRole('heading', { name: /Live Netlify demo gallery/i })).toBeInViewport()
+  await page.getByRole('link', { name: /Explore the work/i }).click()
+  await expect(page.getByRole('heading', { name: /Open systems/i })).toBeInViewport()
 
-  await page.getByRole('button', { name: 'Security AI' }).click()
+  const stageTabs = page.getByRole('tab', { name: /Discover|Design|Deploy|Observe/ })
+  await expect(stageTabs).toHaveCount(4)
+  for (const label of ['Discover', 'Design', 'Deploy', 'Observe']) {
+    await page.getByRole('tab', { name: new RegExp(label) }).click()
+    await expect(page.getByRole('tab', { name: new RegExp(label) })).toHaveAttribute('aria-selected', 'true')
+  }
+
+  const skillTabs = page.getByRole('tab', { name: /AI\/ML|Security Automation|Python & Cloud|Data & Backends/ })
+  await expect(skillTabs).toHaveCount(4)
+  for (const label of ['AI/ML', 'Security Automation', 'Python & Cloud', 'Data & Backends']) {
+    await page.getByRole('tab', { name: new RegExp(label.replace('&', '\\&')) }).click()
+  }
+
+  const principleTabs = page.getByRole('tab', { name: /Ship proof|Keep humans|Automate|Make systems/ })
+  await expect(principleTabs).toHaveCount(4)
+  for (const label of ['Ship proof', 'Keep humans', 'Automate the repetitive path', 'Make systems inspectable']) {
+    await page.getByRole('tab', { name: new RegExp(label) }).click()
+  }
+
+  await page.getByRole('button', { name: /Security AI/ }).click()
   await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Grok Medical Front Desk' })).toHaveCount(0)
 
-  await page.getByRole('button', { name: 'Voice AI' }).click()
+  await page.getByRole('button', { name: /Voice AI/ }).click()
   await expect(page.getByRole('heading', { name: 'Grok Medical Front Desk' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
 
-  await page.getByRole('button', { name: 'Revenue AI' }).click()
+  await page.getByRole('button', { name: /Revenue AI/ }).click()
   await expect(page.getByRole('heading', { name: 'Agentic Marketing Operations Workbench' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Flux Atlas' })).toHaveCount(0)
 
-  await page.getByRole('button', { name: 'Creative Systems' }).click()
+  await page.getByRole('button', { name: /Creative Systems/ }).click()
   await expect(page.getByRole('heading', { name: 'Flux Atlas' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
 
-  await page.getByRole('button', { name: 'All' }).click()
+  await page.getByRole('button', { name: /All/ }).click()
   await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
 
   const liveLinks = page.getByRole('link', { name: /Open live demo/i })
@@ -75,13 +94,13 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
     }
   }
 
-  await page.getByRole('link', { name: /Get in touch/i }).click()
-  await expect(page.getByRole('heading', { name: /Let us build something inspectable/i })).toBeInViewport()
+  await page.getByRole('link', { name: /Start a conversation/i }).click()
+  await expect(page.getByRole('heading', { name: /Have a hard problem/i })).toBeInViewport()
   await page.getByLabel('Name').fill('Avery Recruiter')
   await page.getByLabel('Email').fill('avery@example.com')
-  await page.getByLabel('Company or context').fill('Security platform role')
+  await page.getByLabel('Context').fill('Security platform role')
   await page.getByLabel('Message').fill('I would like to discuss an AI security automation role with Shanto.')
-  await page.getByRole('button', { name: /Send message/i }).click()
+  await page.getByRole('button', { name: /Send the signal/i }).click()
   await expect(page.getByRole('status')).toContainText(/Message validated|Netlify form capture|production/i)
 
   const overflow = await page.evaluate(() => ({

@@ -17,7 +17,7 @@ export default async () => {
   const deployPrimeUrl = Netlify.env.get('DEPLOY_PRIME_URL') || null
   const deployedAt = deployId ? `${context}:${deployId.slice(0, 12)}` : `${context}:published`
   const customDomain =
-    Netlify.env.get('CUSTOM_DOMAIN') || 'ShantoMathew.com assigned in Netlify; DNS and HTTPS verified'
+    Netlify.env.get('CUSTOM_DOMAIN') || 'shantomathew.com configured in Netlify; registrar DNS verification pending'
 
   return json({
     service: 'shanto-mathew-portfolio',
