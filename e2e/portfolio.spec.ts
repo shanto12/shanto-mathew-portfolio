@@ -32,6 +32,7 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
   await page.goto('/')
 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await expect(page.locator('.brand-photo-mark img')).toHaveAttribute('src', /shanto-mathew-headshot\.jpeg$/)
   await expect(page.getByRole('img', { name: /Shanto Mathew smiling in a suit/i })).toHaveAttribute(
     'src',
     /shanto-mathew-headshot\.jpeg$/,
@@ -56,6 +57,13 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
     await expect(page.getByRole('tab', { name: new RegExp(label) })).toHaveAttribute('aria-selected', 'true')
   }
 
+  const relayTabs = page.getByRole('tab', { name: /Grok Bot|Claude Code|Codex|OpenClaw|Hermes agents/ })
+  await expect(relayTabs).toHaveCount(5)
+  for (const label of ['Grok Bot', 'Claude Code', 'Codex', 'OpenClaw', 'Hermes agents']) {
+    await page.getByRole('tab', { name: new RegExp(label) }).click()
+    await expect(page.getByRole('tab', { name: new RegExp(label) })).toHaveAttribute('aria-selected', 'true')
+  }
+
   const skillTabs = page.getByRole('tab', { name: /AI\/ML|Security Automation|Python & Cloud|Data & Backends/ })
   await expect(skillTabs).toHaveCount(4)
   for (const label of ['AI/ML', 'Security Automation', 'Python & Cloud', 'Data & Backends']) {
@@ -69,25 +77,26 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
   }
 
   await page.getByRole('button', { name: /Security AI/ }).click()
-  await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Grok Medical Front Desk' })).toHaveCount(0)
+  const demoGrid = page.locator('.demo-grid')
+  await expect(demoGrid.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
+  await expect(demoGrid.getByRole('heading', { name: 'Grok Medical Front Desk' })).toHaveCount(0)
 
   await page.getByRole('button', { name: /Voice AI/ }).click()
-  await expect(page.getByRole('heading', { name: 'Grok Medical Front Desk' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
+  await expect(demoGrid.getByRole('heading', { name: 'Grok Medical Front Desk' })).toBeVisible()
+  await expect(demoGrid.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
 
   await page.getByRole('button', { name: /Revenue AI/ }).click()
-  await expect(page.getByRole('heading', { name: 'Agentic Marketing Operations Workbench' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Flux Atlas' })).toHaveCount(0)
+  await expect(demoGrid.getByRole('heading', { name: 'Agentic Marketing Operations Workbench' })).toBeVisible()
+  await expect(demoGrid.getByRole('heading', { name: 'Flux Atlas' })).toHaveCount(0)
 
   await page.getByRole('button', { name: /Creative Systems/ }).click()
-  await expect(page.getByRole('heading', { name: 'Flux Atlas' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
+  await expect(demoGrid.getByRole('heading', { name: 'Flux Atlas' })).toBeVisible()
+  await expect(demoGrid.getByRole('heading', { name: 'SOC AI Agent Demo' })).toHaveCount(0)
 
   await page.getByRole('button', { name: /All/ }).click()
-  await expect(page.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
+  await expect(demoGrid.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeVisible()
 
-  const liveLinks = page.getByRole('link', { name: /Open live demo/i })
+  const liveLinks = demoGrid.getByRole('link', { name: /Open live demo/i })
   await expect(liveLinks).toHaveCount(9)
   await expect(liveLinks.first()).toHaveAttribute('href', /https:\/\/.+\.netlify\.app/)
   if (productionTarget) {
@@ -100,6 +109,10 @@ test('portfolio primary controls, layout, and contact workflow work', async ({ p
 
   await page.getByRole('link', { name: /Start a conversation/i }).click()
   await expect(page.getByRole('heading', { name: /Have a hard problem/i })).toBeInViewport()
+  for (const label of ['Security automation', 'Agent workflow', 'AI product', 'Voice systems']) {
+    await page.getByRole('button', { name: label, exact: true }).click()
+    await expect(page.getByRole('button', { name: label, exact: true })).toHaveAttribute('aria-pressed', 'true')
+  }
   await page.getByLabel('Name').fill('Avery Recruiter')
   await page.getByLabel('Email').fill('avery@example.com')
   await page.getByLabel('Context').fill('Security platform role')

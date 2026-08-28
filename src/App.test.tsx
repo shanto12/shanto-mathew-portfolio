@@ -42,7 +42,8 @@ describe('Shanto Mathew portfolio', () => {
 
     expect(screen.getByRole('link', { name: /shanto mathew home/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/I make complex systems.*feel inevitable/i)
-    expect(screen.getByText(/Forward-deployed AI engineer/i)).toBeInTheDocument()
+    expect(screen.getByText('Forward Deployed AI Engineer', { exact: true })).toBeInTheDocument()
+    expect(screen.getByText('1,000+')).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /Shanto Mathew smiling in a suit/i })).toHaveAttribute(
       'src',
       '/shanto-mathew-headshot.jpeg',
@@ -66,12 +67,26 @@ describe('Shanto Mathew portfolio', () => {
     render(<App />)
 
     await user.click(screen.getByRole('button', { name: /Security AI/ }))
-    expect(screen.getByRole('heading', { name: 'SOC AI Agent Demo' })).toBeInTheDocument()
+    expect(screen.getAllByRole('heading', { name: 'SOC AI Agent Demo' }).length).toBeGreaterThan(0)
     expect(screen.queryByRole('heading', { name: 'Flux Atlas' })).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: /Creative Systems/ }))
     expect(screen.getByRole('heading', { name: 'Flux Atlas' })).toBeInTheDocument()
-    expect(screen.queryByRole('heading', { name: 'SOC AI Agent Demo' })).not.toBeInTheDocument()
+    expect(screen.getAllByRole('heading', { name: 'SOC AI Agent Demo' }).length).toBeGreaterThan(0)
+  })
+
+  it('surfaces the agent relay and conversation shortcuts', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    const relay = screen.getByRole('tablist', { name: /agentic tools in the loop/i })
+    for (const label of ['Grok Bot', 'Claude Code', 'Codex', 'OpenClaw', 'Hermes agents']) {
+      await user.click(within(relay).getByRole('tab', { name: new RegExp(label) }))
+    }
+
+    await user.click(screen.getByRole('button', { name: 'Agent workflow' }))
+    expect(screen.getByLabelText('Context')).toHaveValue('Agent workflow')
+    expect(screen.getByLabelText('Message')).toHaveValue('I want to explore a better agent workflow.')
   })
 
   it('submits the contact workflow through the backend boundary', async () => {
