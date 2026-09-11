@@ -8,4 +8,14 @@ Deployment is limited to https://shanto-portfolio-live.netlify.app/. The custom 
 
 The source project has no authentication, payments, submission forms or provisioning jobs. Those are not implied by this portfolio merge. Linked external demos keep their individual operating boundaries. User/API spending remains bounded by the current explicit authorization; changing design does not authorize a spending increase.
 
-The release evidence matrix will record actual coverage, including which checks used simulated API responses, actual provider calls, and the user's real Chrome profile. Custom-domain publication remains a separate approval step.
+## Verification scope
+
+The merged release keeps `voice.js`, `voice.css`, API implementation, budget accounting and watchdog unchanged from the previous verified speech release. The site bridge and factual context now describe the actual fourteen-project presentation. This release uses simulated provider calls for comprehensive page-control verification so the remaining authorized voice allowance is preserved; it does not claim a new end-to-end spoken-action pass.
+
+Local build, typecheck, 39 backend policy/watchdog/budget tests and production dependency audit passed (zero vulnerabilities). The independent 17-group browser suite covers all fourteen gallery entries and case studies, image inspection, previous/next and keyboard behavior, native filters and Undo, mobile selection, twenty guide navigation/highlight targets, themes, density, mobile-visible hero rewriting, reset, effects and ID-only context. Every paid API request in this suite is intercepted.
+
+A separate seven-check recovery suite verifies pending/denied microphone permission, autoplay recovery, visible allowance errors, connected/ended presentation and stale microphone ownership. Representative manual checks in the user's actual Chrome profile cover opening layout, Work navigation, Voice AI filtering, a case study, image zoom/fit/close and Undo. The manual pass canceled microphone setup before a paid session. It found a stale screen-reader project announcement after Undo, which was corrected in the final source.
+
+Auth, payment, submission forms and provisioning are not implemented workflows in this portfolio. Linked external demo URLs are checked as navigation targets, not certified for their own backend operation.
+
+See the accompanying release evidence matrix for final deployment IDs, source identity, current availability and coverage. Custom-domain publication remains a separate approval step.
