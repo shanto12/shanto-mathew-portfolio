@@ -1,0 +1,191 @@
+{
+  "checkedAtCentral": "2026-09-11T17:40:08.872092-05:00",
+  "originalBackup": "https://shanto-fieldwork-portfolio.netlify.app/",
+  "checks": [
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/",
+      "status": 200,
+      "expectedSha256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb",
+      "actualSha256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb",
+      "matches": true,
+      "bytes": 11151
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/app.js",
+      "status": 200,
+      "expectedSha256": "a4f2b5fb838af226113e1366b6a5c45f9150048dab4f763d5a7d3efd6b5ac365",
+      "actualSha256": "a4f2b5fb838af226113e1366b6a5c45f9150048dab4f763d5a7d3efd6b5ac365",
+      "matches": true,
+      "bytes": 35956
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/agentmart.webp",
+      "status": 200,
+      "expectedSha256": "1eaa488857f9dfb9c1f59e5bf5f0b2be2899c73e11ffc9819c79c7a9419348a2",
+      "actualSha256": "1eaa488857f9dfb9c1f59e5bf5f0b2be2899c73e11ffc9819c79c7a9419348a2",
+      "matches": true,
+      "bytes": 221318
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/favicon.svg",
+      "status": 200,
+      "expectedSha256": "aff72c75b6412f3b4af4dc3eff9d2e143a16f8164fd47e62bb96f2e0662226da",
+      "actualSha256": "aff72c75b6412f3b4af4dc3eff9d2e143a16f8164fd47e62bb96f2e0662226da",
+      "matches": true,
+      "bytes": 224
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/portrait.jpeg",
+      "status": 200,
+      "expectedSha256": "6e04ee68f293318a358cdb480fa8f56734208413d5bd8fda3f4c7c4b408cdcc6",
+      "actualSha256": "6e04ee68f293318a358cdb480fa8f56734208413d5bd8fda3f4c7c4b408cdcc6",
+      "matches": true,
+      "bytes": 159973
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/shanto-headshot.jpg",
+      "status": 200,
+      "expectedSha256": "cdf1c12347a704e69110d0216f3d33fdc0cfa01528f080cf1aa9fc008a70b723",
+      "actualSha256": "cdf1c12347a704e69110d0216f3d33fdc0cfa01528f080cf1aa9fc008a70b723",
+      "matches": true,
+      "bytes": 989662
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/styles.css",
+      "status": 200,
+      "expectedSha256": "9d78bc470c7ad88544e47aac42a1320136f426b6f35a596cb1b1825b600aa86e",
+      "actualSha256": "9d78bc470c7ad88544e47aac42a1320136f426b6f35a596cb1b1825b600aa86e",
+      "matches": true,
+      "bytes": 34522
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/agentmart-agents.webp",
+      "status": 200,
+      "expectedSha256": "35bb09a58fe45165947a5aa4bc61e2cfa473097dcd120a3a83b941fdb8ca1ef1",
+      "actualSha256": "35bb09a58fe45165947a5aa4bc61e2cfa473097dcd120a3a83b941fdb8ca1ef1",
+      "matches": true,
+      "bytes": 77064
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/agentmart-compare.webp",
+      "status": 200,
+      "expectedSha256": "7ed23816491c98b58379055cd9aaaa33e5b84dbfb017c844dca03e03e6064603",
+      "actualSha256": "7ed23816491c98b58379055cd9aaaa33e5b84dbfb017c844dca03e03e6064603",
+      "matches": true,
+      "bytes": 89404
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/agentmart.webp",
+      "status": 200,
+      "expectedSha256": "1eaa488857f9dfb9c1f59e5bf5f0b2be2899c73e11ffc9819c79c7a9419348a2",
+      "actualSha256": "1eaa488857f9dfb9c1f59e5bf5f0b2be2899c73e11ffc9819c79c7a9419348a2",
+      "matches": true,
+      "bytes": 221318
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/agentproof.webp",
+      "status": 200,
+      "expectedSha256": "ea8322c183615687137989ca84f5ace5d251c28ff24c035e8c8dc8606a28707a",
+      "actualSha256": "ea8322c183615687137989ca84f5ace5d251c28ff24c035e8c8dc8606a28707a",
+      "matches": true,
+      "bytes": 207692
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/flux.webp",
+      "status": 200,
+      "expectedSha256": "dde568838dbfd5d5f7411288d20ca71e2a67a682e4abf108d18b3507b92e9fcf",
+      "actualSha256": "dde568838dbfd5d5f7411288d20ca71e2a67a682e4abf108d18b3507b92e9fcf",
+      "matches": true,
+      "bytes": 332660
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/forwardops.webp",
+      "status": 200,
+      "expectedSha256": "f389bc8af4b0df614556a306bfcafb367aeb3ac8af9408582323b1fe4a9c975c",
+      "actualSha256": "f389bc8af4b0df614556a306bfcafb367aeb3ac8af9408582323b1fe4a9c975c",
+      "matches": true,
+      "bytes": 220364
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/launch.webp",
+      "status": 200,
+      "expectedSha256": "0f642f00e97ea0bf45a71f509f6738e623edd8171f5a59806d8465d8c71cf35e",
+      "actualSha256": "0f642f00e97ea0bf45a71f509f6738e623edd8171f5a59806d8465d8c71cf35e",
+      "matches": true,
+      "bytes": 320670
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/medical.webp",
+      "status": 200,
+      "expectedSha256": "130e080ccf697051c28576bb2ed8ca0e15d0a5164ef87da1203dae5aa1bb353c",
+      "actualSha256": "130e080ccf697051c28576bb2ed8ca0e15d0a5164ef87da1203dae5aa1bb353c",
+      "matches": true,
+      "bytes": 65426
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/navigator.webp",
+      "status": 200,
+      "expectedSha256": "efa4297103d48320aa6b435caa9ba423d7a3b3c6bfc8978c1dde67867cea8b97",
+      "actualSha256": "efa4297103d48320aa6b435caa9ba423d7a3b3c6bfc8978c1dde67867cea8b97",
+      "matches": true,
+      "bytes": 421946
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/nexus.webp",
+      "status": 200,
+      "expectedSha256": "86b19161d13c4bf333fef6ba9262a0e71a954722bd2cb033415e30d2a21f439e",
+      "actualSha256": "86b19161d13c4bf333fef6ba9262a0e71a954722bd2cb033415e30d2a21f439e",
+      "matches": true,
+      "bytes": 310590
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/nocturne.webp",
+      "status": 200,
+      "expectedSha256": "e6070973e0e78f9bda11ae85f3a7ac8ff19fc213f143b5ac28b126aca147ab3b",
+      "actualSha256": "e6070973e0e78f9bda11ae85f3a7ac8ff19fc213f143b5ac28b126aca147ab3b",
+      "matches": true,
+      "bytes": 603418
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/orbital.webp",
+      "status": 200,
+      "expectedSha256": "a99f8bc081ef92dcb186da1df0b61b483ad76c489e561e19a82a8c4776e8e4ed",
+      "actualSha256": "a99f8bc081ef92dcb186da1df0b61b483ad76c489e561e19a82a8c4776e8e4ed",
+      "matches": true,
+      "bytes": 314346
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/relay.webp",
+      "status": 200,
+      "expectedSha256": "8885108821c63d22d97b74e57c74fa6aae323793e4aff929bcc0286ddc487d3f",
+      "actualSha256": "8885108821c63d22d97b74e57c74fa6aae323793e4aff929bcc0286ddc487d3f",
+      "matches": true,
+      "bytes": 267340
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/revenue.webp",
+      "status": 200,
+      "expectedSha256": "47c214b01b47f55826359b49e67c295b6a0977131340be82334af8c0f242d3df",
+      "actualSha256": "47c214b01b47f55826359b49e67c295b6a0977131340be82334af8c0f242d3df",
+      "matches": true,
+      "bytes": 122466
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/roleplay.webp",
+      "status": 200,
+      "expectedSha256": "9fdff93763ca47cbd4e22b692a485b3b524191dc92a42921285f6241be3adc74",
+      "actualSha256": "9fdff93763ca47cbd4e22b692a485b3b524191dc92a42921285f6241be3adc74",
+      "matches": true,
+      "bytes": 71348
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/assets/security.webp",
+      "status": 200,
+      "expectedSha256": "af71b51e968a73172a38dee638028b3fb7b7faffc2674e33e8715c65d021d0a9",
+      "actualSha256": "af71b51e968a73172a38dee638028b3fb7b7faffc2674e33e8715c65d021d0a9",
+      "matches": true,
+      "bytes": 143152
+    }
+  ],
+  "allMatch": true
+}

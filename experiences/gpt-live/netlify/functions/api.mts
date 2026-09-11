@@ -4,6 +4,7 @@ import {randomBytes} from 'node:crypto';
 import WebSocket from 'ws';
 import {hash,equal,validateAwareness,sanitizeGuideState,validateGuideReply} from './policy.mjs';
 import {inspectBudget,reserveAdmission,MAX_SLOTS,budgetConfig,SESSION_SECONDS,MAX_PLANNER_REQUESTS,RESERVATION_MICROS} from './budget.mjs';
+import {isAllowedOrigin} from './origins.mjs';
 import site from '../../site-context.json' with {type:'json'};
 
 declare const Netlify:{env:{get(name:string):string|undefined}};
@@ -77,7 +78,7 @@ export default async function handler(request:Request){
   }catch{return json({site:site.id,configured,voiceAvailable:false,accountingAvailable:false,message:'Usage accounting is temporarily unavailable'},503);}
  }
  if(request.method!=='POST')return json({message:'Method not allowed'},405);
- if(request.headers.get('origin')!==env('SITE_ORIGIN'))return json({message:'This endpoint accepts requests from this website only'},403);
+  if(!isAllowedOrigin(request.headers.get('origin'),env('SITE_ORIGIN'),env('SITE_ADDITIONAL_ORIGINS')))return json({message:'This endpoint accepts requests from this website only'},403);
  if(!env('OPENAI_API_KEY')||!env('WATCHDOG_SECRET'))return json({message:'Voice is being configured. Please explore the website in the meantime.'},503);
  try{
   const input=await body(request);

@@ -1,0 +1,294 @@
+{
+  "autoplayPolicy": "Default Chrome policy; no user gesture bypass; microphone pre-granted",
+  "testedAtCentral": "9/11/2026, 5:41:19 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shantomathew.com",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken navigation and confetti effect apply through the real planner",
+          "result": "PASS"
+        },
+        {
+          "name": "Portfolio guide explains Shanto’s professional fit through real voice delegation",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "portfolio-greeting.png",
+        "portfolio-spoken-navigation.png",
+        "portfolio-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "timing": {
+          "documentInitMs": 352.5,
+          "microphoneRequestMs": 1269.5999999940395,
+          "microphoneGrantedMs": 2968.699999988079,
+          "sessionStartedMs": 6892.199999988079,
+          "firstRemoteTrackMs": 6490.699999988079,
+          "firstAudibleRemoteSampleMs": 7864.0999999940395,
+          "firstAudioElementPlayingMs": 6574.800000011921,
+          "domContentLoadedMs": 1273.199999988079,
+          "pageLoadMs": 1809
+        },
+        "userClicks": 0,
+        "transcript": " Oh, hello there! I'm Pip, Shanto's AI",
+        "rmsMax": 0.21392833597038574,
+        "audibleSamples": 24,
+        "recordedBytes": 41210,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Change this website to rose pink, look playful, show selected work and",
+      "spokenActionState": {
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "AI systems, voice experiences and security automation. From the first question to the handoff.",
+        "emotion": "calm",
+        "highlight": null,
+        "section": "work",
+        "project": null,
+        "selectedProject": "agentmart-studio",
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "visibleProjects": [
+          "AgentMart Studio",
+          "Swarm Nexus",
+          "Relay · Restaurant AI Email Operations",
+          "Orbital Observatory",
+          "AgentProof AI Governance",
+          "Nocturne Hotel · Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ],
+        "canUndo": true
+      },
+      "pageState": {
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "AI systems, voice experiences and security automation. From the first question to the handoff.",
+        "emotion": "calm",
+        "highlight": null,
+        "section": "work",
+        "project": null,
+        "selectedProject": "agentmart-studio",
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "visibleProjects": [
+          "AgentMart Studio",
+          "Swarm Nexus",
+          "Relay · Restaurant AI Email Operations",
+          "Orbital Observatory",
+          "AgentProof AI Governance",
+          "Nocturne Hotel · Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ],
+        "canUndo": true
+      },
+      "effects": [
+        "confetti"
+      ],
+      "careerPitch": " that's done. Because he pairs strong AI engineering",
+      "beforeEnd": {
+        "timing": {
+          "documentInitMs": 352.5,
+          "microphoneRequestMs": 1269.5999999940395,
+          "microphoneGrantedMs": 2968.699999988079,
+          "sessionStartedMs": 6892.199999988079,
+          "firstRemoteTrackMs": 6490.699999988079,
+          "firstAudibleRemoteSampleMs": 7864.0999999940395,
+          "firstAudioElementPlayingMs": 6574.800000011921
+        },
+        "userClicks": 2,
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 147782,
+            "packetsReceived": 1156,
+            "packetsLost": 0,
+            "jitter": 0.008,
+            "totalAudioEnergy": 0.9839085110689169,
+            "totalSamplesDuration": 23.570000000000885
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 61783,
+            "packetsSent": 1217
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.21392833597038574,
+        "audibleSamples": 137,
+        "remoteBytes": 375598,
+        "transcript": "Guide:  Oh, hello there! I'm Pip, Shanto's AI career wingman. What'sYou:  Change this website to rose pink, look playful, show selected work and celebrate with confettiGuide:  [chuckle]Fun! Lemme... line that up. [scatting] Okay, that's done.You:  Why should I hire Shanto for a senior AI engineer role? Please keep it briefGuide:  Because he pairs strong AI engineering with real",
+        "inputTranscript": " Change this website to rose pink, look playful, show selected work and celebrate with confetti Why should I hire Shanto for a senior AI engineer role? Please keep it brief",
+        "outputTranscript": " Oh, hello there! I'm Pip, Shanto's AI career wingman. What's [chuckle] Fun! Lemme... line that up. [scatting] Okay, that's done. Because he pairs strong AI engineering with real",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.commentary.appended",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "portfolio-remote-audio.webm",
+        "bytes": 392083,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 35.2
+    }
+  ]
+}

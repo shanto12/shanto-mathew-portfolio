@@ -37,7 +37,7 @@ const modules=new Map();
 async function load(name){
  if(modules.has(name))return modules.get(name);
  let module;
- if(name==='api'||name==='budget'||name==='policy')module=new vm.SourceTextModule(stripTypeScriptTypes(fs.readFileSync(root+'/'+name+'.mts','utf8')),{context});
+ if(name==='api'||name==='budget'||name==='policy'||name==='origins')module=new vm.SourceTextModule(stripTypeScriptTypes(fs.readFileSync(root+'/'+name+'.mts','utf8')),{context});
  else{
   const exports=name==='crypto'?{randomBytes,createHash,timingSafeEqual}:name==='blobs'?{getStore:()=>store}:name==='site'?{default:site}:name==='ws'?{default:class{constructor(){throw new Error('Unexpected emergency close')}}}:{};
   module=new vm.SyntheticModule(Object.keys(exports),function(){for(const[k,v]of Object.entries(exports))this.setExport(k,v);},{context});

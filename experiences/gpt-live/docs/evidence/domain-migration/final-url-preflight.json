@@ -1,0 +1,189 @@
+{
+  "checkedAtCentral": "2026-09-11T17:40:53.182999-05:00",
+  "urls": [
+    {
+      "url": "https://shantomathew.com/",
+      "finalUrl": "https://shantomathew.com/",
+      "status": 200,
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Age": "0",
+        "Cache-Control": "public,max-age=0,must-revalidate",
+        "Cache-Status": "\"Netlify Edge\"; fwd=miss; fwd-status=200; stored",
+        "Content-Length": "12098",
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Date": "Fri, 11 Sep 2026 22:40:53 GMT",
+        "Etag": "\"3ffe3230c312040ddbd27f38a165212e-ssl\"",
+        "Permissions-Policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Server": "Netlify",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "Vary": "Accept-Encoding",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-Nf-Request-Id": "01M29A30Z2SNK61ZX9GGGD8H3D",
+        "Connection": "close"
+      }
+    },
+    {
+      "url": "https://www.shantomathew.com/",
+      "finalUrl": "https://shantomathew.com/",
+      "status": 200,
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Age": "0",
+        "Cache-Control": "public,max-age=0,must-revalidate",
+        "Cache-Status": "\"Netlify Edge\"; fwd=miss; fwd-status=200; stored",
+        "Content-Length": "12098",
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Date": "Fri, 11 Sep 2026 22:40:54 GMT",
+        "Etag": "\"3ffe3230c312040ddbd27f38a165212e-ssl\"",
+        "Permissions-Policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Server": "Netlify",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "Vary": "Accept-Encoding",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-Nf-Request-Id": "01M29A31GTM3GWGN4CSVJ85YK2",
+        "Connection": "close"
+      }
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/",
+      "finalUrl": "https://shanto-portfolio-live.netlify.app/",
+      "status": 200,
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Age": "0",
+        "Cache-Control": "public,max-age=0,must-revalidate",
+        "Cache-Status": "\"Netlify Edge\"; fwd=miss; fwd-status=200; stored",
+        "Content-Length": "12098",
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Date": "Fri, 11 Sep 2026 22:40:54 GMT",
+        "Etag": "\"3ffe3230c312040ddbd27f38a165212e-ssl\"",
+        "Netlify-Hosting": "provider=Netlify; deploy=\"https://netlify.new/?utm_campaign=ai-legible&utm_source=header&utm_medium=referral&utm_id=296ec6fb-3f43-4253-9aad-c55f677685d0\"",
+        "Permissions-Policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Server": "Netlify",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Vary": "Accept-Encoding",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-Nf-Request-Id": "01M29A31TDA7ZFM9QMAK9SQ9TE",
+        "Connection": "close"
+      }
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/",
+      "finalUrl": "https://shanto-fieldwork-portfolio.netlify.app/",
+      "status": 200,
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Age": "1",
+        "Cache-Control": "public,max-age=0,must-revalidate",
+        "Cache-Status": "\"Netlify Edge\"; fwd=miss; fwd-status=200; stored",
+        "Content-Length": "11151",
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Date": "Fri, 11 Sep 2026 22:40:55 GMT",
+        "Etag": "\"22019e0def2c982219873c234c9d7835-ssl\"",
+        "Netlify-Hosting": "provider=Netlify; deploy=\"https://netlify.new/?utm_campaign=ai-legible&utm_source=header&utm_medium=referral&utm_id=ee94b075-3cd9-4394-b5f3-9e4ad0458a4d\"",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Server": "Netlify",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Vary": "Accept-Encoding",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-Nf-Request-Id": "01M29A323ZE9PDS8ZRVXPMCQ9Y",
+        "Connection": "close"
+      }
+    },
+    {
+      "url": "https://shantomathew.com/api/health",
+      "finalUrl": "https://shantomathew.com/api/health",
+      "status": 200,
+      "headers": {
+        "Age": "0",
+        "Cache-Control": "no-store",
+        "Cache-Status": "\"Netlify Durable\"; fwd=bypass",
+        "Content-Type": "application/json",
+        "Date": "Fri, 11 Sep 2026 22:40:55 GMT",
+        "Netlify-Vary": "query",
+        "Server": "Netlify",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Vary": "Accept-Encoding",
+        "X-Content-Type-Options": "nosniff",
+        "X-Nf-Request-Id": "01M29A32F9HNYMP2AJMKFM22SH",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked"
+      },
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 19,
+          "reservedUSD": 8.045839,
+          "remainingUSD": 5.954161,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      }
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/api/health",
+      "finalUrl": "https://shanto-portfolio-live.netlify.app/api/health",
+      "status": 200,
+      "headers": {
+        "Age": "0",
+        "Cache-Control": "no-store",
+        "Cache-Status": "\"Netlify Durable\"; fwd=bypass",
+        "Content-Type": "application/json",
+        "Date": "Fri, 11 Sep 2026 22:40:55 GMT",
+        "Netlify-Vary": "query",
+        "Server": "Netlify",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Vary": "Accept-Encoding",
+        "X-Content-Type-Options": "nosniff",
+        "X-Nf-Request-Id": "01M29A32W34YQ10BS1RM0QD6QK",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked"
+      },
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 19,
+          "reservedUSD": 8.045839,
+          "remainingUSD": 5.954161,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      }
+    }
+  ]
+}

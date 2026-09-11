@@ -28,7 +28,7 @@ recoveryHint.setAttribute('aria-atomic', 'true');
 recoveryHint.hidden = true;
 root.append(recoveryHint);
 let recoveryMessage = '';
-let ending=false, audioBlocked=false, effectTimer, effectOverlay, effectTarget;
+let ending=false, audioBlocked=false, playbackRecovering=false, permissionRetry=false, effectTimer, effectOverlay, effectTarget;
 let idleTimer, nudgeTimer, permissionPending=false, lastVisitorAt=0, idleNudges=0;
 let generation=0, greetingEvent, requestController, inputEndMs=0, visualAudio, visualFrame;
 let peer, channel, mic, token, timer, closeTimer, sessionReady = false, connecting = false, muted = false, transcript = [], queue = Promise.resolve(), lastInput = '', collapsing = true;
@@ -223,9 +223,10 @@ function cleanup() {
   root.classList.remove('speaking','connected');root.style.setProperty('--voice-energy','0');
   q('.live-start').disabled=false;q('.live-start').textContent='Talk again';
   q('.live-mute').disabled=true;q('.live-stop').disabled=true;
-  audioBlocked=false;muted=false;clearEffects();refreshAvatar();
+  audioBlocked=false;playbackRecovering=false;muted=false;clearEffects();refreshAvatar();
 }
 async function end(options = {}) {
+  permissionRetry=false;
   if(ending)return;
   if(options?.preserveRecovery !== true) { recoveryMessage='';q('.live-error').textContent=''; }
   ending=true;clearEffects();clearVisitorTimers();cancelPermissionPrompt();clearAwareness();
@@ -276,12 +277,15 @@ async function act(message, delegationId = null, expectedGeneration = generation
 async function start() {
   if(ending)return;
   if (connecting || sessionReady) {
+    if(playbackRecovering)return;
+    playbackRecovering=true;
     const playbackGeneration=generation, playbackPeer=peer;
     try {await audio.play();await visualAudio?.resume().catch(()=>{});if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;if(sessionReady){audioBlocked=false;status(muted?'Microphone muted':'Listening · you can interrupt');visitorActivity();q('.live-start').disabled=true;q('.live-start').textContent='Voice connected';error('');send('session.commentary.append','Audio is now enabled. Continue naturally from the current conversation and visitor request. If the visitor missed your opening, offer a fresh brief introduction in your own words; otherwise do not restart the greeting.');}}
-    catch {if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;audioBlocked=true;error('Select the AI avatar to enable audio.');} return;
+    catch {if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;audioBlocked=true;error('Select the AI avatar to enable audio.');}
+    finally{if(playbackGeneration===generation)playbackRecovering=false;} return;
   }
   generation++; if(token) { fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{}); token=undefined; }
-  muted=false;lastInput='';inputEndMs=0;clearTimeout(timer);q('.live-mute').textContent='Mute mic';q('.live-mute').setAttribute('aria-pressed','false');q('.live-mute').setAttribute('aria-label','Mute microphone');
+  permissionRetry=false;muted=false;lastInput='';inputEndMs=0;clearTimeout(timer);q('.live-mute').textContent='Mute mic';q('.live-mute').setAttribute('aria-pressed','false');q('.live-mute').setAttribute('aria-label','Mute microphone');
   ending=false;audioBlocked=false;
   const startGeneration=generation;
   connecting = true; q('.live-start').disabled = true; error('');
@@ -355,6 +359,7 @@ async function start() {
     if(startGeneration!==generation)return;
     if(token)fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{});
     cleanup(); status('Voice is optional');
+    permissionRetry=e.name==='NotAllowedError';
     error(e.name==='NotAllowedError' ? 'Microphone permission was not granted. Allow it in your browser’s address bar, then select the AI avatar to try again.' : e.message);
     q('.live-start').textContent='Try microphone';
   }
@@ -371,6 +376,14 @@ function toggleMute(){
 q('.live-mute').addEventListener('click',toggleMute);
 q('.live-presence').addEventListener('click',()=>{if(ending||connecting)return;if(sessionReady&&!audioBlocked)toggleMute();else void start();});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(sessionReady||connecting||token))void end();});
+// If a browser blocks autoplay, a visitor's normal page interaction can unlock
+// sound too; the avatar remains the only dedicated control. No second session.
+function unlockPlayback(event){
+  if(!event.isTrusted||event.key==='Escape'||event.target.closest?.('.live-guide')||!sessionReady||!audioBlocked||ending||connecting||document.hidden)return;
+  void start();
+}
+document.addEventListener('click',unlockPlayback);
+document.addEventListener('keydown',unlockPlayback);
 document.addEventListener('click',event=>{if(event.isTrusted)visitorActivity();});
 document.addEventListener('keydown',event=>{if(event.isTrusted&&!['Shift','Control','Alt','Meta','Escape'].includes(event.key))visitorActivity();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){clearVisitorTimers();cancelPermissionPrompt();if(sessionReady||connecting||token)void end();}});
@@ -388,5 +401,15 @@ window.addEventListener('resize',scheduleContext);
 // Reading a form is not browsing intent. Values never enter the context snapshot.
 document.addEventListener('focusin',event=>{if(event.target.matches('input,textarea,[contenteditable="true"]'))cancelProactive();});
 window.addEventListener('pagehide',end);
+// Watch a previously denied browser permission, without delaying the first
+// request. Granting it in browser settings resumes the failed startup naturally.
+// This never restarts an intentionally ended, expired, or budget-blocked call.
+if(navigator.permissions?.query){
+  navigator.permissions.query({name:'microphone'}).then(permission=>{
+    permission.addEventListener('change',()=>{
+      if(permission.state==='granted'&&permissionRetry&&!sessionReady&&!connecting&&!ending&&!document.hidden)void start();
+    });
+  }).catch(()=>{}); // Safari and other browsers may not expose this permission.
+}
 // Request immediately as requested; browsers retain control over permission and audio activation.
 start();
