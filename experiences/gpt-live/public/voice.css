@@ -43,3 +43,8 @@ body.theme-midnight .live-guide{--live-ink:#e5ecdf}body.theme-midnight .live-gui
 @keyframes live-chuckle{0%,100%{transform:translateY(-6px) rotate(-4deg)}50%{transform:translateY(-10px) rotate(1deg)}}
 @keyframes live-huff{0%,100%{transform:translateY(-6px) rotate(-4deg)}35%{transform:translateY(-6px) rotate(-10deg)}70%{transform:translateY(-6px) rotate(4deg)}}
 @media(prefers-reduced-motion:reduce){.live-guide[data-delivery] .live-face{animation:none!important}}
+
+/* A temporary recovery label prevents silent failures; the avatar remains the only control. */
+.live-guide>.live-recovery{position:absolute;right:calc(100% + 8px);bottom:17px;width:248px;max-width:calc(100vw - 144px);margin:0;padding:10px 12px;border:1px solid #24443c24;border-radius:12px;background:#fffef8;color:#24443c;box-shadow:0 4px 18px #1c332e12;text-align:left;font:500 12px/1.5 system-ui,sans-serif;text-wrap:pretty;overflow-wrap:break-word;pointer-events:none}
+.live-guide>.live-recovery[hidden]{display:none!important}
+@media(max-width:650px){.live-guide>.live-recovery{right:calc(100% + 4px);bottom:8px;width:240px;max-width:calc(100vw - 108px);font-size:11px;padding:9px 11px}}

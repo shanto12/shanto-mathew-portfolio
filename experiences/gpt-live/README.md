@@ -1,5 +1,7 @@
 # Shanto Portfolio Live
 
+**Current update:** [Speech recovery and budget accounting](docs/SPEECH_RECOVERY.md) supersedes the earlier eight-session trial counter and hidden error behavior. The spending authorization remains $10 total.
+
 New separate URL: [https://shanto-portfolio-live.netlify.app](https://shanto-portfolio-live.netlify.app). Branch: `codex/gpt-live-experience`.
 
 The guide uses the supplied portfolio facts and section IDs; it must not invent career claims, credentials, client outcomes or availability.
@@ -45,14 +47,14 @@ These lifecycle/persona changes describe the current source requirement/candidat
 | Boundary | Current configuration |
 |---|---|
 | Release store | `live-budget-release-v1`, immutable permits |
-| Release permits | **8 lifetime sessions per site**, shared by voice and typed visits |
-| Application reservation | $0.50/session; 8 × $0.50 = **$4/site**, $8 across both |
+| Release permits | **$4 per site, reconciled against confirmed usage**, shared by voice and typed visits |
+| Application reservation | $0.50 reserved before each admission; **$4/site**, $8 across both |
 | Development headroom | $2 within the original $10 authorization |
 | Session deadline | 120 seconds from server reservation; browser requests End after 110 seconds connected |
 | Planner allowance | 10 requests/session × 400 maximum output tokens/request |
 | Actions per planner response | Up to 4, with trusted targets and explicit value limits |
 
-Failed starts/requests consume their permits. There is no recurring allowance or automatic reset. A generic policy helper's default twenty-slot unit test does not configure the API: production admission and authorization use **eight**.
+Failed or unconfirmed starts retain their full reservations. Confirmed closed voice sessions settle after the deadline plus a 30-second grace period, retaining $0.20 for all ten possible planner calls. Atomic accounting reuses only unused reserved funds inside the same $4 envelope; no budget reset or automatic top-up occurs. A separate 100-record safety ceiling bounds history; it is not a grant of 100 paid sessions.
 
 There was one deliberate transition from the initial development ledger `live-budget-v1` to the release-only ledger within the original $10 authorization. The old ledger is retained as archived/read-only evidence, not erased or reused. The recorded development accounting is $0.215 confirmed voice cost, a full $0.50 reservation for one unconfirmed session, and a conservative bound below $0.36 for all 90 possible planner requests. Together this is below $1.075 and within the $2 development headroom; it is not an assertion that every reserved amount was billed. See [development accounting](docs/evidence/development-budget.json).
 

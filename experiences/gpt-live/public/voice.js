@@ -19,6 +19,15 @@ const audio = document.createElement('audio');
 audio.autoplay = true;
 audio.setAttribute('playsinline', '');
 root.append(audio);
+const recoveryHint = document.createElement('p');
+recoveryHint.className = 'live-recovery';
+recoveryHint.id = 'live-recovery-hint';
+recoveryHint.setAttribute('role', 'status');
+recoveryHint.setAttribute('aria-live', 'polite');
+recoveryHint.setAttribute('aria-atomic', 'true');
+recoveryHint.hidden = true;
+root.append(recoveryHint);
+let recoveryMessage = '';
 let ending=false, audioBlocked=false, effectTimer, effectOverlay, effectTarget;
 let idleTimer, nudgeTimer, permissionTimer, permissionPending=false, permissionSpoken=false, permissionInvitationUsed=false, permissionDenied=false, lastVisitorAt=0, idleNudges=0;
 let generation=0, greetingEvent, requestController, inputEndMs=0, visualAudio, visualFrame;
@@ -80,14 +89,25 @@ function scheduleProactive(){
   },Math.max(6000,25000-(Date.now()-lastProactiveAt)));
 }
 const status = text => { q('.live-status').textContent = text; refreshAvatar(); };
-const error = text => { q('.live-error').textContent = text; refreshAvatar(); };
+const error = text => {
+  q('.live-error').textContent = text;
+  recoveryMessage = !text ? '' : /approved usage allowance|owner must approve more usage/i.test(text)
+    ? 'Voice is paused: this preview has used its approved allowance. You can still explore the site.'
+    : /permission was not granted/i.test(text)
+      ? 'Microphone is blocked. Allow it in your browser’s address bar, then select the avatar.'
+      : /microphone support|microphone found|requested device|device not found/i.test(text)
+        ? 'A microphone is needed. Connect or allow one, then select the avatar.'
+        : sessionReady ? 'The guide hit a problem. Press Escape, then select the avatar to reconnect.'
+          : 'Voice couldn’t connect. Select the avatar to try again.';
+  refreshAvatar();
+};
 function clearVisitorTimers(){clearTimeout(idleTimer);clearTimeout(nudgeTimer);}
 function cancelPermissionPrompt(){
-  permissionPending=false;clearTimeout(permissionTimer);
+  permissionPending=false;clearTimeout(permissionTimer);refreshAvatar();
   if(permissionSpoken&&'speechSynthesis' in window)window.speechSynthesis.cancel();permissionSpoken=false;
 }
 function beginPermissionPrompt(){
-  cancelPermissionPrompt();permissionPending=true;
+  cancelPermissionPrompt();permissionPending=true;refreshAvatar();
   if(permissionInvitationUsed||permissionDenied)return;
   permissionTimer=setTimeout(()=>{
     if(!permissionPending||ending||document.hidden||!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance!=='function')return;
@@ -114,7 +134,13 @@ function visitorActivity(){if(!sessionReady||ending)return;lastVisitorAt=Date.no
 function refreshAvatar(){
   root.classList.toggle('muted',muted);root.classList.toggle('connecting',connecting);root.classList.toggle('ending',ending);
   root.classList.toggle('audio-blocked',audioBlocked);root.classList.toggle('has-error',!!q('.live-error').textContent);
+  const hint = ending ? '' : permissionPending
+    ? 'Allow microphone access in your browser to start talking.'
+    : audioBlocked ? 'Sound is paused. Select the avatar to hear your guide.' : recoveryMessage;
+  recoveryHint.textContent = hint;
+  recoveryHint.hidden = !hint;
   const control=q('.live-presence');control.disabled=ending||connecting;
+  if (hint) control.setAttribute('aria-describedby', recoveryHint.id); else control.removeAttribute('aria-describedby');
   const instruction=ending?'Ending conversation.':connecting?'Connecting. Press Escape to cancel.':audioBlocked?'Select to enable audio. Press Escape to end.':sessionReady?(muted?'Microphone muted. Select to unmute. Press Escape to end.':'Listening. Select to mute your microphone. Press Escape to end.'):'Select to connect.';
   control.setAttribute('aria-label',`AI voice guide. ${instruction}`);
   if(sessionReady&&!audioBlocked)control.setAttribute('aria-pressed',String(muted));else control.removeAttribute('aria-pressed');
@@ -197,8 +223,10 @@ function cleanup() {
   q('.live-mute').disabled = true; q('.live-stop').disabled = true;
   root.classList.remove('connected');audioBlocked=false;muted=false;clearEffects();refreshAvatar();
 }
-async function end() {
-  if(ending)return;ending=true;clearEffects();clearVisitorTimers();cancelPermissionPrompt();clearAwareness();clearAwareness();
+async function end(options = {}) {
+  if(ending)return;
+  if(options?.preserveRecovery !== true) { recoveryMessage='';q('.live-error').textContent=''; }
+  ending=true;clearEffects();clearVisitorTimers();cancelPermissionPrompt();clearAwareness();
   generation++;requestController?.abort();queue=Promise.resolve();
   const activeToken = token; token = undefined;
   if (sessionReady) channel?.send(JSON.stringify({type:'session.close', event_id:crypto.randomUUID()}));
@@ -241,8 +269,9 @@ async function act(message, delegationId = null, expectedGeneration = generation
 async function start() {
   if(ending)return;
   if (connecting || sessionReady) {
-    try {await audio.play();await visualAudio?.resume();if(sessionReady){audioBlocked=false;status(muted?'Microphone muted':'Listening · you can interrupt');visitorActivity();q('.live-start').disabled=true;q('.live-start').textContent='Voice connected';error('');send('session.commentary.append','Audio is now enabled. Briefly welcome the visitor and invite their question.');}}
-    catch {audioBlocked=true;error('Select the AI avatar to enable audio.');} return;
+    const playbackGeneration=generation, playbackPeer=peer;
+    try {await audio.play();await visualAudio?.resume().catch(()=>{});if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;if(sessionReady){audioBlocked=false;status(muted?'Microphone muted':'Listening · you can interrupt');visitorActivity();q('.live-start').disabled=true;q('.live-start').textContent='Voice connected';error('');send('session.commentary.append','Audio is now enabled. Briefly welcome the visitor and invite their question.');}}
+    catch {if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;audioBlocked=true;error('Select the AI avatar to enable audio.');} return;
   }
   generation++; if(token) { fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{}); token=undefined; }
   muted=false;lastInput='';inputEndMs=0;clearTimeout(timer);q('.live-mute').textContent='Mute mic';q('.live-mute').setAttribute('aria-pressed','false');q('.live-mute').setAttribute('aria-label','Mute microphone');
@@ -253,14 +282,17 @@ async function start() {
   try {
     if (!navigator.mediaDevices?.getUserMedia) throw new Error('Voice needs a browser with microphone support on HTTPS.');
     beginPermissionPrompt();
-    try{mic = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});}
-    finally{cancelPermissionPrompt();}
-    if(startGeneration!==generation){mic?.getTracks().forEach(t=>t.stop());return;}
+    let acquiredStream;
+    try{acquiredStream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});}
+    finally{if(startGeneration===generation)cancelPermissionPrompt();}
+    if(startGeneration!==generation){acquiredStream?.getTracks().forEach(track=>track.stop());return;}
+    mic = acquiredStream;permissionDenied=false;
     status('Connecting your guide…');
     peer = new RTCPeerConnection();
     const connection = peer;
     for (const track of mic.getAudioTracks()) connection.addTrack(track,mic);
     connection.addEventListener('track',event=>{
+      if(connection!==peer||startGeneration!==generation||ending){event.track.stop();return;}
       audio.srcObject = new MediaStream([event.track]);
       try {
         visualAudio=new AudioContext();const analyser=visualAudio.createAnalyser();analyser.fftSize=256;
@@ -269,14 +301,14 @@ async function start() {
         const animate=()=>{analyser.getFloatTimeDomainData(samples);const energy=Math.min(1,Math.sqrt(samples.reduce((sum,value)=>sum+value*value,0)/samples.length)*7);root.style.setProperty('--voice-energy',energy.toFixed(3));root.classList.toggle('speaking',energy>.03);visualFrame=requestAnimationFrame(animate);};animate();
         visualAudio.resume().catch(()=>{});
       } catch { /* Voice remains usable when audio visualization is unavailable. */ }
-      audio.play().then(()=>{audioBlocked=false;refreshAvatar();}).catch(()=>{audioBlocked=true;q('.live-start').disabled=false;q('.live-start').textContent='Enable sound';status('Select the AI avatar to enable audio.');});
+      audio.play().then(()=>{if(connection!==peer||startGeneration!==generation||ending)return;audioBlocked=false;refreshAvatar();}).catch(()=>{if(connection!==peer||startGeneration!==generation||ending)return;audioBlocked=true;q('.live-start').disabled=false;q('.live-start').textContent='Enable sound';status('Select the AI avatar to enable audio.');});
     });
     channel = connection.createDataChannel('oai-events');
     channel.addEventListener('message',({data})=>{
       if(connection!==peer)return;
       let event; try {event=JSON.parse(data);} catch {return;}
       if(event.type==='session.started') {
-        sessionReady=true; connecting=false; root.classList.add('connected'); status('Listening · you can interrupt');
+        sessionReady=true; connecting=false; recoveryMessage='';q('.live-error').textContent='';root.classList.add('connected'); status('Listening · you can interrupt');
         idleNudges=0;lastProactiveAt=Date.now();lastSpeechAt=Date.now();visitorActivity();publishContext();
         q('.live-mute').disabled=false; q('.live-stop').disabled=false;
         greetingEvent=send('session.instructions.append',`Speak English unless the visitor asks for another language. Greet the visitor now. Say: ${guide.greeting} Then wait for their response. Introduce yourself as an AI guide.`);
@@ -296,21 +328,25 @@ async function start() {
       else if(event.type==='error'&&!ending) error('The voice connection encountered a problem. Please end and reconnect.');
     });
     connection.addEventListener('connectionstatechange',()=>{
-      if(['failed','disconnected'].includes(connection.connectionState)) {status('Connection lost — reconnect to continue');end();}
+      if(connection!==peer||ending)return;
+      if(['failed','disconnected'].includes(connection.connectionState)) {error('Connection lost. Please reconnect.');recoveryMessage='Voice disconnected. Select the avatar to reconnect.';void end({preserveRecovery:true});}
     });
     const offer=await connection.createOffer(); await connection.setLocalDescription(offer);
     if(connection.iceGatheringState!=='complete') await new Promise((resolve,reject)=>{
       const t=setTimeout(()=>reject(new Error('Connection timed out. Please try again.')),10000);
       connection.addEventListener('icegatheringstatechange',()=>{if(connection.iceGatheringState==='complete'){clearTimeout(t);resolve();}});
     });
+    if(startGeneration!==generation||connection!==peer||ending)return;
     const data=await api('live',{sdp:connection.localDescription.sdp});
     if(startGeneration!==generation){fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:data.token}),keepalive:true}).catch(()=>{});return;}
     token=data.token;
     await connection.setRemoteDescription({type:'answer',sdp:data.sdp});
+    if(startGeneration!==generation||connection!==peer||ending)return;
     timer=setTimeout(end,data.durationSeconds*1000);
   } catch(e) {
     if(startGeneration!==generation)return;
     if(e.name==='NotAllowedError')permissionDenied=true;
+    if(token)fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{});
     cleanup(); status('Voice is optional');
     error(e.name==='NotAllowedError' ? 'Microphone permission was not granted. Allow it in your browser’s address bar, then select the AI avatar to try again.' : e.message);
     q('.live-start').textContent='Try microphone';

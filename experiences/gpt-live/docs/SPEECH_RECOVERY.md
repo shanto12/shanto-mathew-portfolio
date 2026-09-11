@@ -1,0 +1,11 @@
+# Speech recovery fix
+
+The September 11 production check reproduced HTTP 429 on both `/api/live` endpoints while health incorrectly looked usable (`configured:true`). Eight lifetime trial admissions had been consumed. The avatar-only interface clipped the error text to screen-reader-only dimensions, leaving a sighted visitor with no explanation.
+
+The recovery change adds a small temporary hint only when microphone permission, audio playback or a connection problem needs attention. The avatar remains the only voice control; connected and intentionally ended states remain avatar-only. Stale microphone permission, playback and connection callbacks are guarded so an older attempt cannot overwrite or stop a newer microphone stream. Canceling connection setup prevents a later admission, and a failure after admission explicitly requests provider closure.
+
+Budget correction is limited to the already authorized $10 total: two $4 release envelopes and an untouched $2 development hold. Existing session/request records and unresolved reservations are preserved. Confirmed provider usage can release the unused part of a $0.50 session reservation, while retaining a conservative $0.20 for all ten possible planner requests. Unknown sessions keep the full $0.50. Concurrent admissions must atomically reserve funds before any provider session is created. This fixes an overly restrictive session counter without increasing the spending authorization or deleting the budget history.
+
+Reference pricing checked September 11, 2026: [GPT-Live 1](https://developers.openai.com/api/docs/models/gpt-live-1) lists $0.05/minute billed per second; [GPT-5.6 Luna](https://developers.openai.com/api/docs/models/gpt-5.6-luna) lists $0.20/M input and $1.20/M output, with cache writes at 1.25 times the input rate. The implementation keeps 400 maximum output tokens, adds a 64 KiB serialized provider request cap and standard service tier, and conservatively reserves $0.02 for each of ten possible planner calls. Application accounting is an operational envelope, not a provider invoice or administrative billing hard cap.
+
+Final deployment IDs, verification results and available headroom will be recorded after the implementation passes local and deployed checks.
