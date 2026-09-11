@@ -57,14 +57,24 @@ export function validatePerformance(value:unknown):Performance|undefined{
  return {emotion:p.emotion,delivery:p.delivery};
 }
 export function validateGuideReply(value:unknown,ids:string[],mode:'visitor'|'proactive'='visitor'):{answer:string;actions:Action[];performance?:Performance}{
+ if(mode==='proactive'){
+  const silent={answer:'',actions:[]};
+  try{
+   const reply=object(value,['answer','actions','performance'],'guide response');
+   if(typeof reply.answer!=='string')return silent;
+   const answer=reply.answer.trim();
+   if(!answer||answer.length>240||!answer.endsWith('?')||(answer.match(/\?/g)||[]).length!==1)return silent;
+   // Validate the proposed batch, but never return any proactive page mutation.
+   validateActions(reply.actions,ids);
+   let performance:Performance|undefined;
+   try{performance=validatePerformance(reply.performance);}catch{/* Omit unsupported unprompted expression. */}
+   const safePerformance=performance&&['calm','thoughtful','happy','playful'].includes(performance.emotion)&&['neutral','warm'].includes(performance.delivery)?performance:undefined;
+   return {answer,actions:[],...(safePerformance?{performance:safePerformance}:{})};
+  }catch{return silent;}
+ }
  const reply=object(value,['answer','actions','performance'],'guide response');
  if(typeof reply.answer!=='string'||!reply.answer.trim()||reply.answer.length>1800)throw new Error('The guide returned an incomplete answer. Please try a shorter question.');
  const actions=validateActions(reply.actions,ids),performance=validatePerformance(reply.performance);
- if(mode==='proactive'){
-  const concise=reply.answer.trim();
-  const answer=concise.length<=240&&concise.endsWith('?')&&(concise.match(/\?/g)||[]).length===1?concise:'Would you like a brief explanation of what you’re viewing?';
-  return {answer,actions:[],...(performance?{performance:{emotion:'thoughtful',delivery:'warm'}}:{})};
- }
  return {answer:reply.answer.trim(),actions,...(performance?{performance}:{})};
 }
 export type Action={type:string;target?:string;value?:string};

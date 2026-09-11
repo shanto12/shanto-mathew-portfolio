@@ -29,7 +29,7 @@ recoveryHint.hidden = true;
 root.append(recoveryHint);
 let recoveryMessage = '';
 let ending=false, audioBlocked=false, effectTimer, effectOverlay, effectTarget;
-let idleTimer, nudgeTimer, permissionTimer, permissionPending=false, permissionSpoken=false, permissionInvitationUsed=false, permissionDenied=false, lastVisitorAt=0, idleNudges=0;
+let idleTimer, nudgeTimer, permissionPending=false, lastVisitorAt=0, idleNudges=0;
 let generation=0, greetingEvent, requestController, inputEndMs=0, visualAudio, visualFrame;
 let peer, channel, mic, token, timer, closeTimer, sessionReady = false, connecting = false, muted = false, transcript = [], queue = Promise.resolve(), lastInput = '', collapsing = true;
 let contextTimer, proactiveTimer, performanceTimer, awarenessRevision=0, lastContext='', lastProactiveAt=0, lastSpeechAt=0, proactiveController, quietMode=false, professionalMode=false;
@@ -103,20 +103,14 @@ const error = text => {
 };
 function clearVisitorTimers(){clearTimeout(idleTimer);clearTimeout(nudgeTimer);}
 function cancelPermissionPrompt(){
-  permissionPending=false;clearTimeout(permissionTimer);refreshAvatar();
-  if(permissionSpoken&&'speechSynthesis' in window)window.speechSynthesis.cancel();permissionSpoken=false;
+  permissionPending=false;refreshAvatar();
 }
 function beginPermissionPrompt(){
   cancelPermissionPrompt();permissionPending=true;refreshAvatar();
-  if(permissionInvitationUsed||permissionDenied)return;
-  permissionTimer=setTimeout(()=>{
-    if(!permissionPending||ending||document.hidden||!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance!=='function')return;
-    permissionSpoken=true;permissionInvitationUsed=true;
-    const invitation=new SpeechSynthesisUtterance('I’m the little face in the corner. Allow your microphone if you fancy a chat—I promise I have more personality than a loading spinner.');
-    invitation.lang='en-US';
-    try{window.speechSynthesis.speak(invitation);}catch{/* Browser permission controls may block speech. */}
-  },18000);
+  // Before microphone consent, use the visual permission hint without starting
+  // a paid session or reciting a separate browser-synthesized character script.
 }
+
 function armVisitorTimers(){
   clearVisitorTimers();if(!sessionReady||ending)return;
   idleTimer=setTimeout(()=>{if(sessionReady&&!ending&&Date.now()-lastVisitorAt>=180000)void end();},Math.max(0,180000-(Date.now()-lastVisitorAt)));
@@ -243,12 +237,12 @@ async function act(message, delegationId = null, expectedGeneration = generation
   const controller=new AbortController();requestController=controller;
   if (!message.trim()) return;
   if(options.proactive)proactiveController=controller;else{cancelProactive();notePreference(message);}
-  plannerRequests.add(controller);error(''); emotion('thoughtful');
+  plannerRequests.add(controller);error('');
   try {
     if (!token) { ending=false;const session = await api('chat',{},controller.signal); if(expectedGeneration!==generation)return;token=session.token; timer=setTimeout(end,session.durationSeconds*1000); }
     const result = await api('guide', {token, message:message.slice(0,600), history:transcript.slice(-8).map(({role,content})=>({role,content:content.slice(-800)})), state:{}, awareness:awareness(), mode:options.proactive?'proactive':'visitor'},controller.signal);
     if(expectedGeneration!==generation||(options.proactive&&(options.revision!==awarenessRevision||muted||quietMode)))return;
-    if(options.proactive)result.actions=[];
+    if(options.proactive){result.actions=[];if(!result.answer?.trim())return;}
     const results = [...guide.applyActions(result.actions.filter(action=>action.type!=='effect')), ...result.actions.filter(action=>action.type==='effect').map(action=>runEffect(action.value))];
     for (const action of result.actions) if (action.type === 'emotion') {
       const expression=professionalMode?'calm':action.value;emotion(expression);
@@ -257,9 +251,9 @@ async function act(message, delegationId = null, expectedGeneration = generation
     }
     perform(result.performance);publishContext();
     const failures = results.filter(item=>!item.ok);
-    const answer = failures.length ? `I couldn’t apply part of that change. ${result.answer}` : result.answer;
-    if (sessionReady) send('session.commentary.append', `${answer}\nActual website action results: ${JSON.stringify(results)}`, delegationId);
-    else { if(transcript.at(-1)) transcript.at(-1).streaming = false; line('assistant',answer); }
+    const answer = result.answer;
+    if (sessionReady) send('session.commentary.append', `Explain this backend result naturally in your own words, responding to the visitor. ${failures.length?'Some actions failed: acknowledge that; do not claim they succeeded.':''}\nBackend explanation: ${answer}\nActual website action results: ${JSON.stringify(results)}`, delegationId);
+    else { if(transcript.at(-1)) transcript.at(-1).streaming = false; line('assistant',failures.length ? `Some requested changes could not be applied. ${answer}` : answer); }
   } catch (e) {
     if(controller.signal.aborted||expectedGeneration!==generation)return;
     error(e.message); emotion('calm');
@@ -270,7 +264,7 @@ async function start() {
   if(ending)return;
   if (connecting || sessionReady) {
     const playbackGeneration=generation, playbackPeer=peer;
-    try {await audio.play();await visualAudio?.resume().catch(()=>{});if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;if(sessionReady){audioBlocked=false;status(muted?'Microphone muted':'Listening · you can interrupt');visitorActivity();q('.live-start').disabled=true;q('.live-start').textContent='Voice connected';error('');send('session.commentary.append','Audio is now enabled. Briefly welcome the visitor and invite their question.');}}
+    try {await audio.play();await visualAudio?.resume().catch(()=>{});if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;if(sessionReady){audioBlocked=false;status(muted?'Microphone muted':'Listening · you can interrupt');visitorActivity();q('.live-start').disabled=true;q('.live-start').textContent='Voice connected';error('');send('session.commentary.append','Audio is now enabled. Continue naturally from the current conversation and visitor request. If the visitor missed your opening, offer a fresh brief introduction in your own words; otherwise do not restart the greeting.');}}
     catch {if(playbackGeneration!==generation||playbackPeer!==peer||ending)return;audioBlocked=true;error('Select the AI avatar to enable audio.');} return;
   }
   generation++; if(token) { fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{}); token=undefined; }
@@ -286,7 +280,7 @@ async function start() {
     try{acquiredStream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});}
     finally{if(startGeneration===generation)cancelPermissionPrompt();}
     if(startGeneration!==generation){acquiredStream?.getTracks().forEach(track=>track.stop());return;}
-    mic = acquiredStream;permissionDenied=false;
+    mic = acquiredStream;
     status('Connecting your guide…');
     peer = new RTCPeerConnection();
     const connection = peer;
@@ -311,9 +305,9 @@ async function start() {
         sessionReady=true; connecting=false; recoveryMessage='';q('.live-error').textContent='';root.classList.add('connected'); status('Listening · you can interrupt');
         idleNudges=0;lastProactiveAt=Date.now();lastSpeechAt=Date.now();visitorActivity();publishContext();
         q('.live-mute').disabled=false; q('.live-stop').disabled=false;
-        greetingEvent=send('session.instructions.append',`Speak English unless the visitor asks for another language. Greet the visitor now. Say: ${guide.greeting} Then wait for their response. Introduce yourself as an AI guide.`);
+        greetingEvent=send('session.instructions.append','Speak English unless the visitor asks for another language. Open the conversation now in your own fresh words, keeping your established character. Briefly identify yourself as the site’s AI guide, then offer one natural invitation suited to the current page context. Keep the opening to one or two short sentences and leave room for the visitor. Do not recite a fixed catchphrase, a list of capabilities, or a prepared monologue. Let wording, rhythm and light emotional expression emerge from the moment; do not force a joke. Treat browsing context as tentative evidence, not proof of intent. If the visitor has already spoken, answer them first instead of delivering an opening.');
       } else if(event.type==='session.instructions.appended'&&event.client_event_id===greetingEvent) {
-        send('session.commentary.append','Begin the conversation now, following the greeting instructions.');
+        send('session.commentary.append','Begin naturally now, following the opening guidance without reading the instructions aloud.');
       } else if(event.type==='session.input_transcript.delta') {
         if(event.delta?.trim()){lastSpeechAt=Date.now();cancelProactive();visitorActivity();}
         line('user',event.delta);
@@ -345,7 +339,6 @@ async function start() {
     timer=setTimeout(end,data.durationSeconds*1000);
   } catch(e) {
     if(startGeneration!==generation)return;
-    if(e.name==='NotAllowedError')permissionDenied=true;
     if(token)fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{});
     cleanup(); status('Voice is optional');
     error(e.name==='NotAllowedError' ? 'Microphone permission was not granted. Allow it in your browser’s address bar, then select the AI avatar to try again.' : e.message);
