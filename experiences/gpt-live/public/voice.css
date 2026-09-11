@@ -31,3 +31,15 @@ body.theme-midnight .live-guide{--live-ink:#e5ecdf}body.theme-midnight .live-gui
 @keyframes live-sparkle{0%{opacity:0;transform:scale(.6)}30%{opacity:.85;transform:scale(1.15)}100%{opacity:0;transform:translate(var(--drift),-45px) scale(.7)}}
 @media(max-width:650px){.live-guide{width:76px;height:76px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));max-width:none}.live-presence .live-face{scale:.33}.live-presence .live-halo{scale:.32}.live-presence .halo-two{scale:.28}.live-presence .live-shadow{scale:.38;bottom:8px}}
 @media(prefers-reduced-motion:reduce){.live-guide *,.live-effects *{animation:none!important;transition:none!important}.live-guide.live-effect-bounce .live-presence{outline:2px solid #b8afd1}}
+/* Brief theatrical expressions; the character keeps its compact footprint. */
+.live-guide[data-delivery=laugh] .live-face{animation:live-chuckle .32s ease-in-out 4}
+.live-guide[data-delivery=laugh] .live-face i{height:8px;border-radius:60% 60% 20% 20%}
+.live-guide[data-delivery=laugh] .live-face b{height:24px;background:#294232;border-radius:25% 25% 55% 55%}
+.live-guide[data-delivery=mock_grumpy] .live-face{animation:live-huff .6s ease-in-out 2}
+.live-guide[data-delivery=mock_cry] .live-cheek{background:#8bbfe1;width:9px;height:16px;filter:none;border-radius:60% 40% 60% 60%;opacity:.85}
+.live-guide[data-delivery=whisper] .live-face b{width:12px;left:75px;border-radius:50%}
+.live-guide[data-delivery=surprised] .live-face i{height:34px}
+.live-guide[data-delivery=surprised] .live-face b{width:19px;height:24px;left:72px;background:#294232;border-radius:50%}
+@keyframes live-chuckle{0%,100%{transform:translateY(-6px) rotate(-4deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes live-huff{0%,100%{transform:translateY(-6px) rotate(-4deg)}35%{transform:translateY(-6px) rotate(-10deg)}70%{transform:translateY(-6px) rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.live-guide[data-delivery] .live-face{animation:none!important}}

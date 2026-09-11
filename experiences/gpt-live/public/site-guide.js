@@ -38,3 +38,78 @@ function applyGuideActions(actions){if(!Array.isArray(actions))return[];return a
 window.siteGuide={id:'portfolio',title:'Shanto’s Portfolio',greeting:'Hi, I’m Pip, Shanto’s AI wingman. He builds the systems; I make the introductions. Are you hiring, exploring the projects, or just checking whether the little face has opinions?',context:('You are an AI guide for Shanto Mathew’s portfolio, not Shanto himself. Be warm, witty, concise and persuasive with factual evidence; use gentle situational humor, never mock visitors. Do not invent achievements, metrics, employers, credentials or production readiness. Shanto is a Forward Deployed AI Engineer in Dallas–Fort Worth, Texas. Capabilities: applied AI, agentic workflows, RAG, voice experiences, Python, FastAPI, React, AWS, Azure, GCP, Splunk SOAR, Cortex XSOAR and XSIAM. Public projects are independent prototypes. Ask what the visitor wants, then use page actions and explain actual changes. Themes, density, copy and filters are temporary for this session. Never claim to edit production source, contact Shanto, book a meeting or perform an external action. Do not imply emotional consciousness. Use light expressive delivery, avoiding hostile anger or manipulative persuasion. Current resume data includes concurrent engagements; dates reflect August 2026. Education: BTech Computer Science, Rajiv Gandhi Institute of Technology, MG University. Contact: LinkedIn linkedin.com/in/shanto-mathew and GitHub github.com/shanto12. Experience: '+careers.map(c=>c[1]+' — '+c[2]+' ('+c[0]+'). '+c[3]).join(' ')+' Projects: '+projects.map(p=>p.title+': '+p.description+' Category: '+p.category+'.').join(' ')).slice(0,4990),sections:guideSections,getState:getGuideState,applyActions:applyGuideActions};
 window.portfolioState={get:()=>state,update(values){state={...state,...values};emitState()},render:renderGuideState};
 renderGuideState();
+
+// Activity context is tab-memory only. Never read textContent, form values or arbitrary DOM attributes.
+(() => {
+  const guide = window.siteGuide;
+  const recent = [];
+  const excluded = '#live-guide-mount,.live-guide,[data-guide-exclude],form,input,textarea,select,[contenteditable]';
+  const sections = new Set(guide.sections.map(section => section.id));
+  const itemById = new Map(projects.map(p => [p.slug, { id: p.slug, kind: 'project', label: p.title, summary: (p.description + ' ' + p.boundary).slice(0, 360) }]));
+  const itemIds = new Set(itemById.keys());
+  function visibleIds() {
+    if (document.querySelector('#project-dialog').open || document.querySelector('#navigation-dialog').open) return [];
+    return [...document.querySelectorAll('#project-grid [data-project]')].map(node => {
+      const rect = node.getBoundingClientRect();
+      return { id: node.dataset.project, rect, visible: node.getClientRects().length > 0 && rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth };
+    }).filter(item => item.visible && itemIds.has(item.id)).sort((a, b) => a.rect.top - b.rect.top || a.rect.left - b.rect.left).slice(0, 3).map(item => item.id);
+  }
+  function currentSection() { const candidates = guide.sections.map(section => ({ id: section.id, rect: document.getElementById(section.id).getBoundingClientRect() })).filter(section => section.rect.bottom > 80 && section.rect.top < innerHeight); candidates.sort((a,b) => Math.abs(a.rect.top - 100) - Math.abs(b.rect.top - 100)); return candidates[0]?.id || guide.getState().section; }
+  function openItem() { if (!document.querySelector('#project-dialog').open) return null; const title = window.portfolioState.get().project; return projects.find(project => project.title === title)?.slug || null; }
+  function getContext() {
+    const active = openItem();
+    const visibleItems = visibleIds();
+    return { version: 1, siteId: guide.id, currentSection: currentSection(), openItem: active,
+      visibleItems, items: [...new Set([active, ...visibleItems].filter(Boolean))].slice(0, 4).map(id => ({ ...itemById.get(id) })),
+      selectedItems: { saved: [], compare: [] }, activeFilter: ['all','voice','security','agents','creative'].includes(window.portfolioState.get().filter) ? window.portfolioState.get().filter : 'all',
+      recentActions: recent.map(action => ({ ...action })), sessionOnly: true };
+  }
+  function record(type, target) {
+    if (!['navigate', 'open', 'filter', 'save', 'compare', 'dismiss', 'view'].includes(type)) return;
+    if (target !== undefined && !sections.has(target) && !itemIds.has(target)) return;
+    const action = target === undefined ? { type } : { type, target };
+    recent.push(action); if (recent.length > 8) recent.shift();
+    window.dispatchEvent(new CustomEvent('site:activity', { detail: { version: 1, siteId: guide.id, source: 'visitor', action: { ...action } } }));
+  }
+  guide.getContext = getContext;
+  // isTrusted rejects model-triggered .click(), dispatchEvent and synthetic form interactions.
+  document.addEventListener('click', event => {
+    if (!event.isTrusted || !(event.target instanceof Element) || event.target.closest(excluded)) return;
+    const control = event.target.closest('button,a,summary');
+    let action = null;
+    if (control) {
+      if (itemIds.has(control.dataset.project)) action = { type: 'open', target: control.dataset.project };
+      else if (['all','voice','security','agents','creative'].includes(control.dataset.filter)) action = { type: 'filter', target: 'work' };
+      else if (control.tagName === 'A' && sections.has(control.getAttribute('href')?.slice(1))) action = { type: 'navigate', target: control.getAttribute('href').slice(1) };
+      else if (control.id === 'close-project' && openItem()) action = { type: 'dismiss', target: openItem() };
+      else if (control.tagName === 'A' && ['https://www.linkedin.com/in/shanto-mathew/','https://github.com/shanto12'].includes(control.getAttribute('href'))) action = { type: 'navigate', target: 'contact' };
+      else if (control.tagName === 'SUMMARY' && control.closest('#career-list')) action = { type: 'view', target: 'experience' };
+    } else if (event.target === document.querySelector('#project-dialog') && openItem()) {
+      const rect = event.target.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) action = { type: 'dismiss', target: openItem() };
+    }
+    if (action) queueMicrotask(() => record(action.type, action.target));
+  }, true);
+  // A settled visitor scroll produces one semantic view event, never a raw scroll log.
+  let viewTimer;
+  let lastView = '';
+  let lastViewAt = 0;
+  function visitorScroll(event) {
+    if (!event.isTrusted || !(event.target instanceof Element) || event.target.closest(excluded)) return;
+    if (event.type === 'keydown' && !['PageDown','PageUp','ArrowDown','ArrowUp','Home','End',' '].includes(event.key)) return;
+    clearTimeout(viewTimer);
+    viewTimer = setTimeout(() => {
+      const target = openItem() || visibleIds()[0] || currentSection();
+      if (target !== lastView && Date.now() - lastViewAt > 1500) { lastView = target; lastViewAt = Date.now(); record('view', target); }
+    }, 700);
+  }
+  document.addEventListener('wheel', visitorScroll, { passive: true });
+  document.addEventListener('touchend', visitorScroll, { passive: true });
+  document.addEventListener('keydown', visitorScroll);
+  const dialog = document.querySelector('#project-dialog');
+  dialog.addEventListener('cancel', event => {
+    if (!event.isTrusted) return;
+    const target = openItem();
+    if (target) queueMicrotask(() => record('dismiss', target));
+  });
+})();

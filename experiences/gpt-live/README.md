@@ -79,3 +79,7 @@ Selected final AgentMart controls were tested in Shanto's real Chrome profile. P
 The [final release ledger](docs/evidence/final-budget.json) shows AgentMart **2 permits remaining** and portfolio **1 remaining**. Confirmed voice cost is approximately **$0.688333 including development**, not the total API bill; planner costs and unknown-session reservations are separate. The initial $10 allocation remains unchanged, with no automatic reset or additional paid tests planned.
 
 Deployed source commit: `af3bee4` on `codex/gpt-live-experience`. Final [local checks](docs/evidence/final-local-verification.json) and [credential-pattern scan](docs/evidence/final-secret-scan.json) are included as separate evidence. This is a verified limited trial within the documented coverage, not enterprise certification.
+
+## Personality and browsing awareness extension
+
+The guides now receive bounded in-site browsing context and support expressive delivery, professional/quiet preferences, and limited context-aware suggestions. See [architecture and behavior](docs/PERSONALITY_AWARENESS.md) and [current release evidence](docs/PERSONALITY_RELEASE_EVIDENCE.md). This extension does not increase the trial allowance.
