@@ -1,0 +1,236 @@
+{
+  "testedAtCentral": "9/11/2026, 5:14:38 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken navigation and confetti effect apply through the real planner",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "agentmart-greeting.png",
+        "agentmart-spoken-navigation.png",
+        "agentmart-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "transcript": " Hello! I'm M, your on-page scout, looking",
+        "rmsMax": 0.18593468460864132,
+        "audibleSamples": 44,
+        "recordedBytes": 63060,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Change this website to rose pink, look playful, show my agents and",
+      "spokenActionState": {
+        "theme": "rose",
+        "density": "comfortable",
+        "emotion": "playful",
+        "hero": "",
+        "view": "agents",
+        "category": "All",
+        "query": "",
+        "sort": "featured",
+        "collection": false,
+        "saved": [],
+        "resources": [],
+        "compare": [],
+        "agent": {
+          "name": "Research assistant",
+          "budget": 250,
+          "paused": false,
+          "created": false
+        },
+        "layout": "grid",
+        "visibleProducts": [
+          "parallel",
+          "openfield",
+          "northstar",
+          "form",
+          "trace",
+          "fieldbook",
+          "archive",
+          "relay",
+          "cedar",
+          "canvas",
+          "harbor",
+          "fieldnotes"
+        ],
+        "dialogOpen": false,
+        "dialogTitle": "",
+        "canUndo": true,
+        "sessionOnly": true,
+        "livePurchasesAvailable": false
+      },
+      "pageState": {
+        "theme": "rose",
+        "density": "comfortable",
+        "emotion": "playful",
+        "hero": "",
+        "view": "agents",
+        "category": "All",
+        "query": "",
+        "sort": "featured",
+        "collection": false,
+        "saved": [],
+        "resources": [],
+        "compare": [],
+        "agent": {
+          "name": "Research assistant",
+          "budget": 250,
+          "paused": false,
+          "created": false
+        },
+        "layout": "grid",
+        "visibleProducts": [
+          "parallel",
+          "openfield",
+          "northstar",
+          "form",
+          "trace",
+          "fieldbook",
+          "archive",
+          "relay",
+          "cedar",
+          "canvas",
+          "harbor",
+          "fieldnotes"
+        ],
+        "dialogOpen": false,
+        "dialogTitle": "",
+        "canUndo": true,
+        "sessionOnly": true,
+        "livePurchasesAvailable": false
+      },
+      "effects": [
+        "confetti"
+      ],
+      "beforeEnd": {
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 75131,
+            "packetsReceived": 672,
+            "packetsLost": 0,
+            "jitter": 0.002,
+            "totalAudioEnergy": 0.42510862487714324,
+            "totalSamplesDuration": 14.519999999999735
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 35868,
+            "packetsSent": 722
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.18593468460864132,
+        "audibleSamples": 64,
+        "remoteBytes": 217187,
+        "transcript": "Guide:  Hello! I'm M, your on-page scout, looking forYou:  Change this website to rose pink, look playful, show my agents and celebrate with confettiGuide:  Hmm!",
+        "inputTranscript": " Change this website to rose pink, look playful, show my agents and celebrate with confetti",
+        "outputTranscript": " Hello! I'm M, your on-page scout, looking for Hmm!",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.usage.updated"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "agentmart-remote-audio.webm",
+        "bytes": 225671,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 18.8
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 Verified September 11, 2026, approximately 4:52–5:03 PM Central Time.
 
+> Update, September 11, 2026: the owner explicitly approved a $30 combined cap. Production allocations are now configured at $14 per preview plus the retained $2 development hold. The funding-pending section below records the earlier release state; see BUDGET_30_ACTIVATION.md for current activation evidence.
+
 ## Published scope
 
 Portfolio preview: https://shanto-portfolio-live.netlify.app/ — deploy `6aa47914e0de31e6c61ee7e1`, source `58278a2`.

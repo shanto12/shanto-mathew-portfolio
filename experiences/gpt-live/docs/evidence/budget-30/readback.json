@@ -1,0 +1,173 @@
+{
+  "checkedCentral": "9/11/2026, 5:15:22 PM Central Time",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 15,
+          "reservedUSD": 4.927505,
+          "remainingUSD": 9.072495,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      },
+      "assets": [
+        {
+          "file": "app.js",
+          "status": 200,
+          "sha256": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "sha256": "ba6ea52c3d47f3b36eec010a8aa7a3a97a84e0a7fd7b153ea7cb3a6856c38679",
+          "matchesSource": false,
+          "matchesSourceWithoutNetlifyMetadata": true,
+          "headers": {
+            "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "file": "site-guide.js",
+          "status": 200,
+          "sha256": "426c21ee2efa670b0ec1ab05b51d449b777c734cbff892fdc24b809c7798008f",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "styles.css",
+          "status": 200,
+          "sha256": "0f0fd2faa8011c834416ec53b7ce1afd636b7c66e8a0e396b52878cc1d69fb8c",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "voice.css",
+          "status": 200,
+          "sha256": "8cc7a4e77d00e238e5849a83de119a6559923e0cd8ff20771b80a3248031fa2a",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "voice.js",
+          "status": 200,
+          "sha256": "3e90278de2023145df7422b470b1e4d12b832198e6cf7092b128bdfdfb30691d",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        }
+      ]
+    },
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "health": {
+        "site": "agentmart",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 13,
+          "reservedUSD": 4.312503,
+          "remainingUSD": 9.687497,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      },
+      "assets": [
+        {
+          "file": "app.js",
+          "status": 200,
+          "sha256": "fcbdc0c8c617ef32cbad478c648214e06548d34e32e732b833a7f4caf2e3f3e6",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "sha256": "4ec7b43d7c2370fc9470bbeb4e99a7f39e566e9f8c30105dc17b4e4a2a677712",
+          "matchesSource": false,
+          "matchesSourceWithoutNetlifyMetadata": true,
+          "headers": {
+            "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "file": "site-guide.js",
+          "status": 200,
+          "sha256": "fa2e5c3d4024dee3150da3c99110be5b3b77f99b698e63e29550b136b88cb48d",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "style.css",
+          "status": 200,
+          "sha256": "a66b31345e89895ed874e07d41bafc0bb1531cf30cc57d8bf6632b74c66d545e",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "voice.css",
+          "status": 200,
+          "sha256": "8cc7a4e77d00e238e5849a83de119a6559923e0cd8ff20771b80a3248031fa2a",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        },
+        {
+          "file": "voice.js",
+          "status": 200,
+          "sha256": "3e90278de2023145df7422b470b1e4d12b832198e6cf7092b128bdfdfb30691d",
+          "matchesSource": true,
+          "matchesSourceWithoutNetlifyMetadata": true
+        }
+      ]
+    }
+  ],
+  "originals": [
+    {
+      "url": "https://shantomathew.com/",
+      "status": 200,
+      "sha256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb",
+      "unchanged": true
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/",
+      "status": 200,
+      "sha256": "3665a59d7776e6171f6d2ab5c0fe848dbc72608c10581dd3e12d250a4ff00579",
+      "unchanged": true
+    }
+  ]
+}
