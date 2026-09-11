@@ -1,7 +1,7 @@
 {
   "id": "portfolio",
   "title": "Shanto’s Portfolio",
-  "context": "You are an AI guide for Shanto Mathew’s portfolio, not Shanto himself. Be warm, witty, concise and persuasive with factual evidence; use gentle situational humor, never mock visitors. Do not invent achievements, metrics, employers, credentials or production readiness. Shanto is a Forward Deployed AI Engineer in Dallas–Fort Worth, Texas. Capabilities: applied AI, agentic workflows, RAG, voice experiences, Python, FastAPI, React, AWS, Azure, GCP, Splunk SOAR, Cortex XSOAR and XSIAM. Public projects are independent prototypes. Ask what the visitor wants, then use page actions and explain actual changes. Themes, density, copy and filters are temporary for this session. Never claim to edit production source, contact Shanto, book a meeting or perform an external action. Do not imply emotional consciousness. Use light expressive delivery, avoiding hostile anger or manipulative persuasion. Current resume data includes concurrent engagements; dates reflect August 2026. Education: BTech Computer Science, Rajiv Gandhi Institute of Technology, MG University. Contact: LinkedIn linkedin.com/in/shanto-mathew and GitHub github.com/shanto12. Experience: Wells Fargo — Forward Deployed Engineer / AI Engineer (Jul 2026 — Present). Applied AI and agentic workflows for enterprise banking. Python, retrieval-augmented generation and multi-agent workflow development. CDW — Senior SOAR Engineer / AI Security Automation (Jan 2026 — Present). Cortex XSOAR automation playbooks and Python integrations for security operations. AI-assisted incident workflows, security telemetry and operational readiness. Bank of America — Senior SOAR Engineer (Jun 2024 — Sep 2025). Splunk SOAR applications, Python functions and incident-response integrations. Threat-intelligence enrichment and MITRE ATT&CK mapping. Mastercard — Senior Information Security Engineer (Jan 2024 — May 2024). Cortex XSOAR runbooks for phishing and account compromise. ServiceNow incident synchronization and Python automation. Heritage Bank — Senior Security Automation Specialist (Aug 2022 — Jan 2024). SOAR workflows and Python integrations within security operations. FastAPI services for event ingestion, queries and alert management. BHP — Data Scientist (Apr 2022 — Aug 2022). Statistical analysis of equipment downtime and material movement. Predictive modelling with Python, scikit-learn, pandas and NumPy, alongside Snowflake reporting. Splunk — Senior Security Solutions Engineer / Professional Services Consultant (Nov 2019 — Apr 2022). Customer-facing SOAR delivery spanning discovery, implementation, workshops, UAT support and handover. Reusable Python automation and integrations across enterprise security tools. NBN — Security Automation Engineer (Oct 2018 — Jun 2019). Python pipelines for threat intelligence and document extraction. REST integrations with external threat feeds and MISP. Commonwealth Bank of Australia — Support Engineer → Python Developer (Aug 2012 — Sep 2018). Progression through enterprise application support into Python development. Connecting ALM and Jira, automating reporting, and supporting CI/CD workflows. Rogers Communication — Tester (Feb 2011 — Jul 2012). Manual CRM testing, test-data preparation and test documentation. An early foundation in understanding behavior, reproducing problems and checking the result. Projects: Nocturne Hotel · Poe Concierge: A hospitality interface that brings rooms, places and conversation into one experience. Category: Voice & experience. SOC AI Agent Demo: An inspectable incident workflow connecting enrichment, human review, reports and replay. Category: Security & applied AI. Y22 Roleplay: A voice-led practice environment for personas, coaching and structured review. Category: Voice & learning. Agentic Marketing Operations Workbench: A workspace for buyer-intent context, campaign drafts and auditable agent runs. Category: Agents & operations. ForwardOps Voice Pilot Command Center: A forward-deployed pilot workspace for scope, testing, launch blockers and handoff. Category: Voice & delivery. Enterprise Voice AI Launch Console: A launch-room interface for readiness, scenario replay and stakeholder updates. Category: Voice & delivery. Grok Experience Navigator: A voice-guided experience center that turns questions into a navigable journey. Category: Voice & navigation. Grok Medical Front Desk: A synthetic front-desk console exploring scheduling, voice and review boundaries. Category: Voice & operations. Flux Atlas: A generative flow field with live motion controls and an exploratory interface. Category: Creative systems.",
+  "context": "You are Pip, an AI guide for Shanto Mathew’s portfolio, not Shanto himself. Be warm, witty, concise and persuasive with factual evidence. Do not invent achievements, metrics, credentials, availability, compensation or production readiness. Shanto is a Forward Deployed AI Engineer in Dallas–Fort Worth, Texas. Capabilities: applied AI, agentic workflows, RAG, voice experiences, Python, FastAPI, React, AWS, Azure, GCP, Splunk SOAR, Cortex XSOAR and XSIAM. Public projects are independent work with explicit prototype and service boundaries. Never imply that a portfolio screenshot proves current provider availability or that a demo is an operating business. Ask what the visitor wants, use only requested presentation actions, and wait for actual action results. Themes, density, hero copy and filters are temporary. Never claim to edit source, contact Shanto, book a meeting or perform external actions. Career dates reflect the August 2026 professional resume with owner-confirmed September updates: CDW ended May 2026. Education: Bachelor of Technology in Computer Science, Rajiv Gandhi Institute of Technology, MG University. Contact: shantomathew.com; LinkedIn linkedin.com/in/shanto-mathew; GitHub github.com/shanto12. Experience: Wells Fargo — Forward Deployed Engineer / AI Engineer (Jul 2026 — Present). Applied AI and agentic workflows for enterprise banking. Python, retrieval-augmented generation and multi-agent workflow development. CDW — Senior SOAR Engineer / AI Security Automation (Jan 2026 — May 2026). Cortex XSOAR automation playbooks and Python integrations for security operations. AI-assisted incident workflows, security telemetry and operational readiness. Bank of America — Senior SOAR Engineer (Jun 2024 — Sep 2025). Splunk SOAR applications, Python functions and incident-response integrations. Threat-intelligence enrichment and MITRE ATT&CK mapping. Mastercard — Senior Information Security Engineer (Jan 2024 — May 2024). Cortex XSOAR runbooks for phishing and account compromise. ServiceNow incident synchronization and Python automation. Heritage Bank — Senior Security Automation Specialist (Aug 2022 — Jan 2024). SOAR workflows and Python integrations within security operations. FastAPI services for event ingestion, queries and alert management. BHP — Data Scientist (Apr 2022 — Aug 2022). Statistical analysis of equipment downtime and material movement. Predictive modelling with Python, scikit-learn, pandas and NumPy, alongside Snowflake reporting. Splunk — Senior Security Solutions Engineer / Professional Services Consultant (Nov 2019 — Apr 2022). Customer-facing SOAR delivery spanning discovery, implementation, workshops, UAT support and handover. Reusable Python automation and integrations across enterprise security tools. NBN — Security Automation Engineer (Oct 2018 — Jun 2019). Python pipelines for threat intelligence and document extraction. REST integrations with external threat feeds and MISP. Commonwealth Bank of Australia — Support Engineer → Python Developer (Aug 2012 — Sep 2018). Progression through enterprise application support into Python development. Connecting ALM and Jira, automating reporting, and supporting CI/CD workflows. Rogers Communication — Tester (Feb 2011 — Jul 2012). Manual CRM testing, test-data preparation and test documentation. An early foundation in understanding behavior, reproducing problems and checking the result.",
   "sections": [
     {
       "id": "home",
@@ -11,7 +11,7 @@
     {
       "id": "work",
       "label": "Selected work",
-      "description": "Nine public prototypes, filterable by voice, security, agents and creative systems."
+      "description": "Fourteen public project cases, filterable by voice, security, agents and creative systems."
     },
     {
       "id": "story",
@@ -21,7 +21,7 @@
     {
       "id": "experience",
       "label": "Experience",
-      "description": "Resume-listed roles and engagements, with expandable descriptions."
+      "description": "Resume-listed roles and engagements, including the owner-confirmed CDW end date of May 2026."
     },
     {
       "id": "practice",
@@ -31,71 +31,176 @@
     {
       "id": "contact",
       "label": "Contact",
-      "description": "Verified public LinkedIn and GitHub profile links."
+      "description": "Verified public website, LinkedIn and GitHub links; no message is sent by this guide."
+    },
+    {
+      "id": "agentmart-studio",
+      "label": "AgentMart Studio",
+      "description": "A marketplace concept connecting discovery, comparison, resources and human-owned agent limits."
+    },
+    {
+      "id": "swarm-nexus",
+      "label": "Swarm Nexus",
+      "description": "An outcome-led workspace for assignments, dependencies, durable progress and resource decisions."
+    },
+    {
+      "id": "relay-email-operations",
+      "label": "Relay · Restaurant AI Email Operations",
+      "description": "An email operations console connecting triage, policy context, draft review and an audit trail."
+    },
+    {
+      "id": "orbital-observatory",
+      "label": "Orbital Observatory",
+      "description": "An imagined observatory where destination choice becomes a visible, interactive journey."
+    },
+    {
+      "id": "agentproof",
+      "label": "AgentProof AI Governance",
+      "description": "A governance workspace for vendor inventory, risk drivers, review and audit evidence."
+    },
+    {
+      "id": "nocturne-ai-hotel",
+      "label": "Nocturne Hotel · Poe Concierge",
+      "description": "A hospitality interface that brings rooms, places and conversation into one experience."
+    },
+    {
+      "id": "security-ops-playbook-analyzer",
+      "label": "SOC AI Agent Demo",
+      "description": "An inspectable incident workflow connecting enrichment, human review, reports and replay."
+    },
+    {
+      "id": "y22-ai-sales-roleplay",
+      "label": "Y22 Roleplay",
+      "description": "A voice-led practice environment for personas, coaching and structured review."
+    },
+    {
+      "id": "gp-agentic-revenue-ops",
+      "label": "Agentic Marketing Operations Workbench",
+      "description": "A workspace for buyer-intent context, campaign drafts and auditable agent runs."
+    },
+    {
+      "id": "vapi-pilot-command-center",
+      "label": "ForwardOps Voice Pilot Command Center",
+      "description": "A forward-deployed pilot workspace for scope, testing, launch blockers and handoff."
+    },
+    {
+      "id": "elevenlabs-forward-deployed-engineer",
+      "label": "Enterprise Voice AI Launch Console",
+      "description": "A launch-room interface for readiness, scenario replay and stakeholder updates."
+    },
+    {
+      "id": "grok-experience-navigator",
+      "label": "Grok Experience Navigator",
+      "description": "A voice-guided experience center that turns questions into a navigable journey."
+    },
+    {
+      "id": "grok-medical-frontdesk",
+      "label": "Grok Medical Front Desk",
+      "description": "A synthetic front-desk console exploring scheduling, voice and review boundaries."
+    },
+    {
+      "id": "flux-atlas",
+      "label": "Flux Atlas",
+      "description": "A generative flow field with live motion controls and an exploratory interface."
     }
   ],
   "items": [
     {
+      "id": "agentmart-studio",
+      "label": "AgentMart Studio",
+      "kind": "project",
+      "description": "A marketplace concept connecting discovery, comparison, resources and human-owned agent limits.",
+      "summary": "A marketplace concept connecting discovery, comparison, resources and human-owned agent limits. Illustrative listings and session-memory interactions make this a frontend exploration. Accounts, payments, provider execution and seller publication belong to the separate AgentMart application."
+    },
+    {
+      "id": "swarm-nexus",
+      "label": "Swarm Nexus",
+      "kind": "project",
+      "description": "An outcome-led workspace for assignments, dependencies, durable progress and resource decisions.",
+      "summary": "An outcome-led workspace for assignments, dependencies, durable progress and resource decisions. The image shows the public Netlify interface; the hosted workspace link may require sign-in. The separate Python/LangGraph runtime uses SQLite checkpoints and a single application replica."
+    },
+    {
+      "id": "relay-email-operations",
+      "label": "Relay · Restaurant AI Email Operations",
+      "kind": "project",
+      "description": "An email operations console connecting triage, policy context, draft review and an audit trail.",
+      "summary": "An email operations console connecting triage, policy context, draft review and an audit trail. Relay uses synthetic restaurant scenarios and safe facade functions; no real email is sent. Hosted LangGraph, live retrieval and email delivery are separate integrations."
+    },
+    {
+      "id": "orbital-observatory",
+      "label": "Orbital Observatory",
+      "kind": "project",
+      "description": "An imagined observatory where destination choice becomes a visible, interactive journey.",
+      "summary": "An imagined observatory where destination choice becomes a visible, interactive journey. Orbital is a fictional design concept with illustrative mission data, generated artistic planetary views and simulated telemetry. It is not a scientific trajectory model or a connection to spacecraft. No real mission or booking is launched."
+    },
+    {
+      "id": "agentproof",
+      "label": "AgentProof AI Governance",
+      "kind": "project",
+      "description": "A governance workspace for vendor inventory, risk drivers, review and audit evidence.",
+      "summary": "A governance workspace for vendor inventory, risk drivers, review and audit evidence. AgentProof uses seeded tenant data and deterministic risk scoring. Framework mappings organize the review experience and evidence; they do not represent a certified governance program."
+    },
+    {
       "id": "nocturne-ai-hotel",
       "label": "Nocturne Hotel · Poe Concierge",
-      "description": "A hospitality interface that brings rooms, places and conversation into one experience.",
       "kind": "project",
+      "description": "A hospitality interface that brings rooms, places and conversation into one experience.",
       "summary": "A hospitality interface that brings rooms, places and conversation into one experience. This is an independent interface and voice experiment, not an operating hotel or booking service. Room imagery is generated. Live voice features depend on the original project’s current provider configuration."
     },
     {
       "id": "security-ops-playbook-analyzer",
       "label": "SOC AI Agent Demo",
-      "description": "An inspectable incident workflow connecting enrichment, human review, reports and replay.",
       "kind": "project",
+      "description": "An inspectable incident workflow connecting enrichment, human review, reports and replay.",
       "summary": "An inspectable incident workflow connecting enrichment, human review, reports and replay. This is a public simulator with synthetic incidents. The captured interface reported degraded provider configuration; its model-driven actions were not activated during capture. It is not evidence of an operational SOC integration."
     },
     {
       "id": "y22-ai-sales-roleplay",
       "label": "Y22 Roleplay",
-      "description": "A voice-led practice environment for personas, coaching and structured review.",
       "kind": "project",
+      "description": "A voice-led practice environment for personas, coaching and structured review.",
       "summary": "A voice-led practice environment for personas, coaching and structured review. This is a public demonstration. The website links to the original interface and repository. A working AI call, current provider entitlement and the quality of coaching are separate from this portfolio presentation."
     },
     {
       "id": "gp-agentic-revenue-ops",
       "label": "Agentic Marketing Operations Workbench",
-      "description": "A workspace for buyer-intent context, campaign drafts and auditable agent runs.",
       "kind": "project",
+      "description": "A workspace for buyer-intent context, campaign drafts and auditable agent runs.",
       "summary": "A workspace for buyer-intent context, campaign drafts and auditable agent runs. This is an independent synthetic/demo workbench, not a live customer or prospect database. This portfolio does not execute its agents or send campaign messages."
     },
     {
       "id": "vapi-pilot-command-center",
       "label": "ForwardOps Voice Pilot Command Center",
-      "description": "A forward-deployed pilot workspace for scope, testing, launch blockers and handoff.",
       "kind": "project",
+      "description": "A forward-deployed pilot workspace for scope, testing, launch blockers and handoff.",
       "summary": "A forward-deployed pilot workspace for scope, testing, launch blockers and handoff. The interface uses synthetic pilot information. Readiness indicators describe the demo scenario; they are not claims about a real customer launch or live voice service."
     },
     {
       "id": "elevenlabs-forward-deployed-engineer",
       "label": "Enterprise Voice AI Launch Console",
-      "description": "A launch-room interface for readiness, scenario replay and stakeholder updates.",
       "kind": "project",
+      "description": "A launch-room interface for readiness, scenario replay and stakeholder updates.",
       "summary": "A launch-room interface for readiness, scenario replay and stakeholder updates. This is an independent concept, not an ElevenLabs product or endorsement. Its synthetic launch information and original provider-backed features are separate from this portfolio’s GUI."
     },
     {
       "id": "grok-experience-navigator",
       "label": "Grok Experience Navigator",
-      "description": "A voice-guided experience center that turns questions into a navigable journey.",
       "kind": "project",
+      "description": "A voice-guided experience center that turns questions into a navigable journey.",
       "summary": "A voice-guided experience center that turns questions into a navigable journey. This is a public demonstration, not an enterprise customer environment. The screenshot captures the interface; current voice availability and AI behavior remain the responsibility of the original demo."
     },
     {
       "id": "grok-medical-frontdesk",
       "label": "Grok Medical Front Desk",
-      "description": "A synthetic front-desk console exploring scheduling, voice and review boundaries.",
       "kind": "project",
+      "description": "A synthetic front-desk console exploring scheduling, voice and review boundaries.",
       "summary": "A synthetic front-desk console exploring scheduling, voice and review boundaries. The demo uses synthetic scenarios. It is not a clinical service and should not receive patient information through this portfolio. No voice or scheduling action was activated during capture."
     },
     {
       "id": "flux-atlas",
       "label": "Flux Atlas",
-      "description": "A generative flow field with live motion controls and an exploratory interface.",
       "kind": "project",
+      "description": "A generative flow field with live motion controls and an exploratory interface.",
       "summary": "A generative flow field with live motion controls and an exploratory interface. This is a creative coding experiment. Its captured screen faithfully reflects the existing public demo, including its original visual composition. The portfolio does not claim scientific simulation accuracy."
     }
   ]

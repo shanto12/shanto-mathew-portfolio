@@ -1,115 +1,169 @@
 'use strict';
-const $=s=>document.querySelector(s);
-const projects=[
-{slug:'nocturne-ai-hotel',short:'Nocturne / Poe Concierge',name:'A more conversational stay.',title:'Nocturne Hotel · Poe Concierge',category:'Voice & experience',image:'nocturne.webp',color:'#d8b4aa',url:'https://nocturne-ai-hotel.netlify.app',stack:['React','Generated imagery','xAI Realtime','Netlify'],description:'A hospitality interface that brings rooms, places and conversation into one experience.',question:'How might a visitor explore a place through conversation?',overview:'Nocturne is a public hospitality prototype that combines an immersive room interface with conversational assistance. It explores how a concierge can sit alongside a visual journey, rather than interrupt it.',approach:['Room scenes and hotspots give the visitor a visual starting point.','Conversational and voice interfaces explore a second way to navigate the experience.','The public demo uses synthetic scenarios and separates the visual interface from its provider connections.'],boundary:'This is an independent interface and voice experiment, not an operating hotel or booking service. Room imagery is generated. Live voice features depend on the original project’s current provider configuration.'},
-{slug:'security-ops-playbook-analyzer',short:'SOC AI / Analyst workflow',name:'Keep the analyst in the loop.',title:'SOC AI Agent Demo',category:'Security & applied AI',image:'security.webp',color:'#bbc9b5',url:'https://security-ops-playbook-analyzer.netlify.app',stack:['React','LangGraph-style flow','SSE','Netlify Functions'],description:'An inspectable incident workflow connecting enrichment, human review, reports and replay.',question:'What should an analyst be able to see before an automated action?',overview:'This security-operations simulator explores an agent’s path through incident context, tool calls and human review. The emphasis is on making decisions visible and keeping sensitive steps attached to an explicit approval boundary.',approach:['An incident timeline separates the incoming signal, enrichment and proposed response.','Human review sits between a recommendation and the sensitive step.','Reports, export and replay make the sequence easier to inspect after the fact.'],boundary:'This is a public simulator with synthetic incidents. The captured interface reported degraded provider configuration; its model-driven actions were not activated during capture. It is not evidence of an operational SOC integration.'},
-{slug:'y22-ai-sales-roleplay',short:'Y22 / Voice roleplay',name:'A space to practise the conversation.',title:'Y22 Roleplay',category:'Voice & learning',image:'roleplay.webp',color:'#bfc6e3',url:'https://y22-ai-sales-roleplay.netlify.app',repo:'https://github.com/shanto12/y22-ai-sales-roleplay',stack:['React','xAI Voice','Streaming feedback','Prompt design'],description:'A voice-led practice environment for personas, coaching and structured review.',question:'How do you make a practice conversation useful after it ends?',overview:'Y22 is a sales-roleplay prototype built around spoken interaction. It brings persona selection, conversation, coaching and a scorecard together so a practice session can be explored as a complete workflow.',approach:['Personas and prompts set a context for the exercise.','A call interface keeps the interaction close to the actual task: speaking and listening.','Coaching and a scorecard explore how feedback can become a useful next step.'],boundary:'This is a public demonstration. The website links to the original interface and repository. A working AI call, current provider entitlement and the quality of coaching are separate from this portfolio presentation.'},
-{slug:'gp-agentic-revenue-ops',short:'Revenue Ops / Workbench',name:'From signal to a considered draft.',title:'Agentic Marketing Operations Workbench',category:'Agents & operations',image:'revenue.webp',color:'#e3d298',url:'https://gp-agentic-revenue-ops.netlify.app',stack:['React','RAG','Netlify Blobs','Human review'],description:'A workspace for buyer-intent context, campaign drafts and auditable agent runs.',question:'How can an operator understand what an agent used to create a draft?',overview:'This revenue-operations prototype connects signals, ideal-customer context and campaign drafting in an inspectable workspace. It explores how a person can follow the input and review a proposed result.',approach:['Buyer-intent and customer-fit information establish the context.','Retrieval and drafting workflows connect that context to a proposed campaign.','Run records and human review provide a place to inspect the result before action.'],boundary:'This is an independent synthetic/demo workbench, not a live customer or prospect database. This portfolio does not execute its agents or send campaign messages.'},
-{slug:'vapi-pilot-command-center',short:'ForwardOps / Pilot delivery',name:'The work around getting to launch.',title:'ForwardOps Voice Pilot Command Center',category:'Voice & delivery',image:'forwardops.webp',color:'#c0caca',url:'https://vapi-pilot-command-center.netlify.app',stack:['React','Pilot workflows','UAT','Synthetic data'],description:'A forward-deployed pilot workspace for scope, testing, launch blockers and handoff.',question:'What does a team need to understand before calling a pilot ready?',overview:'ForwardOps brings the delivery side of a voice-AI pilot into one public interface. The prototype is organized around scope, user acceptance testing, blockers and the information stakeholders need for a handoff.',approach:['A shared pilot scope makes the intended slice of work explicit.','UAT and launch blockers connect testing to an operational decision.','Stakeholder updates and reusable deployment kits explore how knowledge survives the handoff.'],boundary:'The interface uses synthetic pilot information. Readiness indicators describe the demo scenario; they are not claims about a real customer launch or live voice service.'},
-{slug:'elevenlabs-forward-deployed-engineer',short:'Voice AI / Launch console',name:'Make readiness a shared picture.',title:'Enterprise Voice AI Launch Console',category:'Voice & delivery',image:'launch.webp',color:'#d3c6dc',url:'https://elevenlabs-forward-deployed-engineer.netlify.app',stack:['React','TypeScript','Scenario replay','Netlify Functions'],description:'A launch-room interface for readiness, scenario replay and stakeholder updates.',question:'How might launch discussions focus on the actual blockers?',overview:'This public launch-console prototype explores the coordination needed around voice-AI deployment. It gives readiness, scenario replay and safety controls a common interface.',approach:['Readiness and blocker views help frame the next decision.','Scenario replay provides a concrete reference for discussing behavior.','Stakeholder updates connect technical work to the delivery conversation.'],boundary:'This is an independent concept, not an ElevenLabs product or endorsement. Its synthetic launch information and original provider-backed features are separate from this portfolio’s GUI.'},
-{slug:'grok-experience-navigator',short:'Grok / Experience navigator',name:'Let the conversation find the way.',title:'Grok Experience Navigator',category:'Voice & navigation',image:'navigator.webp',color:'#aebcd0',url:'https://grok-experience-navigator.netlify.app',stack:['React','xAI Voice','Navigation tools','Playwright'],description:'A voice-guided experience center that turns questions into a navigable journey.',question:'What if a product tour could respond to the visitor’s next question?',overview:'The Experience Navigator explores a conversational guide that can move through an enterprise product story. Product, security, ROI and support are presented as navigable spaces.',approach:['The visual experience gives visitors a sense of place and progress.','A guide explores how questions can map to navigation actions.','Named product areas provide boundaries for the conversation and the interface.'],boundary:'This is a public demonstration, not an enterprise customer environment. The screenshot captures the interface; current voice availability and AI behavior remain the responsibility of the original demo.'},
-{slug:'grok-medical-frontdesk',short:'Grok / Medical front desk',name:'A careful front door to the workflow.',title:'Grok Medical Front Desk',category:'Voice & operations',image:'medical.webp',color:'#c9d7c4',url:'https://grok-medical-frontdesk.netlify.app',stack:['React','xAI Voice','Ephemeral tokens','Audit timeline'],description:'A synthetic front-desk console exploring scheduling, voice and review boundaries.',question:'How can a voice interface stay clear about its role in a sensitive workflow?',overview:'This prototype brings a synthetic medical-front-desk scenario into a voice console. Its focus is scheduling, guardrails and a visible activity timeline.',approach:['A scheduling scenario gives the interaction a bounded task.','Patient-safe boundaries distinguish assistance from clinical advice.','An audit timeline makes the public demo’s actions easier to review.'],boundary:'The demo uses synthetic scenarios. It is not a clinical service and should not receive patient information through this portfolio. No voice or scheduling action was activated during capture.'},
-{slug:'flux-atlas',short:'Flux Atlas / Creative coding',name:'A small experiment in movement.',title:'Flux Atlas',category:'Creative systems',image:'flux.webp',color:'#e8b7a0',url:'https://flux-atlas-demo.netlify.app',stack:['React','Canvas','Motion controls','Responsive UI'],description:'A generative flow field with live motion controls and an exploratory interface.',question:'How much expression can come from a small set of rules?',overview:'Flux Atlas explores interactive generative motion. A canvas and responsive controls turn the parameters of a flow field into something a visitor can see and change.',approach:['A live canvas makes the system’s behavior visible.','Controls expose a small vocabulary for changing movement.','Responsive and reduced-motion considerations keep exploration usable across contexts.'],boundary:'This is a creative coding experiment. Its captured screen faithfully reflects the existing public demo, including its original visual composition. The portfolio does not claim scientific simulation accuracy.'}
-];
-const careers=[
-['Jul 2026 — Present','Wells Fargo','Forward Deployed Engineer / AI Engineer','Applied AI and agentic workflows for enterprise banking. Python, retrieval-augmented generation and multi-agent workflow development.','Applied AI / Python / RAG'],
-['Jan 2026 — Present','CDW','Senior SOAR Engineer / AI Security Automation','Cortex XSOAR automation playbooks and Python integrations for security operations. AI-assisted incident workflows, security telemetry and operational readiness.','Cortex XSOAR / Python / Security operations'],
-['Jun 2024 — Sep 2025','Bank of America','Senior SOAR Engineer','Splunk SOAR applications, Python functions and incident-response integrations. Threat-intelligence enrichment and MITRE ATT&CK mapping.','Splunk SOAR / Python / Threat intelligence'],
-['Jan 2024 — May 2024','Mastercard','Senior Information Security Engineer','Cortex XSOAR runbooks for phishing and account compromise. ServiceNow incident synchronization and Python automation.','Cortex XSOAR / ServiceNow / Python'],
-['Aug 2022 — Jan 2024','Heritage Bank','Senior Security Automation Specialist','SOAR workflows and Python integrations within security operations. FastAPI services for event ingestion, queries and alert management.','SOAR / Python / FastAPI'],
-['Apr 2022 — Aug 2022','BHP','Data Scientist','Statistical analysis of equipment downtime and material movement. Predictive modelling with Python, scikit-learn, pandas and NumPy, alongside Snowflake reporting.','Python / scikit-learn / Snowflake'],
-['Nov 2019 — Apr 2022','Splunk','Senior Security Solutions Engineer / Professional Services Consultant','Customer-facing SOAR delivery spanning discovery, implementation, workshops, UAT support and handover. Reusable Python automation and integrations across enterprise security tools.','Professional services / SOAR / Python'],
-['Oct 2018 — Jun 2019','NBN','Security Automation Engineer','Python pipelines for threat intelligence and document extraction. REST integrations with external threat feeds and MISP.','Python / REST APIs / Threat intelligence'],
-['Aug 2012 — Sep 2018','Commonwealth Bank of Australia','Support Engineer → Python Developer','Progression through enterprise application support into Python development. Connecting ALM and Jira, automating reporting, and supporting CI/CD workflows.','Enterprise support / Python / CI/CD'],
-['Feb 2011 — Jul 2012','Rogers Communication','Tester','Manual CRM testing, test-data preparation and test documentation. An early foundation in understanding behavior, reproducing problems and checking the result.','CRM testing / Test data / Documentation']
-];
-const guideSections=[{id:'home',label:'Introduction',description:'Meet Shanto, a Forward Deployed AI Engineer in Dallas–Fort Worth.'},{id:'work',label:'Selected work',description:'Nine public prototypes, filterable by voice, security, agents and creative systems.'},{id:'story',label:'The person',description:'Shanto’s journey from testing and support to Python, security automation and applied AI.'},{id:'experience',label:'Experience',description:'Resume-listed roles and engagements, with expandable descriptions.'},{id:'practice',label:'Engineering practice',description:'Applied AI, security operations and engineering delivery capabilities.'},{id:'contact',label:'Contact',description:'Verified public LinkedIn and GitHub profile links.'}];
-const initialDescription=document.getElementById('hero-description').textContent;
-const defaultState={section:'home',theme:'original',density:'comfortable',filter:'all',hero:initialDescription,emotion:'calm',highlight:null,project:null};
-const allowedThemes=['original','midnight','ocean','rose','forest'];
-const allowedEmotions=['happy','thoughtful','excited','sad','playful','angry','calm'];
-const filterAliases={all:'all','all work':'all',voice:'voice','voice ai':'voice',security:'security',agents:'agents',agent:'agents',creative:'creative'};
-const undoHistory=[];let state={...defaultState};
-try{const s=JSON.parse(sessionStorage.getItem('fieldwork-session')||'null');if(s){state.theme=allowedThemes.includes(s.theme)?s.theme:'original';state.density=s.density==='compact'?'compact':'comfortable';state.filter=filterAliases[s.filter]||'all';state.hero=typeof s.hero==='string'&&s.hero.length<=180?s.hero:initialDescription;state.emotion=allowedEmotions.includes(s.emotion)?s.emotion:'calm';}}catch{}
-function getGuideState(){return {...state,availableFilters:['all','voice','security','agents','creative'],canUndo:undoHistory.length>0,visibleProjects:projects.filter(p=>state.filter==='all'||p.category.toLowerCase().includes(state.filter)).map(p=>p.title)};}
-function emitState(){try{sessionStorage.setItem('fieldwork-session',JSON.stringify(state))}catch{}document.getElementById('undo-changes').disabled=!undoHistory.length;window.dispatchEvent(new CustomEvent('site:changed',{detail:getGuideState()}));}
-function renderGuideState(){document.body.classList.remove(...allowedThemes.map(t=>'theme-'+t),'density-compact');if(state.theme!=='original')document.body.classList.add('theme-'+state.theme);if(state.density==='compact')document.body.classList.add('density-compact');document.body.dataset.emotion=state.emotion;document.getElementById('hero-description').textContent=state.hero;document.querySelectorAll('.is-highlighted').forEach(e=>e.classList.remove('is-highlighted'));if(state.highlight)document.getElementById(state.highlight)?.classList.add('is-highlighted');window.portfolioUI?.renderProjects();}
-function applyGuideActions(actions){if(!Array.isArray(actions))return[];return actions.slice(0,12).map(action=>{const a=action&&typeof action==='object'?action:{};let description='Unsupported page action.';let ok=false;const before={...state};switch(a.type){case'navigate':if(guideSections.some(s=>s.id===a.target)){state.section=a.target;window.portfolioUI?.closeProject();document.getElementById('navigation-dialog').close();document.getElementById(a.target).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});history.replaceState(null,'','#'+a.target);description='Navigated to '+guideSections.find(s=>s.id===a.target).label;ok=true}break;case'theme':if(allowedThemes.includes(a.value)){state.theme=a.value;description='Changed this session’s palette to '+a.value;ok=true}break;case'density':if(['comfortable','compact'].includes(a.value)){state.density=a.value;description='Changed page spacing to '+a.value;ok=true}break;case'highlight':if(guideSections.some(s=>s.id===a.target)){state.highlight=a.target;description='Highlighted '+a.target;ok=true}break;case'filter':if(typeof a.value==='string'&&filterAliases[a.value.toLowerCase()]){state.filter=filterAliases[a.value.toLowerCase()];state.section='work';description='Showing '+state.filter+' projects';ok=true}break;case'rewrite':if(a.target==='hero'&&typeof a.value==='string'&&a.value.trim()&&a.value.length<=180){state.hero=a.value.trim();description='Updated introduction copy for this session';ok=true}break;case'emotion':if(allowedEmotions.includes(a.value)){state.emotion=a.value;description='Changed the guide expression to '+a.value;ok=true}break;case'reset':state={...defaultState};window.portfolioUI?.closeProject();description='Restored the original portfolio appearance and project collection';ok=true;break;case'undo':if(undoHistory.length){state=undoHistory.pop();description='Undid the last page change';ok=true}break}if(ok){if(a.type!=='undo'){undoHistory.push(before);if(undoHistory.length>20)undoHistory.shift()}renderGuideState();emitState();document.getElementById('page-status').textContent=description}return{type:String(a.type||'unknown'),ok,description}})}
-window.siteGuide={id:'portfolio',title:'Shanto’s Portfolio',context:('You are an AI guide for Shanto Mathew’s portfolio, not Shanto himself. Be warm, witty, concise and persuasive with factual evidence; use gentle situational humor, never mock visitors. Do not invent achievements, metrics, employers, credentials or production readiness. Shanto is a Forward Deployed AI Engineer in Dallas–Fort Worth, Texas. Capabilities: applied AI, agentic workflows, RAG, voice experiences, Python, FastAPI, React, AWS, Azure, GCP, Splunk SOAR, Cortex XSOAR and XSIAM. Public projects are independent prototypes. Ask what the visitor wants, then use page actions and explain actual changes. Themes, density, copy and filters are temporary for this session. Never claim to edit production source, contact Shanto, book a meeting or perform an external action. Do not imply emotional consciousness. Use light expressive delivery, avoiding hostile anger or manipulative persuasion. Current resume data includes concurrent engagements; dates reflect August 2026. Education: BTech Computer Science, Rajiv Gandhi Institute of Technology, MG University. Contact: LinkedIn linkedin.com/in/shanto-mathew and GitHub github.com/shanto12. Experience: '+careers.map(c=>c[1]+' — '+c[2]+' ('+c[0]+'). '+c[3]).join(' ')+' Projects: '+projects.map(p=>p.title+': '+p.description+' Category: '+p.category+'.').join(' ')).slice(0,4990),sections:guideSections,getState:getGuideState,applyActions:applyGuideActions};
-window.portfolioState={get:()=>state,update(values){state={...state,...values};emitState()},render:renderGuideState};
-renderGuideState();
-
-// Activity context is tab-memory only. Never read textContent, form values or arbitrary DOM attributes.
 (() => {
-  const guide = window.siteGuide;
+  const ui = window.portfolioUI;
+  if (!ui || !Array.isArray(ui.projects)) throw new Error('The portfolio presentation bridge is unavailable.');
+  const projects = ui.projects;
+  const careers = ui.careers;
+  const byId = new Map(projects.map(project => [project.slug, project]));
+  const pageSections = [
+    {id:'home',label:'Introduction',description:'Meet Shanto, a Forward Deployed AI Engineer in Dallas–Fort Worth.'},
+    {id:'work',label:'Selected work',description:'Fourteen public project cases: voice, security, agent systems and creative work.'},
+    {id:'story',label:'The person',description:'Shanto’s journey from testing and support to Python, security automation and applied AI.'},
+    {id:'experience',label:'Experience',description:'Resume-listed roles and engagements, including the owner-confirmed CDW end date of May 2026.'},
+    {id:'practice',label:'Engineering practice',description:'Applied AI, security operations and engineering delivery capabilities.'},
+    {id:'contact',label:'Contact',description:'Public website, LinkedIn and GitHub links; no message is sent by this guide.'}
+  ];
+  const sectionIds = new Set(pageSections.map(section => section.id));
+  const sections = [...pageSections,...projects.map(project=>({id:project.slug,label:project.title,description:project.description}))];
+  const knownIds = new Set(sections.map(section=>section.id));
+  const themes = ['original','midnight','ocean','rose','forest'];
+  const emotions = ['happy','thoughtful','excited','sad','playful','angry','calm'];
+  const filters = ['all','voice','security','agents','creative'];
+  const filterAliases = {'':'all','all':'all','all work':'all','voice':'voice','voice ai':'voice','security':'security','agents':'agents','agent':'agents','creative':'creative'};
+  const hero = document.getElementById('hero-description');
+  if (!hero) throw new Error('The portfolio introduction is unavailable.');
+  const originalHero = hero.textContent;
+  const originalHeroHTML = hero.innerHTML;
+  const defaults = {theme:'original',density:'comfortable',filter:'all',hero:originalHero,emotion:'calm',highlight:null};
+  let state = {...defaults};
+  const undo = [];
   const recent = [];
-  const excluded = '#live-guide-mount,.live-guide,[data-guide-exclude],form,input,textarea,select,[contenteditable]';
-  const sections = new Set(guide.sections.map(section => section.id));
-  const itemById = new Map(projects.map(p => [p.slug, { id: p.slug, kind: 'project', label: p.title, summary: (p.description + ' ' + p.boundary).slice(0, 360) }]));
-  const itemIds = new Set(itemById.keys());
-  function visibleIds() {
-    if (document.querySelector('#project-dialog').open || document.querySelector('#navigation-dialog').open) return [];
-    return [...document.querySelectorAll('#project-grid [data-project]')].map(node => {
-      const rect = node.getBoundingClientRect();
-      return { id: node.dataset.project, rect, visible: node.getClientRects().length > 0 && rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth };
-    }).filter(item => item.visible && itemIds.has(item.id)).sort((a, b) => a.rect.top - b.rect.top || a.rect.left - b.rect.left).slice(0, 3).map(item => item.id);
-  }
-  function currentSection() { const candidates = guide.sections.map(section => ({ id: section.id, rect: document.getElementById(section.id).getBoundingClientRect() })).filter(section => section.rect.bottom > 80 && section.rect.top < innerHeight); candidates.sort((a,b) => Math.abs(a.rect.top - 100) - Math.abs(b.rect.top - 100)); return candidates[0]?.id || guide.getState().section; }
-  function openItem() { if (!document.querySelector('#project-dialog').open) return null; const title = window.portfolioState.get().project; return projects.find(project => project.title === title)?.slug || null; }
-  function getContext() {
-    const active = openItem();
-    const visibleItems = visibleIds();
-    return { version: 1, siteId: guide.id, currentSection: currentSection(), openItem: active,
-      visibleItems, items: [...new Set([active, ...visibleItems].filter(Boolean))].slice(0, 4).map(id => ({ ...itemById.get(id) })),
-      selectedItems: { saved: [], compare: [] }, activeFilter: ['all','voice','security','agents','creative'].includes(window.portfolioState.get().filter) ? window.portfolioState.get().filter : 'all',
-      recentActions: recent.map(action => ({ ...action })), sessionOnly: true };
-  }
-  function record(type, target) {
-    if (!['navigate', 'open', 'filter', 'save', 'compare', 'dismiss', 'view'].includes(type)) return;
-    if (target !== undefined && !sections.has(target) && !itemIds.has(target)) return;
-    const action = target === undefined ? { type } : { type, target };
-    recent.push(action); if (recent.length > 8) recent.shift();
-    window.dispatchEvent(new CustomEvent('site:activity', { detail: { version: 1, siteId: guide.id, source: 'visitor', action: { ...action } } }));
-  }
-  guide.getContext = getContext;
-  // isTrusted rejects model-triggered .click(), dispatchEvent and synthetic form interactions.
-  document.addEventListener('click', event => {
-    if (!event.isTrusted || !(event.target instanceof Element) || event.target.closest(excluded)) return;
-    const control = event.target.closest('button,a,summary');
-    let action = null;
-    if (control) {
-      if (itemIds.has(control.dataset.project)) action = { type: 'open', target: control.dataset.project };
-      else if (['all','voice','security','agents','creative'].includes(control.dataset.filter)) action = { type: 'filter', target: 'work' };
-      else if (control.tagName === 'A' && sections.has(control.getAttribute('href')?.slice(1))) action = { type: 'navigate', target: control.getAttribute('href').slice(1) };
-      else if (control.id === 'close-project' && openItem()) action = { type: 'dismiss', target: openItem() };
-      else if (control.tagName === 'A' && ['https://www.linkedin.com/in/shanto-mathew/','https://github.com/shanto12'].includes(control.getAttribute('href'))) action = { type: 'navigate', target: 'contact' };
-      else if (control.tagName === 'SUMMARY' && control.closest('#career-list')) action = { type: 'view', target: 'experience' };
-    } else if (event.target === document.querySelector('#project-dialog') && openItem()) {
-      const rect = event.target.getBoundingClientRect();
-      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) action = { type: 'dismiss', target: openItem() };
+  const storageKey = 'fieldwork-live-v2';
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(storageKey)||'null');
+    if (saved && typeof saved === 'object') {
+      state.theme=themes.includes(saved.theme)?saved.theme:'original';
+      state.density=saved.density==='compact'?'compact':'comfortable';
+      state.filter=filters.includes(saved.filter)?saved.filter:'all';
+      state.hero=typeof saved.hero==='string'&&saved.hero.trim()&&saved.hero.length<=180?saved.hero:originalHero;
+      state.emotion=emotions.includes(saved.emotion)?saved.emotion:'calm';
     }
-    if (action) queueMicrotask(() => record(action.type, action.target));
-  }, true);
-  // A settled visitor scroll produces one semantic view event, never a raw scroll log.
-  let viewTimer;
-  let lastView = '';
-  let lastViewAt = 0;
-  function visitorScroll(event) {
-    if (!event.isTrusted || !(event.target instanceof Element) || event.target.closest(excluded)) return;
-    if (event.type === 'keydown' && !['PageDown','PageUp','ArrowDown','ArrowUp','Home','End',' '].includes(event.key)) return;
-    clearTimeout(viewTimer);
-    viewTimer = setTimeout(() => {
-      const target = openItem() || visibleIds()[0] || currentSection();
-      if (target !== lastView && Date.now() - lastViewAt > 1500) { lastView = target; lastViewAt = Date.now(); record('view', target); }
-    }, 700);
+  } catch { /* Optional session styling never prevents the portfolio from loading. */ }
+  function selectedId(){const value=ui.getSelected();return typeof value==='number'?projects[value]?.slug:byId.has(value)?value:null;}
+  function openItem(){
+    if (document.getElementById('case-view')?.hidden !== false) return null;
+    let hash;try{hash=decodeURIComponent(location.hash);}catch{return null;}
+    const id=hash.startsWith('#work/')?hash.slice(6):null;
+    return byId.has(id)?id:null;
   }
-  document.addEventListener('wheel', visitorScroll, { passive: true });
-  document.addEventListener('touchend', visitorScroll, { passive: true });
-  document.addEventListener('keydown', visitorScroll);
-  const dialog = document.querySelector('#project-dialog');
-  dialog.addEventListener('cancel', event => {
-    if (!event.isTrusted) return;
-    const target = openItem();
-    if (target) queueMicrotask(() => record('dismiss', target));
-  });
+  function currentSection(){
+    if(openItem())return 'work';
+    const candidates=pageSections.map(section=>({id:section.id,node:document.getElementById(section.id)})).filter(item=>item.node&&item.node.getClientRects().length).map(item=>({...item,rect:item.node.getBoundingClientRect()})).filter(item=>item.rect.bottom>80&&item.rect.top<innerHeight);
+    candidates.sort((a,b)=>Math.abs(a.rect.top-100)-Math.abs(b.rect.top-100));
+    return candidates[0]?.id||'home';
+  }
+  function getState(){
+    return {...state,filter:ui.getFilter(),section:currentSection(),project:openItem(),selectedProject:selectedId(),availableFilters:[...filters],visibleProjects:ui.getVisibleProjects().map(id=>byId.get(id)?.title).filter(Boolean),canUndo:undo.length>0};
+  }
+  function emitState(){
+    state.filter=ui.getFilter();
+    try{sessionStorage.setItem(storageKey,JSON.stringify({theme:state.theme,density:state.density,filter:state.filter,hero:state.hero,emotion:state.emotion}));}catch{}
+    const button=document.getElementById('undo-changes');if(button)button.disabled=!undo.length;
+    window.dispatchEvent(new CustomEvent('site:changed',{detail:getState()}));
+  }
+  function navigate(target){
+    ui.closeImage();
+    const menu=document.getElementById('navigation-dialog');if(menu?.open)menu.close();
+    if(byId.has(target)){
+      if(!ui.getVisibleProjects().includes(target))ui.setFilter('all');
+      ui.selectProject(target,false);
+    }
+    history.replaceState(null,'',byId.has(target)?'#work/'+target:'#'+target);
+    ui.route();
+  }
+  function renderState(){
+    document.body.classList.remove(...themes.map(theme=>'theme-'+theme),'density-compact');
+    if(state.theme!=='original')document.body.classList.add('theme-'+state.theme);
+    if(state.density==='compact')document.body.classList.add('density-compact');
+    document.body.dataset.emotion=state.emotion;
+    if(state.hero===originalHero)hero.innerHTML=originalHeroHTML;else hero.textContent=state.hero;
+    document.querySelectorAll('.is-highlighted').forEach(node=>node.classList.remove('is-highlighted'));
+    const target=state.highlight;
+    if(sectionIds.has(target))document.getElementById(target)?.classList.add('is-highlighted');
+    else if(byId.has(target)){
+      const node=openItem()===target?document.querySelector('#case-view .case-page'):selectedId()===target?document.getElementById('project-preview'):null;
+      node?.classList.add('is-highlighted');
+    }
+  }
+  function snapshot(){return {...state,filter:ui.getFilter(),selected:selectedId(),route:openItem()||currentSection()};}
+  function applyActions(actions){
+    if(!Array.isArray(actions))return [];
+    return actions.slice(0,12).map(action=>{
+      const a=action&&typeof action==='object'?action:{};
+      const before=snapshot();let ok=false,description='Unsupported page action.';
+      switch(a.type){
+        case 'navigate':if(knownIds.has(a.target)){navigate(a.target);description='Opened '+sections.find(section=>section.id===a.target).label;ok=true;}break;
+        case 'theme':if(themes.includes(a.value)){state.theme=a.value;description='Changed this session’s palette to '+a.value;ok=true;}break;
+        case 'density':if(['comfortable','compact'].includes(a.value)){state.density=a.value;description='Changed page spacing to '+a.value;ok=true;}break;
+        case 'filter':if(typeof a.value==='string'&&Object.hasOwn(filterAliases,a.value.trim().toLowerCase())){state.filter=filterAliases[a.value.trim().toLowerCase()];ui.setFilter(state.filter);navigate('work');description='Showing '+state.filter+' projects';ok=true;}break;
+        case 'rewrite':if(a.target==='hero'&&typeof a.value==='string'&&a.value.trim()&&a.value.length<=180){state.hero=a.value.trim();description='Updated introduction copy for this session';ok=true;}break;
+        case 'emotion':if(emotions.includes(a.value)){state.emotion=a.value;description='Changed the guide expression to '+a.value;ok=true;}break;
+        case 'highlight':if(knownIds.has(a.target)){
+          if(byId.has(a.target)&&openItem()!==a.target){if(!ui.getVisibleProjects().includes(a.target))ui.setFilter('all');ui.selectProject(a.target,false);navigate('work');}
+          else if(sectionIds.has(a.target))navigate(a.target);
+          state.highlight=a.target;description='Highlighted '+sections.find(section=>section.id===a.target).label;ok=true;
+        }break;
+        case 'reset':{const wasOpen=openItem();state={...defaults};ui.setFilter('all');if(wasOpen)navigate('work');description='Restored the original portfolio appearance and full project collection';ok=true;break;}
+        case 'undo':if(undo.length){const previous=undo.pop();state={theme:previous.theme,density:previous.density,filter:previous.filter,hero:previous.hero,emotion:previous.emotion,highlight:previous.highlight};ui.setFilter(state.filter);if(previous.selected)ui.selectProject(previous.selected,false);navigate(previous.route);description='Undid the last page change';ok=true;}break;
+      }
+      if(ok){
+        if(a.type!=='undo'){undo.push(before);if(undo.length>20)undo.shift();}
+        renderState();emitState();const status=document.getElementById('page-status');if(status)status.textContent=description;
+      }
+      return {type:typeof a.type==='string'?a.type:'unknown',ok,description};
+    });
+  }
+  function visible(node){if(!node||!node.getClientRects().length)return false;const r=node.getBoundingClientRect();return r.width>0&&r.height>0&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth;}
+  function getContext(){
+    const active=openItem();let visibleItems=[];
+    const modalOpen=document.getElementById('navigation-dialog')?.open||document.getElementById('image-dialog')?.open;
+    if(!modalOpen){
+      if(active&&visible(document.getElementById('case-view')))visibleItems=[active];
+      else if(!active&&visible(document.getElementById('project-preview'))&&selectedId())visibleItems=[selectedId()];
+    }
+    const itemIds=[...new Set([active,...visibleItems].filter(Boolean))].slice(0,4);
+    return {version:1,siteId:'portfolio',currentSection:currentSection(),openItem:active,visibleItems,
+      items:itemIds.map(id=>{const p=byId.get(id);return {id,kind:'project',label:p.title,summary:(p.description+' '+p.boundary).slice(0,360)};}),
+      selectedItems:{saved:[],compare:[]},activeFilter:ui.getFilter(),recentActions:recent.map(action=>({...action})),sessionOnly:true};
+  }
+  const context=('You are Pip, an AI guide for Shanto Mathew’s portfolio, not Shanto himself. Use a warm, witty, factual voice. Shanto is a Forward Deployed AI Engineer in Dallas–Fort Worth, Texas, working across applied AI, agentic workflows, retrieval, voice experiences, Python and enterprise security automation. Public projects are independent work with specific prototype and service boundaries; never claim a linked provider or business is operational from its portfolio image. Changes are local to this tab. No external messages, purchases, booking or source edits. Career dates reflect the August 2026 resume with owner-confirmed September updates; CDW ended May 2026. Education: BTech Computer Science, Rajiv Gandhi Institute of Technology, MG University. Contact: shantomathew.com, LinkedIn linkedin.com/in/shanto-mathew and GitHub github.com/shanto12. Experience: '+careers.map(c=>c[1]+' — '+c[2]+' ('+c[0]+'). '+c[3]).join(' ')).slice(0,4990);
+  window.siteGuide={id:'portfolio',title:'Shanto’s Portfolio',context,sections,getState,applyActions,getContext};
+  // Compatibility is read-only: app state continues to be owned by portfolioUI.
+  window.portfolioState={get:getState,render:renderState};
+  window.addEventListener('portfolio:changed',()=>{renderState();emitState();});
+  document.getElementById('undo-changes')?.addEventListener('click',()=>applyActions([{type:'undo'}]));
+  document.getElementById('reset-changes')?.addEventListener('click',()=>applyActions([{type:'reset'}]));
+  ui.setFilter(state.filter);renderState();emitState();
+
+  // Only known IDs and coarse visitor actions enter awareness. No DOM text,
+  // contact details, input values, pointer coordinates, or external tabs are read.
+  const excluded='.live-guide,#live-guide-mount,[data-guide-exclude],form,input,textarea,[contenteditable]';
+  function record(type,target){
+    if(!['navigate','open','filter','save','compare','dismiss','view'].includes(type)||target!==undefined&&!knownIds.has(target))return;
+    const action=target===undefined?{type}:{type,target};recent.push(action);if(recent.length>8)recent.shift();
+    window.dispatchEvent(new CustomEvent('site:activity',{detail:{version:1,siteId:'portfolio',source:'visitor',action:{...action}}}));
+  }
+  document.addEventListener('click',event=>{
+    if(!event.isTrusted||!(event.target instanceof Element)||event.target.closest(excluded))return;
+    const control=event.target.closest('button,a,summary');if(!control)return;
+    const oldItem=openItem();const href=control.getAttribute('href');let action=null;let afterSelection=false;
+    if(href?.startsWith('#work/')&&byId.has(href.slice(6)))action={type:'open',target:href.slice(6)};
+    else if(href?.startsWith('#')&&sectionIds.has(href.slice(1)))action={type:oldItem&&href==='#work'?'dismiss':'navigate',target:oldItem&&href==='#work'?oldItem:href.slice(1)};
+    else if(href==='#')action={type:'navigate',target:'home'};
+    else if(control.matches('[data-project],[data-project-step],#previous-project,#next-project'))afterSelection=true;
+    else if(filters.includes(control.dataset.filter))action={type:'filter',target:'work'};
+    else if(control.matches('[data-inspect],#zoom-in,#zoom-out,#zoom-fit')&&oldItem)action={type:'view',target:oldItem};
+    else if(control.tagName==='SUMMARY'&&control.closest('#career-list'))action={type:'view',target:'experience'};
+    else if(control.tagName==='A'&&['https://shantomathew.com/','https://www.linkedin.com/in/shanto-mathew/','https://github.com/shanto12'].includes(href))action={type:'navigate',target:'contact'};
+    if(action||afterSelection)queueMicrotask(()=>{if(afterSelection&&selectedId())record('view',selectedId());else if(action)record(action.type,action.target);});
+  },true);
+  document.addEventListener('change',event=>{if(event.isTrusted&&event.target===document.getElementById('project-picker'))queueMicrotask(()=>{if(selectedId())record('view',selectedId());});},true);
+  let viewTimer,lastView='',lastViewAt=0;
+  function visitorScroll(event){
+    if(!event.isTrusted||!(event.target instanceof Element)||event.target.closest(excluded)||event.target.closest('select'))return;
+    if(event.type==='keydown'&&!['PageDown','PageUp','ArrowDown','ArrowUp','Home','End',' '].includes(event.key))return;
+    clearTimeout(viewTimer);viewTimer=setTimeout(()=>{const target=openItem()||getContext().visibleItems[0]||currentSection();if(target!==lastView&&Date.now()-lastViewAt>1500){lastView=target;lastViewAt=Date.now();record('view',target);}},700);
+  }
+  document.addEventListener('wheel',visitorScroll,{passive:true});document.addEventListener('touchend',visitorScroll,{passive:true});document.addEventListener('keydown',visitorScroll);
+  window.addEventListener('pagehide',()=>clearTimeout(viewTimer));
 })();
