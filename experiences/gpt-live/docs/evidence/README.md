@@ -26,3 +26,6 @@ All times are September 11, 2026, America/Chicago. **Final compact evidence is n
 | [Development accounting](development-budget.json) | Archived development ledger summary, including unknown-session reservation; not a final invoice. |
 
 JSON copies are filtered to this site where appropriate and remove credential-shaped fields, SDP, recording paths and screenshot references. Matrices retain cross-site context. Large audio/video/screenshots are not bundled. Original evidence remains in the coordinating output directory. See [the release matrix](../RELEASE_EVIDENCE.md) for current gaps.
+
+- [Final local verification](final-local-verification.json)
+- [Final credential-pattern scan](final-secret-scan.json)

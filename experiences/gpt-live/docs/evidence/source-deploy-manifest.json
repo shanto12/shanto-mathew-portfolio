@@ -1,0 +1,14 @@
+{
+  "agentmart": {
+    "sourceCommit": "152ae0fff60bc07482a4a0a027e72461f6ca84ad",
+    "branch": "codex/gpt-live-experience",
+    "netlifyDeployment": "6aa4240f7b730616122ec99b",
+    "voiceSHA256": "1231985bc345b6bf61ba87254b6991ddc5667ac5dd47189ec4c772890ecb2952"
+  },
+  "portfolio": {
+    "sourceCommit": "af3bee43fde86cfb3896a859e561aea1a438873f",
+    "branch": "codex/gpt-live-experience",
+    "netlifyDeployment": "6aa42410875c3a05d4f75ebc",
+    "voiceSHA256": "1231985bc345b6bf61ba87254b6991ddc5667ac5dd47189ec4c772890ecb2952"
+  }
+}
