@@ -1,0 +1,44 @@
+{
+  "testedAtCentral": "9/11/2026, 2:23:37 PM Central Time",
+  "scope": "Actual production Netlify Blobs conditional writes in isolated verification prefixes, no real admission or provider calls",
+  "results": [
+    {
+      "site": "agentmart",
+      "result": "PASS",
+      "firstConcurrentClaims": 12,
+      "firstWinners": 4,
+      "secondConcurrentClaims": 8,
+      "secondWinners": 1,
+      "monotonicIDs": true,
+      "unknownHoldPreserved": true,
+      "legacyRecordsUnchanged": true,
+      "testFinalReservedUSD": 3.9125,
+      "actualBudgetReadOnly": {
+        "reservedUSD": 2.188336,
+        "remainingUSD": 1.811664,
+        "voiceAvailable": true
+      },
+      "providerCalls": 0,
+      "realAdmissionMutations": 0
+    },
+    {
+      "site": "portfolio",
+      "result": "PASS",
+      "firstConcurrentClaims": 12,
+      "firstWinners": 4,
+      "secondConcurrentClaims": 8,
+      "secondWinners": 1,
+      "monotonicIDs": true,
+      "unknownHoldPreserved": true,
+      "legacyRecordsUnchanged": true,
+      "testFinalReservedUSD": 3.9125,
+      "actualBudgetReadOnly": {
+        "reservedUSD": 2.28167,
+        "remainingUSD": 1.71833,
+        "voiceAvailable": true
+      },
+      "providerCalls": 0,
+      "realAdmissionMutations": 0
+    }
+  ]
+}

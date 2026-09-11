@@ -1,0 +1,508 @@
+{
+  "testedAtCentral": "9/11/2026, 2:37:54 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken navigation and confetti effect apply through the real planner",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "agentmart-greeting.png",
+        "agentmart-spoken-navigation.png",
+        "agentmart-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "transcript": " Hey! I'm M, your little market scout",
+        "rmsMax": 0.1992818339115624,
+        "audibleSamples": 27,
+        "recordedBytes": 43052,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Change this website to rose pink, look playful, show my agents, and",
+      "spokenActionState": {
+        "theme": "rose",
+        "density": "comfortable",
+        "emotion": "playful",
+        "hero": "",
+        "view": "agents",
+        "category": "All",
+        "query": "",
+        "sort": "featured",
+        "collection": false,
+        "saved": [],
+        "resources": [],
+        "compare": [],
+        "agent": {
+          "name": "Research assistant",
+          "budget": 250,
+          "paused": false,
+          "created": false
+        },
+        "layout": "grid",
+        "visibleProducts": [
+          "parallel",
+          "openfield",
+          "northstar",
+          "form",
+          "trace",
+          "fieldbook",
+          "archive",
+          "relay",
+          "cedar",
+          "canvas",
+          "harbor",
+          "fieldnotes"
+        ],
+        "dialogOpen": false,
+        "dialogTitle": "",
+        "canUndo": true,
+        "sessionOnly": true,
+        "livePurchasesAvailable": false
+      },
+      "pageState": {
+        "theme": "rose",
+        "density": "comfortable",
+        "emotion": "playful",
+        "hero": "",
+        "view": "agents",
+        "category": "All",
+        "query": "",
+        "sort": "featured",
+        "collection": false,
+        "saved": [],
+        "resources": [],
+        "compare": [],
+        "agent": {
+          "name": "Research assistant",
+          "budget": 250,
+          "paused": false,
+          "created": false
+        },
+        "layout": "grid",
+        "visibleProducts": [
+          "parallel",
+          "openfield",
+          "northstar",
+          "form",
+          "trace",
+          "fieldbook",
+          "archive",
+          "relay",
+          "cedar",
+          "canvas",
+          "harbor",
+          "fieldnotes"
+        ],
+        "dialogOpen": false,
+        "dialogTitle": "",
+        "canUndo": true,
+        "sessionOnly": true,
+        "livePurchasesAvailable": false
+      },
+      "effects": [
+        "confetti"
+      ],
+      "beforeEnd": {
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 91110,
+            "packetsReceived": 655,
+            "packetsLost": 0,
+            "jitter": 0.003,
+            "totalAudioEnergy": 0.40686882191173757,
+            "totalSamplesDuration": 14.199999999999742
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 35111,
+            "packetsSent": 703
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.2002014965926161,
+        "audibleSamples": 94,
+        "remoteBytes": 212031,
+        "transcript": "Guide:  Hey! I'm M, your little market scoutYou:  Change this website to rose pink, look playful, show my agents, and celebrate with confetti.Guide:  Okay, okay, let me get that for you.",
+        "inputTranscript": " Change this website to rose pink, look playful, show my agents, and celebrate with confetti.",
+        "outputTranscript": " Hey! I'm M, your little market scout Okay, okay, let me get that for you.",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "agentmart-remote-audio.webm",
+        "bytes": 221722,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 19.9
+    },
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken navigation and confetti effect apply through the real planner",
+          "result": "PASS"
+        },
+        {
+          "name": "Portfolio guide explains Shanto’s professional fit through real voice delegation",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "portfolio-greeting.png",
+        "portfolio-spoken-navigation.png",
+        "portfolio-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "transcript": " Hey! I'm Pip, the AI on Shanto's site,",
+        "rmsMax": 0.1942823283579933,
+        "audibleSamples": 24,
+        "recordedBytes": 42738,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Change this website to rose pink. Look playful, show selected work, and",
+      "spokenActionState": {
+        "section": "work",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I’m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "calm",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel · Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "pageState": {
+        "section": "work",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I’m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "calm",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel · Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "effects": [
+        "confetti"
+      ],
+      "careerPitch": " Got it, Ta-da! Everrrything's now rose pink. And I've popped open Selected Work. Yay! Confetti spilled for a second. Shanto's strength is product-minded AI engineering.",
+      "beforeEnd": {
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 213927,
+            "packetsReceived": 1454,
+            "packetsLost": 0,
+            "jitter": 0.001,
+            "totalAudioEnergy": 2.095537618201053,
+            "totalSamplesDuration": 30.01000000000189
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 71878,
+            "packetsSent": 1502
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.24063653350385533,
+        "audibleSamples": 244,
+        "remoteBytes": 468220,
+        "transcript": "You:  Change this website to rose pink. Look playful, show selected work, and celebrate with confettiGuide:  Hmm. Rose pink, playful, selected work, confetti. Got it, Ta-da!You:  Why should IGuide:  EverrrYou:  hireGuide: ythingYou:  ShantoGuide: 'sYou:  for a seniorGuide:  nowYou:  AI engineerGuide:  roseYou:  roleGuide:  pink.You:  Please keep it briefGuide:  And I've popped open Selected Work. Yay! Confetti spilled for a second. Shanto's strength is product-minded AI engineering.",
+        "inputTranscript": " Change this website to rose pink. Look playful, show selected work, and celebrate with confetti Why should I hire Shanto for a senior AI engineer role Please keep it brief",
+        "outputTranscript": " Hey! I'm Pip, the AI on Shanto's site, Hmm. Rose pink, playful, selected work, confetti. Got it, Ta-da! Everrrything's now rose pink. And I've popped open Selected Work. Yay! Confetti spilled for a second. Shanto's strength is product-minded AI engineering.",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "portfolio-remote-audio.webm",
+        "bytes": 480825,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 34.9
+    }
+  ]
+}

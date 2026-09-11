@@ -1,5 +1,6 @@
 # Shanto Portfolio Live
 
+**Current release:** [Natural conversation and speech recovery verification](docs/NATURAL_CONVERSATION_EVIDENCE.md). M and Pip keep their personalities while generating their own words.
 **Current update:** [Speech recovery and budget accounting](docs/SPEECH_RECOVERY.md) supersedes the earlier eight-session trial counter and hidden error behavior. The spending authorization remains $10 total.
 
 New separate URL: [https://shanto-portfolio-live.netlify.app](https://shanto-portfolio-live.netlify.app). Branch: `codex/gpt-live-experience`.

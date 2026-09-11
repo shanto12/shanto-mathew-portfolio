@@ -1,5 +1,7 @@
 # Personality and awareness release evidence
 
+> Historical evidence. See [speech recovery](SPEECH_RECOVERY.md) and [natural conversation release](NATURAL_CONVERSATION_EVIDENCE.md) for the current deployment and voice availability.
+
 Verified September 11, 2026, approximately 11:23–11:31 AM Central Time. This is a separately deployed preview with bounded voice access. It is not an unrestricted or fully enterprise-certified service.
 
 | Site | Production URL | Deployed source commit | Netlify production deploy |

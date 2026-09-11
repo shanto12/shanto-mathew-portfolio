@@ -1,0 +1,96 @@
+{
+  "mode": "Actual production scripts in isolated Chrome; microphone, RTC, play() and POST API responses mocked; no paid calls.",
+  "cases": [
+    {
+      "mode": "mic-denied",
+      "classes": "live-guide collapsed has-error",
+      "avatarLabel": "AI voice guide. Select to connect.",
+      "status": {
+        "text": "Voice is optional",
+        "display": "block",
+        "width": 1,
+        "height": 1,
+        "clip": "rect(0px, 0px, 0px, 0px)",
+        "clipPath": "inset(50%)"
+      },
+      "error": {
+        "text": "Microphone permission was not granted. Allow it in your browser’s address bar, then select the AI avatar to try again.",
+        "display": "block",
+        "width": 1,
+        "height": 1,
+        "clip": "rect(0px, 0px, 0px, 0px)",
+        "clipPath": "inset(50%)"
+      },
+      "retry": {
+        "text": "Try microphone",
+        "display": "inline-block",
+        "width": 0,
+        "height": 0,
+        "clip": "auto",
+        "clipPath": "none"
+      }
+    },
+    {
+      "mode": "allowance-exhausted",
+      "classes": "live-guide collapsed has-error",
+      "avatarLabel": "AI voice guide. Select to connect.",
+      "status": {
+        "text": "Voice is optional",
+        "display": "block",
+        "width": 1,
+        "height": 1,
+        "clip": "rect(0px, 0px, 0px, 0px)",
+        "clipPath": "inset(50%)"
+      },
+      "error": {
+        "text": "This preview has reached its approved usage allowance. The owner must approve more usage.",
+        "display": "block",
+        "width": 1,
+        "height": 1,
+        "clip": "rect(0px, 0px, 0px, 0px)",
+        "clipPath": "inset(50%)"
+      },
+      "retry": {
+        "text": "Try microphone",
+        "display": "inline-block",
+        "width": 0,
+        "height": 0,
+        "clip": "auto",
+        "clipPath": "none"
+      }
+    },
+    {
+      "mode": "autoplay-blocked",
+      "classes": "live-guide collapsed audio-blocked connected",
+      "avatarLabel": "AI voice guide. Select to enable audio. Press Escape to end.",
+      "status": {
+        "text": "Listening · you can interrupt",
+        "display": "block",
+        "width": 1,
+        "height": 1,
+        "clip": "rect(0px, 0px, 0px, 0px)",
+        "clipPath": "inset(50%)"
+      },
+      "error": {
+        "text": "",
+        "display": "block",
+        "width": 1,
+        "height": 1,
+        "clip": "rect(0px, 0px, 0px, 0px)",
+        "clipPath": "inset(50%)"
+      },
+      "retry": {
+        "text": "Enable sound",
+        "display": "inline-block",
+        "width": 0,
+        "height": 0,
+        "clip": "auto",
+        "clipPath": "none"
+      },
+      "afterAvatarClick": {
+        "classes": "live-guide collapsed audio-blocked connected",
+        "label": "AI voice guide. Select to enable audio. Press Escape to end."
+      }
+    }
+  ]
+}

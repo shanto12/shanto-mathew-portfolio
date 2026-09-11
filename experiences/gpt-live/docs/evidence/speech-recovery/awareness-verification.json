@@ -1,0 +1,570 @@
+{
+  "testedAtCentral": "9/11/2026, 2:26:27 PM Central Time",
+  "mode": "Automated shipped-script integration; microphone, RTC and every mutating API request mocked. No admissions or paid model calls.",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "checks": [
+        {
+          "name": "Native detail opening and dismissal expose known item context",
+          "result": "PASS",
+          "detail": {
+            "id": "parallel"
+          }
+        },
+        {
+          "name": "Visible item context follows desktop and mobile viewport",
+          "result": "PASS"
+        },
+        {
+          "name": "Recent native actions bounded; synthetic model changes excluded",
+          "result": "PASS"
+        },
+        {
+          "name": "Delegated request carries current context and bounded transcript",
+          "result": "PASS"
+        },
+        {
+          "name": "Form values, search values and arbitrary DOM text never enter page awareness",
+          "result": "PASS"
+        },
+        {
+          "name": "Seven personality delivery enums render and return to neutral",
+          "result": "PASS",
+          "detail": {
+            "deliveries": 7,
+            "expiryMs": 4600
+          }
+        },
+        {
+          "name": "Model action results do not trigger unsolicited requests",
+          "result": "PASS"
+        },
+        {
+          "name": "Context synchronization deduplicates unchanged state",
+          "result": "PASS"
+        },
+        {
+          "name": "Proactive dwell debounce and 25-second admission interval",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute cancels pending proactive commentary",
+          "result": "PASS"
+        },
+        {
+          "name": "End clears pending awareness work and microphone ownership",
+          "result": "PASS"
+        },
+        {
+          "name": "New visitor action discards an in-flight proactive response",
+          "result": "PASS"
+        },
+        {
+          "name": "Professional request suppresses theatrics; last explicit preference wins",
+          "result": "PASS"
+        },
+        {
+          "name": "Give me space disables proactive comments and idle invitations",
+          "result": "PASS"
+        },
+        {
+          "name": "At most two unsolicited suggestions across continued browsing",
+          "result": "PASS"
+        },
+        {
+          "name": "No browser errors, unknown mutations or paid network requests",
+          "result": "PASS",
+          "detail": {
+            "requests": 40,
+            "allMutatingRequests": "intercepted"
+          }
+        }
+      ],
+      "network": [
+        {
+          "mockedRequests": [],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        }
+      ],
+      "screenshots": [
+        "agentmart-awareness-1440.png",
+        "agentmart-awareness-390.png"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Native detail opening and dismissal expose known item context",
+          "result": "PASS",
+          "detail": {
+            "id": "nocturne-ai-hotel"
+          }
+        },
+        {
+          "name": "Visible item context follows desktop and mobile viewport",
+          "result": "PASS"
+        },
+        {
+          "name": "Recent native actions bounded; synthetic model changes excluded",
+          "result": "PASS"
+        },
+        {
+          "name": "Delegated request carries current context and bounded transcript",
+          "result": "PASS"
+        },
+        {
+          "name": "Form values, search values and arbitrary DOM text never enter page awareness",
+          "result": "PASS"
+        },
+        {
+          "name": "Seven personality delivery enums render and return to neutral",
+          "result": "PASS",
+          "detail": {
+            "deliveries": 7,
+            "expiryMs": 4600
+          }
+        },
+        {
+          "name": "Model action results do not trigger unsolicited requests",
+          "result": "PASS"
+        },
+        {
+          "name": "Context synchronization deduplicates unchanged state",
+          "result": "PASS"
+        },
+        {
+          "name": "Proactive dwell debounce and 25-second admission interval",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute cancels pending proactive commentary",
+          "result": "PASS"
+        },
+        {
+          "name": "End clears pending awareness work and microphone ownership",
+          "result": "PASS"
+        },
+        {
+          "name": "New visitor action discards an in-flight proactive response",
+          "result": "PASS"
+        },
+        {
+          "name": "Professional request suppresses theatrics; last explicit preference wins",
+          "result": "PASS"
+        },
+        {
+          "name": "Give me space disables proactive comments and idle invitations",
+          "result": "PASS"
+        },
+        {
+          "name": "At most two unsolicited suggestions across continued browsing",
+          "result": "PASS"
+        },
+        {
+          "name": "No browser errors, unknown mutations or paid network requests",
+          "result": "PASS",
+          "detail": {
+            "requests": 40,
+            "allMutatingRequests": "intercepted"
+          }
+        }
+      ],
+      "network": [
+        {
+          "mockedRequests": [],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "visitor"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        },
+        {
+          "mockedRequests": [
+            {
+              "endpoint": "/api/live",
+              "mode": null
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/guide",
+              "mode": "proactive"
+            },
+            {
+              "endpoint": "/api/end",
+              "mode": null
+            }
+          ],
+          "blocked": [],
+          "errors": []
+        }
+      ],
+      "screenshots": [
+        "portfolio-awareness-1440.png",
+        "portfolio-awareness-390.png"
+      ]
+    }
+  ]
+}

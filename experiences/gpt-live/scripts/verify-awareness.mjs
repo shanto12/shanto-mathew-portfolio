@@ -37,7 +37,7 @@ async function fixture(config,data){
   }
   window.RTCPeerConnection=class extends EventTarget{iceGatheringState='complete';connectionState='new';addTrack(){}createDataChannel(){this.channel=new Channel();window.__channel=this.channel;return this.channel}async createOffer(){return{type:'offer',sdp:'v=0\r\n'}}async setLocalDescription(value){this.localDescription=value}async setRemoteDescription(){this.connectionState='connected';queueMicrotask(()=>this.channel.dispatchEvent(new MessageEvent('message',{data:JSON.stringify({type:'session.started'})})))}close(){this.connectionState='closed'}};
  });
- const requests=[],errors=[],blocked=[];let nextActions=[],nextPerformance={emotion:'happy',delivery:'warm'};let holdProactive=false,pendingRoute;
+ const requests=[],errors=[],blocked=[];let nextActions=[],nextPerformance={emotion:'happy',delivery:'warm'};let holdProactive=false,pendingRoute,nextAnswer='Mock response about the current website. What would you like to explore?';
  await context.route('**/*',async route=>{
   const request=route.request();if(['GET','HEAD'].includes(request.method()))return route.continue();
   const endpoint=new URL(request.url()).pathname;
@@ -47,7 +47,7 @@ async function fixture(config,data){
   if(endpoint==='/api/chat')return json({token:'awareness-test-only',durationSeconds:600});
   if(endpoint==='/api/end')return json({ok:true});
   if(endpoint==='/api/guide'){
-   const result={answer:'Mock response about the current website. What would you like to explore?',actions:nextActions,performance:nextPerformance};
+   const result={answer:nextAnswer,actions:nextActions,performance:nextPerformance};nextAnswer='Mock response about the current website. What would you like to explore?';
    nextActions=[];
    if(body.mode==='proactive'&&holdProactive){pendingRoute={route,result};return}
    return json(result);
@@ -70,7 +70,7 @@ async function fixture(config,data){
  const nativeOpen=async(index=0)=>{const locator=page.locator(config.id==='portfolio'?'[data-project]':'[data-detail]').filter({visible:true}).nth(index);const item=await locator.getAttribute(config.id==='portfolio'?'data-project':'data-detail');await locator.click();await tick(450);return item};
  const dismiss=async()=>{await page.locator(config.id==='portfolio'?'#close-project':'dialog[open] .close-dialog').click();await tick(450)};
  const nativeFilter=async(index=0)=>{await page.locator(config.id==='portfolio'?'[data-filter]':'#chips [data-category]').filter({visible:true}).nth(index).click();await tick(450)};
- const setReply=(actions=[],performance={emotion:'happy',delivery:'warm'})=>{nextActions=actions;nextPerformance=performance};
+ const setReply=(actions=[],performance={emotion:'happy',delivery:'warm'},answer='Mock response about the current website. What would you like to explore?')=>{nextActions=actions;nextPerformance=performance;nextAnswer=answer};
  return{context,page,requests,errors,blocked,tick,getContext,guideRequests,emit,speak,begin,end,nativeOpen,dismiss,nativeFilter,setReply,hold:()=>{holdProactive=true},release:async()=>{holdProactive=false;if(pendingRoute){const p=pendingRoute;pendingRoute=null;await p.route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(p.result)}).catch(()=>{})}},close:async()=>{data.network.push({mockedRequests:requests.map(r=>({endpoint:r.endpoint,mode:r.body.mode||null})),blocked,errors});await context.close()}};
 }
 
@@ -110,7 +110,7 @@ async function verify(config){
  });
  await scenario('Unsolicited commentary cap scenario',async f=>{
   await f.begin();
-  await check('At most two unsolicited suggestions across continued browsing',async()=>{await f.tick(19000);await f.nativeFilter(1);await f.tick(6500);await waitUntil(()=>f.guideRequests('proactive').length===1,'First proactive suggestion absent');await f.tick(15000);await f.nativeFilter(0);await f.tick(11000);await waitUntil(()=>f.guideRequests('proactive').length===2,'Second proactive suggestion absent');for(let i=0;i<3;i++){await f.nativeFilter(i%2);await f.tick(15000)}assert(f.guideRequests('proactive').length===2,'Two-suggestion cap exceeded');const idle=await f.page.evaluate(()=>__rtcSent.filter(event=>event.type==='session.commentary.append'&&/visitor is quiet|final gentle invitation/.test(event.content)).length);assert(f.guideRequests('proactive').length+idle<=2,'Shared idle/proactive cap exceeded')});await f.end();
+  await check('Two-suggestion cap and empty proactive response remains silent',async()=>{await f.tick(19000);f.setReply([],{emotion:'angry',delivery:'mock_grumpy'},'');await f.nativeFilter(1);const before=await f.page.evaluate(()=>__rtcSent.filter(event=>event.type==='session.commentary.append').length);await f.tick(6500);await waitUntil(()=>f.guideRequests('proactive').length===1,'First proactive request absent');await settle();assert(await f.page.evaluate(()=>__rtcSent.filter(event=>event.type==='session.commentary.append').length)===before,'Suppressed proactive response spoke a fallback');assert(await f.page.locator('.live-guide').getAttribute('data-delivery')!=='mock_grumpy','Suppressed proactive response rendered performance');await f.tick(15000);await f.nativeFilter(0);await f.tick(11000);await waitUntil(()=>f.guideRequests('proactive').length===2,'Second proactive suggestion absent');for(let i=0;i<3;i++){await f.nativeFilter(i%2);await f.tick(15000)}assert(f.guideRequests('proactive').length===2,'Two-suggestion cap exceeded');const idle=await f.page.evaluate(()=>__rtcSent.filter(event=>event.type==='session.commentary.append'&&/visitor is quiet|final gentle invitation/.test(event.content)).length);assert(f.guideRequests('proactive').length+idle<=2,'Shared idle/proactive cap exceeded')});await f.end();
  });
  await check('No browser errors, unknown mutations or paid network requests',async()=>{assert(data.network.every(n=>n.errors.length===0),'Browser errors '+JSON.stringify(data.network.flatMap(n=>n.errors)));assert(data.network.every(n=>n.blocked.length===0),'Unexpected mutating requests');return{requests:data.network.reduce((sum,n)=>sum+n.mockedRequests.length,0),allMutatingRequests:'intercepted'}});
 }
