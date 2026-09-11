@@ -1,0 +1,20 @@
+{
+  "files": {
+    "netlify/functions/api.mts": "9ed5644cec303a91b44f512b73169537854ea41311b4d57c68534818cf8b0fa4",
+    "netlify/functions/budget.mts": "95144c61c8886f55866524794025809c0de6184b3e01453f56bd7454a11ad914",
+    "netlify/functions/watchdog-background.mts": "552defd2b1f45e7bf785d00e37a67a082f50e5aabe63d0565779121de69b5670",
+    "test/budget.test.ts": "26e4a3557b77b492dc144ef850a468c64d2d44f0dddc042750ff90bf4b652b4a",
+    "test/watchdog.test.ts": "62aca550872e7416235bf6a7ce8f53258309e3df4375a0b01a36c38ba0c21cee",
+    "test/session-api.test.ts": "1df0406bc3c3fa1196bea4e42c26390d3067db23ef88da72144271ba2cade574"
+  },
+  "sessionSeconds": 600,
+  "watchdogSeconds": 840,
+  "reservationUSD": 1.25,
+  "plannerHoldUSD": 0.6,
+  "defaultSiteBudgetUSD": 4,
+  "defaultTotalBudgetUSD": 10,
+  "developmentHoldUSD": 2,
+  "testsPassed": 48,
+  "paidCalls": 0,
+  "ledgerWrites": 0
+}

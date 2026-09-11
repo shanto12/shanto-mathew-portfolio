@@ -1,0 +1,14 @@
+{
+  "checkedCentral": "9/11/2026, 5:39:17 PM",
+  "status": 200,
+  "siteId": "296ec6fb-3f43-4253-9aad-c55f677685d0",
+  "domain": "shantomathew.com",
+  "aliases": [
+    "www.shantomathew.com"
+  ],
+  "ssl": true,
+  "force_ssl": true,
+  "liveDeploy": "6aa48294fa3641527184f0bc",
+  "backup": "https://shanto-fieldwork-portfolio.netlify.app",
+  "originalDeploy": "6aa1d197f09280f08595e246"
+}

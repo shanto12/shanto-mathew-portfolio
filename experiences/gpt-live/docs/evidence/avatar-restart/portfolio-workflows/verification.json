@@ -1,0 +1,605 @@
+{
+  "testedAtCentral": "9/11/2026, 4:57:22 PM Central Time",
+  "url": "https://shanto-portfolio-live.netlify.app",
+  "mode": "Deployed production document/assets, isolated Chrome, all POST/media/RTC mocked",
+  "checks": [
+    {
+      "name": "Merged page boots with all14 owned projects, bridge and denied-mic recovery",
+      "result": "PASS",
+      "detail": {
+        "projects": [
+          "agentmart-studio",
+          "swarm-nexus",
+          "relay-email-operations",
+          "orbital-observatory",
+          "agentproof",
+          "nocturne-ai-hotel",
+          "security-ops-playbook-analyzer",
+          "y22-ai-sales-roleplay",
+          "gp-agentic-revenue-ops",
+          "vapi-pilot-command-center",
+          "elevenlabs-forward-deployed-engineer",
+          "grok-experience-navigator",
+          "grok-medical-frontdesk",
+          "flux-atlas"
+        ]
+      }
+    },
+    {
+      "name": "Desktop hero has controlled whitespace and visible primary content at1440×900",
+      "result": "PASS",
+      "detail": {
+        "identity": {
+          "top": 83,
+          "bottom": 763.96875,
+          "height": 680.96875
+        },
+        "name": {
+          "top": 124.59375,
+          "bottom": 335.078125,
+          "height": 210.484375
+        },
+        "bio": {
+          "top": 335.078125,
+          "bottom": 703.96875,
+          "height": 368.890625
+        },
+        "heading": {
+          "top": 353.078125,
+          "bottom": 540.84375,
+          "height": 187.765625
+        },
+        "work": {
+          "top": 763.96875,
+          "bottom": 1916.390625,
+          "height": 1152.421875
+        }
+      }
+    },
+    {
+      "name": "Native header, hero, story and footer links route correctly, including same-hash navigation",
+      "result": "PASS"
+    },
+    {
+      "name": "Every gallery row changes preview image, description, case link and awareness",
+      "result": "PASS",
+      "detail": {
+        "nativeSelections": 14
+      }
+    },
+    {
+      "name": "Desktop previous/next and keyboard wrap through the collection",
+      "result": "PASS"
+    },
+    {
+      "name": "All14 case studies, image inspections, next-case links and collection return",
+      "result": "PASS",
+      "detail": {
+        "caseStudies": 14,
+        "inspectOpenClose": 14,
+        "nextAndBack": 14
+      }
+    },
+    {
+      "name": "Image zoom bounds, fit, Escape, backdrop and focus restoration",
+      "result": "PASS"
+    },
+    {
+      "name": "All filter controls change the index, picker and keyboard selection together",
+      "result": "PASS"
+    },
+    {
+      "name": "Career accordions, all sections, motion and verified contact-link destinations",
+      "result": "PASS"
+    },
+    {
+      "name": "Bridge themes, spacing, safe rewrite, highlight, undo and reset work from a case route",
+      "result": "PASS"
+    },
+    {
+      "name": "Awareness contains owned IDs only, bounded native history and no synthetic feedback",
+      "result": "PASS"
+    },
+    {
+      "name": "Mocked delegated effects use merged gallery context and preserve avatar-only controls",
+      "result": "PASS"
+    },
+    {
+      "name": "Mobile picker, step buttons, all-project links and menu at390×844",
+      "result": "PASS",
+      "detail": {
+        "pickerSelections": 14,
+        "heroHeight": 503.390625
+      }
+    },
+    {
+      "name": "Session palette restoration and malformed-route recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "Served scripts and styles match current preview sources",
+      "result": "PASS",
+      "detail": [
+        {
+          "name": "app.js",
+          "sha256": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163"
+        },
+        {
+          "name": "site-guide.js",
+          "sha256": "426c21ee2efa670b0ec1ab05b51d449b777c734cbff892fdc24b809c7798008f"
+        },
+        {
+          "name": "voice.js",
+          "sha256": "3e90278de2023145df7422b470b1e4d12b832198e6cf7092b128bdfdfb30691d"
+        },
+        {
+          "name": "styles.css",
+          "sha256": "0f0fd2faa8011c834416ec53b7ce1afd636b7c66e8a0e396b52878cc1d69fb8c"
+        },
+        {
+          "name": "voice.css",
+          "sha256": "8cc7a4e77d00e238e5849a83de119a6559923e0cd8ff20771b80a3248031fa2a"
+        }
+      ]
+    },
+    {
+      "name": "Auth, payments, external execution and submission are outside this portfolio",
+      "result": "PASS",
+      "detail": {
+        "auth": "N/A: no portfolio account/login/logout workflow",
+        "passwordManager": "N/A: no credential form",
+        "payments": "N/A: no checkout",
+        "outboundMessages": "N/A: no sending workflow",
+        "externalDemos": "Owned hrefs checked; external backend/auth/AI execution not tested",
+        "voice": "All POST and RTC mocked; no paid speech verified"
+      }
+    },
+    {
+      "name": "No runtime errors, first-party failures, overflow or visible legacy chat controls",
+      "result": "PASS",
+      "detail": {
+        "postRequestsMocked": 7,
+        "failedThirdPartyRequests": []
+      }
+    }
+  ],
+  "apiRequests": [
+    {
+      "endpoint": "/api/live",
+      "method": "POST",
+      "mocked": true
+    },
+    {
+      "endpoint": "/api/guide",
+      "method": "POST",
+      "mocked": true,
+      "mode": "visitor",
+      "awareness": {
+        "currentSection": "work",
+        "openItem": null,
+        "visibleItems": [
+          "vapi-pilot-command-center"
+        ],
+        "recentActions": [
+          {
+            "type": "view",
+            "target": "swarm-nexus"
+          },
+          {
+            "type": "view",
+            "target": "relay-email-operations"
+          },
+          {
+            "type": "view",
+            "target": "orbital-observatory"
+          },
+          {
+            "type": "view",
+            "target": "agentproof"
+          },
+          {
+            "type": "view",
+            "target": "nocturne-ai-hotel"
+          },
+          {
+            "type": "view",
+            "target": "security-ops-playbook-analyzer"
+          },
+          {
+            "type": "view",
+            "target": "y22-ai-sales-roleplay"
+          },
+          {
+            "type": "view",
+            "target": "gp-agentic-revenue-ops"
+          }
+        ],
+        "intent": {
+          "label": "exploring",
+          "confidence": "low",
+          "evidence": [
+            "nocturne-ai-hotel",
+            "security-ops-playbook-analyzer",
+            "y22-ai-sales-roleplay",
+            "gp-agentic-revenue-ops"
+          ]
+        }
+      },
+      "rawStateKeys": []
+    },
+    {
+      "endpoint": "/api/guide",
+      "method": "POST",
+      "mocked": true,
+      "mode": "visitor",
+      "awareness": {
+        "currentSection": "work",
+        "openItem": null,
+        "visibleItems": [
+          "vapi-pilot-command-center"
+        ],
+        "recentActions": [
+          {
+            "type": "view",
+            "target": "swarm-nexus"
+          },
+          {
+            "type": "view",
+            "target": "relay-email-operations"
+          },
+          {
+            "type": "view",
+            "target": "orbital-observatory"
+          },
+          {
+            "type": "view",
+            "target": "agentproof"
+          },
+          {
+            "type": "view",
+            "target": "nocturne-ai-hotel"
+          },
+          {
+            "type": "view",
+            "target": "security-ops-playbook-analyzer"
+          },
+          {
+            "type": "view",
+            "target": "y22-ai-sales-roleplay"
+          },
+          {
+            "type": "view",
+            "target": "gp-agentic-revenue-ops"
+          }
+        ],
+        "intent": {
+          "label": "exploring",
+          "confidence": "low",
+          "evidence": [
+            "nocturne-ai-hotel",
+            "security-ops-playbook-analyzer",
+            "y22-ai-sales-roleplay",
+            "gp-agentic-revenue-ops"
+          ]
+        }
+      },
+      "rawStateKeys": []
+    },
+    {
+      "endpoint": "/api/guide",
+      "method": "POST",
+      "mocked": true,
+      "mode": "visitor",
+      "awareness": {
+        "currentSection": "work",
+        "openItem": null,
+        "visibleItems": [
+          "vapi-pilot-command-center"
+        ],
+        "recentActions": [
+          {
+            "type": "view",
+            "target": "swarm-nexus"
+          },
+          {
+            "type": "view",
+            "target": "relay-email-operations"
+          },
+          {
+            "type": "view",
+            "target": "orbital-observatory"
+          },
+          {
+            "type": "view",
+            "target": "agentproof"
+          },
+          {
+            "type": "view",
+            "target": "nocturne-ai-hotel"
+          },
+          {
+            "type": "view",
+            "target": "security-ops-playbook-analyzer"
+          },
+          {
+            "type": "view",
+            "target": "y22-ai-sales-roleplay"
+          },
+          {
+            "type": "view",
+            "target": "gp-agentic-revenue-ops"
+          }
+        ],
+        "intent": {
+          "label": "exploring",
+          "confidence": "low",
+          "evidence": [
+            "nocturne-ai-hotel",
+            "security-ops-playbook-analyzer",
+            "y22-ai-sales-roleplay",
+            "gp-agentic-revenue-ops"
+          ]
+        }
+      },
+      "rawStateKeys": []
+    },
+    {
+      "endpoint": "/api/guide",
+      "method": "POST",
+      "mocked": true,
+      "mode": "visitor",
+      "awareness": {
+        "currentSection": "work",
+        "openItem": null,
+        "visibleItems": [
+          "vapi-pilot-command-center"
+        ],
+        "recentActions": [
+          {
+            "type": "view",
+            "target": "swarm-nexus"
+          },
+          {
+            "type": "view",
+            "target": "relay-email-operations"
+          },
+          {
+            "type": "view",
+            "target": "orbital-observatory"
+          },
+          {
+            "type": "view",
+            "target": "agentproof"
+          },
+          {
+            "type": "view",
+            "target": "nocturne-ai-hotel"
+          },
+          {
+            "type": "view",
+            "target": "security-ops-playbook-analyzer"
+          },
+          {
+            "type": "view",
+            "target": "y22-ai-sales-roleplay"
+          },
+          {
+            "type": "view",
+            "target": "gp-agentic-revenue-ops"
+          }
+        ],
+        "intent": {
+          "label": "exploring",
+          "confidence": "low",
+          "evidence": [
+            "nocturne-ai-hotel",
+            "security-ops-playbook-analyzer",
+            "y22-ai-sales-roleplay",
+            "gp-agentic-revenue-ops"
+          ]
+        }
+      },
+      "rawStateKeys": []
+    },
+    {
+      "endpoint": "/api/guide",
+      "method": "POST",
+      "mocked": true,
+      "mode": "visitor",
+      "awareness": {
+        "currentSection": "work",
+        "openItem": null,
+        "visibleItems": [
+          "vapi-pilot-command-center"
+        ],
+        "recentActions": [
+          {
+            "type": "view",
+            "target": "swarm-nexus"
+          },
+          {
+            "type": "view",
+            "target": "relay-email-operations"
+          },
+          {
+            "type": "view",
+            "target": "orbital-observatory"
+          },
+          {
+            "type": "view",
+            "target": "agentproof"
+          },
+          {
+            "type": "view",
+            "target": "nocturne-ai-hotel"
+          },
+          {
+            "type": "view",
+            "target": "security-ops-playbook-analyzer"
+          },
+          {
+            "type": "view",
+            "target": "y22-ai-sales-roleplay"
+          },
+          {
+            "type": "view",
+            "target": "gp-agentic-revenue-ops"
+          }
+        ],
+        "intent": {
+          "label": "exploring",
+          "confidence": "low",
+          "evidence": [
+            "nocturne-ai-hotel",
+            "security-ops-playbook-analyzer",
+            "y22-ai-sales-roleplay",
+            "gp-agentic-revenue-ops"
+          ]
+        }
+      },
+      "rawStateKeys": []
+    },
+    {
+      "endpoint": "/api/end",
+      "method": "POST",
+      "mocked": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "failedRequests": [
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/agentproof.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/security.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/revenue.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/orbital.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/flux.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/nexus.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/relay.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/orbital.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/agentproof.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/nocturne.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/security.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/roleplay.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/revenue.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/forwardops.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/launch.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/navigator.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/medical.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/nexus.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/nexus.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/orbital.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/roleplay.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/revenue.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/launch.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/navigator.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/assets/medical.webp",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "httpErrors": [],
+  "screenshots": [
+    "desktop-hero.png",
+    "desktop-gallery.png",
+    "image-inspection.png",
+    "mobile-hero.png",
+    "mobile-gallery.png",
+    "mobile-case.png"
+  ],
+  "headers": {
+    "accept-ranges": "bytes",
+    "age": "0",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cache-status": "\"Netlify Edge\"; fwd=stale; fwd-status=200; stored",
+    "content-encoding": "br",
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Fri, 11 Sep 2026 21:57:28 GMT",
+    "etag": "\"d16747147fe5e85b55946b6e2e46665f-ssl-df\"",
+    "netlify-hosting": "provider=Netlify; deploy=\"https://netlify.new/?utm_campaign=ai-legible&utm_source=header&utm_medium=referral&utm_id=296ec6fb-3f43-4253-9aad-c55f677685d0\"",
+    "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "server": "Netlify",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-nf-request-id": "01M297KGK9AN5QN00FBH0J6QVD"
+  },
+  "externalClicks": [
+    "https://www.linkedin.com/in/shanto-mathew/",
+    "https://github.com/shanto12"
+  ]
+}

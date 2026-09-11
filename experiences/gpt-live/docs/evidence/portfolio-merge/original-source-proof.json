@@ -1,0 +1,20 @@
+[
+  {
+    "asset": "index.html",
+    "liveSHA256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb",
+    "sourceSHA256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb",
+    "exactMatch": true
+  },
+  {
+    "asset": "app.js",
+    "liveSHA256": "a4f2b5fb838af226113e1366b6a5c45f9150048dab4f763d5a7d3efd6b5ac365",
+    "sourceSHA256": "a4f2b5fb838af226113e1366b6a5c45f9150048dab4f763d5a7d3efd6b5ac365",
+    "exactMatch": true
+  },
+  {
+    "asset": "styles.css",
+    "liveSHA256": "9d78bc470c7ad88544e47aac42a1320136f426b6f35a596cb1b1825b600aa86e",
+    "sourceSHA256": "9d78bc470c7ad88544e47aac42a1320136f426b6f35a596cb1b1825b600aa86e",
+    "exactMatch": true
+  }
+]

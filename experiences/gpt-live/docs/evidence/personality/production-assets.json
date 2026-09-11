@@ -1,0 +1,143 @@
+{
+  "testedAtCentral": "9/11/2026, 11:26:57 AM Central Time",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "deploy": "6aa42b70f0b74e47aa8b75ec",
+      "assets": [
+        {
+          "file": "voice.js",
+          "status": 200,
+          "sha256": "4dd4171466a20fcc21c093ffdaaa2f517d6bec4a6bb951298da0d6ca83986bec",
+          "localSHA256": "4dd4171466a20fcc21c093ffdaaa2f517d6bec4a6bb951298da0d6ca83986bec",
+          "matches": true
+        },
+        {
+          "file": "voice.css",
+          "status": 200,
+          "sha256": "c7d50d518878276cebca9d2896c7f5745ff4ef1ae1924de23417eaca5cc8638d",
+          "localSHA256": "c7d50d518878276cebca9d2896c7f5745ff4ef1ae1924de23417eaca5cc8638d",
+          "matches": true
+        },
+        {
+          "file": "site-guide.js",
+          "status": 200,
+          "sha256": "dada6ec1934f0fe911b1883e57fcc20e6349e3b8724115c95d44ca7623fb3591",
+          "localSHA256": "dada6ec1934f0fe911b1883e57fcc20e6349e3b8724115c95d44ca7623fb3591",
+          "matches": true
+        },
+        {
+          "file": "app.js",
+          "status": 200,
+          "sha256": "fcbdc0c8c617ef32cbad478c648214e06548d34e32e732b833a7f4caf2e3f3e6",
+          "localSHA256": "fcbdc0c8c617ef32cbad478c648214e06548d34e32e732b833a7f4caf2e3f3e6",
+          "matches": true
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "sha256": "4ec7b43d7c2370fc9470bbeb4e99a7f39e566e9f8c30105dc17b4e4a2a677712",
+          "localSHA256": "c4e251c7cc2abdfc3045814109c86a7924d808e693733209d1ff75bbc2ea8ab8",
+          "matches": false,
+          "normalizedMatches": true,
+          "difference": "Node fetch receives Netlify AI-legible hosting comment and two inert meta tags; removing only that exact provider metadata yields byte-identical local HTML. Python urllib browser-like read returns original markup."
+        }
+      ],
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "health": {
+        "status": 200,
+        "body": {
+          "site": "agentmart",
+          "voiceModel": "gpt-live-1",
+          "plannerModel": "gpt-5.6-luna",
+          "configured": true,
+          "sessionSeconds": 120,
+          "budget": {
+            "siteEnvelopeUSD": 4,
+            "totalApprovedUSD": 10,
+            "reservationUSD": 0.5,
+            "maxSessions": 8
+          },
+          "changes": "visitor session only"
+        }
+      }
+    },
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "deploy": "6aa42b71aebd834142d67309",
+      "assets": [
+        {
+          "file": "voice.js",
+          "status": 200,
+          "sha256": "4dd4171466a20fcc21c093ffdaaa2f517d6bec4a6bb951298da0d6ca83986bec",
+          "localSHA256": "4dd4171466a20fcc21c093ffdaaa2f517d6bec4a6bb951298da0d6ca83986bec",
+          "matches": true
+        },
+        {
+          "file": "voice.css",
+          "status": 200,
+          "sha256": "c7d50d518878276cebca9d2896c7f5745ff4ef1ae1924de23417eaca5cc8638d",
+          "localSHA256": "c7d50d518878276cebca9d2896c7f5745ff4ef1ae1924de23417eaca5cc8638d",
+          "matches": true
+        },
+        {
+          "file": "site-guide.js",
+          "status": 200,
+          "sha256": "1d9d28b3ad7a23e324282ee709ebe33051b4023030de4d08a98c0e88f883871d",
+          "localSHA256": "1d9d28b3ad7a23e324282ee709ebe33051b4023030de4d08a98c0e88f883871d",
+          "matches": true
+        },
+        {
+          "file": "app.js",
+          "status": 200,
+          "sha256": "7632c20ed845394f3ac57eb90004dc629a121b3a1c850e9144c775c526048d73",
+          "localSHA256": "7632c20ed845394f3ac57eb90004dc629a121b3a1c850e9144c775c526048d73",
+          "matches": true
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "sha256": "ad9c70d6f3d60ed9acdc631829ca94afa0f2c30a2bf6b02a2cf66e2f7f9892be",
+          "localSHA256": "5e28fdb7df5ab8ddd3284c7531bdb89896ad2c017900f0b10c3c17891e722f49",
+          "matches": false,
+          "normalizedMatches": true,
+          "difference": "Node fetch receives Netlify AI-legible hosting comment and two inert meta tags; removing only that exact provider metadata yields byte-identical local HTML. Python urllib browser-like read returns original markup."
+        }
+      ],
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "health": {
+        "status": 200,
+        "body": {
+          "site": "portfolio",
+          "voiceModel": "gpt-live-1",
+          "plannerModel": "gpt-5.6-luna",
+          "configured": true,
+          "sessionSeconds": 120,
+          "budget": {
+            "siteEnvelopeUSD": 4,
+            "totalApprovedUSD": 10,
+            "reservationUSD": 0.5,
+            "maxSessions": 8
+          },
+          "changes": "visitor session only"
+        }
+      }
+    }
+  ]
+}

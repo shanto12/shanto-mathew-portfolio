@@ -1,0 +1,52 @@
+{
+  "testedAtCentral": "9/11/2026, 2:15:23 PM Central Time",
+  "guard": "Strong-consistency release ledger confirmed8/8 immutable permits on each site before allowance probe. Backend provider call is after successful permit claim.",
+  "sites": [
+    {
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "healthStatus": 200,
+      "health": {
+        "site": "agentmart",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "sessionSeconds": 120,
+        "budget": {
+          "siteEnvelopeUSD": 4,
+          "totalApprovedUSD": 10,
+          "reservationUSD": 0.5,
+          "maxSessions": 8
+        },
+        "changes": "visitor session only"
+      },
+      "voiceSHA256": "4dd4171466a20fcc21c093ffdaaa2f517d6bec4a6bb951298da0d6ca83986bec",
+      "allowanceStatus": 429,
+      "allowance": {
+        "message": "This preview has reached its approved usage allowance. The owner must approve more usage."
+      }
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "healthStatus": 200,
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "sessionSeconds": 120,
+        "budget": {
+          "siteEnvelopeUSD": 4,
+          "totalApprovedUSD": 10,
+          "reservationUSD": 0.5,
+          "maxSessions": 8
+        },
+        "changes": "visitor session only"
+      },
+      "voiceSHA256": "4dd4171466a20fcc21c093ffdaaa2f517d6bec4a6bb951298da0d6ca83986bec",
+      "allowanceStatus": 429,
+      "allowance": {
+        "message": "This preview has reached its approved usage allowance. The owner must approve more usage."
+      }
+    }
+  ]
+}

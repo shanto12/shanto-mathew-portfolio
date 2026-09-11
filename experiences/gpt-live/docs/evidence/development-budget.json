@@ -1,0 +1,122 @@
+{
+  "scope": "Historical development accounting across both sites; not a final release-provider invoice",
+  "records": [
+    {
+      "site": "agentmart",
+      "admissions": 6,
+      "reservedUSD": 3,
+      "remainingAdmissions": 2,
+      "knownVoiceUSD": 0.1,
+      "sessions": [
+        {
+          "slot": 0,
+          "voice": false,
+          "closed": false,
+          "stopRequested": true,
+          "ready": true,
+          "usageSeconds": null,
+          "finalization": null,
+          "watchdogReason": null,
+          "providerUnavailable": false
+        },
+        {
+          "slot": 1,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 21,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 2,
+          "voice": true,
+          "closed": true,
+          "stopRequested": false,
+          "ready": false,
+          "usageSeconds": 15,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 3,
+          "voice": false,
+          "closed": false,
+          "stopRequested": false,
+          "ready": true,
+          "usageSeconds": null,
+          "finalization": null,
+          "watchdogReason": null,
+          "providerUnavailable": false
+        },
+        {
+          "slot": 4,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 68,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 5,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 16,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        }
+      ]
+    },
+    {
+      "site": "portfolio",
+      "admissions": 3,
+      "reservedUSD": 1.5,
+      "remainingAdmissions": 5,
+      "knownVoiceUSD": 0.115,
+      "sessions": [
+        {
+          "slot": 0,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 21,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 1,
+          "voice": true,
+          "closed": false,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": null,
+          "finalization": "unconfirmed",
+          "watchdogReason": "close_unconfirmed",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 2,
+          "voice": true,
+          "closed": true,
+          "stopRequested": false,
+          "ready": false,
+          "usageSeconds": 117,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        }
+      ]
+    }
+  ]
+}

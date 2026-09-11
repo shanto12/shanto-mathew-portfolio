@@ -1,0 +1,207 @@
+{
+  "testedAtCentral": "9/11/2026, 11:26:26 AM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Tell me about the product I just opened. Then give me a tiny theatrical grumpy laugh.",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Native product opening publishes current owned catalog context",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic visitor question is transcribed through real WebRTC",
+          "result": "PASS"
+        },
+        {
+          "name": "Actual planner request contains the open product and bounded ID-only awareness",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken answer identifies the opened product with audible remote media",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "Remote-track recording confirms received WebRTC audio",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "agentmart-greeting.png",
+        "agentmart-awareness-response.png",
+        "agentmart-ended.png"
+      ],
+      "liveRequests": 1,
+      "guideRequests": [
+        {
+          "mode": "visitor",
+          "awareness": {
+            "currentSection": "discover",
+            "openItem": "parallel",
+            "visibleItems": [],
+            "recentActions": [
+              {
+                "type": "open",
+                "target": "parallel"
+              }
+            ]
+          },
+          "stateWasEmpty": true
+        }
+      ],
+      "guideResponses": [
+        {
+          "answer": "Parallel is illustrative workflow software priced at a sample $18 per seat/month. It supports shared projects, task automation, and document workflows; the sample plan includes one seat and ten projects. Tiny theatrical grumpy laugh: heh-heh—hmph.",
+          "actionTypes": [],
+          "performance": {
+            "emotion": "angry",
+            "delivery": "mock_grumpy"
+          }
+        }
+      ],
+      "performanceObserved": [
+        "mock_grumpy"
+      ],
+      "greeting": {
+        "transcript": " Hey, I’m M, your AgentMart guide. Tell",
+        "rmsMax": 0.18820067633318627,
+        "audibleSamples": 27,
+        "recordedBytes": 43676,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "openedContext": {
+        "currentSection": "discover",
+        "openItem": "parallel",
+        "visibleItems": [],
+        "items": [
+          {
+            "id": "parallel",
+            "label": "Parallel",
+            "summary": "A quieter place for projects, plans, and the work between. Shared projects, task automation, and document workflows. The sample plan includes one seat and ten projects."
+          }
+        ],
+        "recentActions": [
+          {
+            "type": "open",
+            "target": "parallel"
+          }
+        ]
+      },
+      "voiceInputTranscript": " Tell me about the product I just opened, then give me a tiny theatrical",
+      "contextualAnswer": " what you’re building Hmm. Oh, heh-heh, hmph. Okay, the thing you opened, Parallel.",
+      "performanceNote": "Optional enum performance is recorded if chosen. No fixed delivery or subjective emotional realism is required by this check.",
+      "beforeEnd": {
+        "stats": [],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.2011899054919316,
+        "audibleSamples": 93,
+        "remoteBytes": 279931,
+        "transcript": "Guide:  Hey, I’m M, your AgentMart guide. Tell me what you’re buildingYou:  Tell me about the product I just opened, then give me a tiny theatrical grumpy laughGuide:  Hmm. Oh, heh-heh, hmph. Okay, the thing you opened, Parallel.",
+        "inputTranscript": " Tell me about the product I just opened, then give me a tiny theatrical grumpy laugh",
+        "outputTranscript": " Hey, I’m M, your AgentMart guide. Tell me what you’re building Hmm. Oh, heh-heh, hmph. Okay, the thing you opened, Parallel.",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "agentmart-remote-audio.webm",
+        "bytes": 294468,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 25.2
+    }
+  ]
+}

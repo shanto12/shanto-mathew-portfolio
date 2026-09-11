@@ -1,0 +1,20 @@
+# Actual deployed voice evidence
+
+9/11/2026, 10:59:16 AM Central Time
+
+Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.
+
+Browser End evidence alone does not establish final provider billing; verify server-side session.closed records separately.
+
+| Site | Check | Result | Detail |
+|---|---|---|---|
+| portfolio | Actual deployed session connects and automatically greets with audible remote audio | PASS |  |
+| portfolio | Synthetic spoken visitor request is transcribed over the real WebRTC connection | PASS |  |
+| portfolio | Spoken request changes the page and expressive avatar | PASS |  |
+| portfolio | Spoken navigation and confetti effect apply through the real planner | PASS |  |
+| portfolio | Portfolio guide explains Shanto’s professional fit through real voice delegation | PASS |  |
+| portfolio | Mute and unmute control the actual outgoing audio track | PASS |  |
+| portfolio | End closes the peer and stops all local/remote audio tracks | PASS |  |
+| portfolio | WebRTC statistics confirm incoming audio packets | PASS |  |
+
+Qualitative limitation: the career response was observed starting with a reference to strong Python experience before End. This verifies real delegated speech began; it does not establish a complete qualitative evaluation of the career pitch.

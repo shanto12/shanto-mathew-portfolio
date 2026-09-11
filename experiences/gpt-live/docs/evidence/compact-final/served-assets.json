@@ -1,0 +1,18 @@
+[
+  {
+    "site": "portfolio",
+    "deployId": "6aa42410875c3a05d4f75ebc",
+    "asset": "voice.js",
+    "matchesLocalSource": true,
+    "sha256": "1231985bc345b6bf61ba87254b6991ddc5667ac5dd47189ec4c772890ecb2952",
+    "canonicalVoiceMatch": true
+  },
+  {
+    "site": "portfolio",
+    "deployId": "6aa42410875c3a05d4f75ebc",
+    "asset": "voice.css",
+    "matchesLocalSource": true,
+    "sha256": "b3f02e7c5f1295760367aa040dd4538550bfccae04dee8dc1e52b9c33b0065c8",
+    "canonicalVoiceMatch": null
+  }
+]

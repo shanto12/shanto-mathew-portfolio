@@ -1,0 +1,14 @@
+{
+  "testedAtCentral": "9/11/2026, 10:28:28 AM",
+  "method": "Actual production Netlify Blobs conditional create; separate verification keys, no admission slots or provider calls",
+  "results": [
+    {
+      "site": "portfolio",
+      "concurrentClaims": 12,
+      "confirmedWinners": 1,
+      "readbackMatches": true,
+      "result": "PASS",
+      "providerCalls": 0
+    }
+  ]
+}

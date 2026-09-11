@@ -1,0 +1,276 @@
+{
+  "testedAtCentral": "9/11/2026, 2:27:31 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken navigation and confetti effect apply through the real planner",
+          "result": "PASS"
+        },
+        {
+          "name": "Portfolio guide explains Shanto’s professional fit through real voice delegation",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "portfolio-greeting.png",
+        "portfolio-spoken-navigation.png",
+        "portfolio-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "transcript": " Hi, I'm Pip, Shanto's AI wingman. He",
+        "rmsMax": 0.18046711981152352,
+        "audibleSamples": 31,
+        "recordedBytes": 63709,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Change this website to rose pink look playful, show selected work, and",
+      "spokenActionState": {
+        "section": "work",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I’m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "calm",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel · Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "pageState": {
+        "section": "work",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I’m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "calm",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel · Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "effects": [
+        "confetti"
+      ],
+      "careerPitch": " a second. Oh, lovely. There we go. The site's blushing just for us. We're in selected work now, with a quiet little sparkle. Shanto's strength is building reliable Python-based",
+      "beforeEnd": {
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 196441,
+            "packetsReceived": 1341,
+            "packetsLost": 0,
+            "jitter": 0.001,
+            "totalAudioEnergy": 1.9544133320057044,
+            "totalSamplesDuration": 27.970000000001573
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 68558,
+            "packetsSent": 1401
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.2601876904415951,
+        "audibleSamples": 238,
+        "remoteBytes": 434301,
+        "transcript": "Guide:  Hi, I'm Pip, Shanto's AI wingman. He builds the systems.You:  Change this website to rose pink look playful, show selected work, and celebrate with confettiGuide:  Okay, a little redecoration!Just a second.Oh,You:  Why should I hireGuide:  lovely.You:  Shanto for a senior AI engineer role PleaseGuide: ThereYou:  keep itGuide:  we go.You:  briefGuide:  The site's blushing just for us. We're in selected work now, with a quiet little sparkle. Shanto's strength is building reliable Python-based",
+        "inputTranscript": " Change this website to rose pink look playful, show selected work, and celebrate with confetti Why should I hire Shanto for a senior AI engineer role Please keep it brief",
+        "outputTranscript": " Hi, I'm Pip, Shanto's AI wingman. He builds the systems. Okay, a little redecoration! Just a second. Oh, lovely. There we go. The site's blushing just for us. We're in selected work now, with a quiet little sparkle. Shanto's strength is building reliable Python-based",
+        "events": [
+          "session.started",
+          "session.thinking.appended",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "portfolio-remote-audio.webm",
+        "bytes": 446906,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 31.5
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "heroBottom": 763.96875,
+      "workTop": 763.96875,
+      "h1Top": 353.078125,
+      "headshotTop": 353.078125,
+      "projectCount": 14,
+      "visibleProjects": [
+        "agentmart-studio",
+        "swarm-nexus",
+        "relay-email-operations",
+        "orbital-observatory",
+        "agentproof",
+        "nocturne-ai-hotel",
+        "security-ops-playbook-analyzer",
+        "y22-ai-sales-roleplay",
+        "gp-agentic-revenue-ops",
+        "vapi-pilot-command-center",
+        "elevenlabs-forward-deployed-engineer",
+        "grok-experience-navigator",
+        "grok-medical-frontdesk",
+        "flux-atlas"
+      ],
+      "selected": "agentmart-studio",
+      "bridge": "portfolio"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "heroBottom": 584.390625,
+      "workTop": 584.390625,
+      "h1Top": 230.09375,
+      "headshotTop": 230.09375,
+      "projectCount": 14,
+      "visibleProjects": [
+        "agentmart-studio",
+        "swarm-nexus",
+        "relay-email-operations",
+        "orbital-observatory",
+        "agentproof",
+        "nocturne-ai-hotel",
+        "security-ops-playbook-analyzer",
+        "y22-ai-sales-roleplay",
+        "gp-agentic-revenue-ops",
+        "vapi-pilot-command-center",
+        "elevenlabs-forward-deployed-engineer",
+        "grok-experience-navigator",
+        "grok-medical-frontdesk",
+        "flux-atlas"
+      ],
+      "selected": "agentmart-studio",
+      "bridge": "portfolio"
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "heroBottom": 556.046875,
+      "workTop": 556.046875,
+      "h1Top": 225.59375,
+      "headshotTop": 225.59375,
+      "projectCount": 14,
+      "visibleProjects": [
+        "agentmart-studio",
+        "swarm-nexus",
+        "relay-email-operations",
+        "orbital-observatory",
+        "agentproof",
+        "nocturne-ai-hotel",
+        "security-ops-playbook-analyzer",
+        "y22-ai-sales-roleplay",
+        "gp-agentic-revenue-ops",
+        "vapi-pilot-command-center",
+        "elevenlabs-forward-deployed-engineer",
+        "grok-experience-navigator",
+        "grok-medical-frontdesk",
+        "flux-atlas"
+      ],
+      "selected": "agentmart-studio",
+      "bridge": "portfolio"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "heroBottom": 656.625,
+      "workTop": 656.625,
+      "h1Top": 273.375,
+      "headshotTop": 273.375,
+      "projectCount": 14,
+      "visibleProjects": [
+        "agentmart-studio",
+        "swarm-nexus",
+        "relay-email-operations",
+        "orbital-observatory",
+        "agentproof",
+        "nocturne-ai-hotel",
+        "security-ops-playbook-analyzer",
+        "y22-ai-sales-roleplay",
+        "gp-agentic-revenue-ops",
+        "vapi-pilot-command-center",
+        "elevenlabs-forward-deployed-engineer",
+        "grok-experience-navigator",
+        "grok-medical-frontdesk",
+        "flux-atlas"
+      ],
+      "selected": "agentmart-studio",
+      "bridge": "portfolio"
+    }
+  ],
+  "counts": {
+    "all": 14,
+    "voice": 6,
+    "security": 2,
+    "agents": 4,
+    "creative": 2
+  },
+  "errors": []
+}

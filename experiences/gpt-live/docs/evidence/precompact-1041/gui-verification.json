@@ -1,0 +1,617 @@
+{
+  "testedAtCentral": "9/11/2026, 10:41:29 AM Central Time",
+  "mode": "Production GUI; microphone deliberately denied; paid API endpoints intercepted; text AI responses mocked",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "HTTPS page, JS bridge and required assets",
+          "result": "PASS"
+        },
+        {
+          "name": "Microphone denied gracefully; no voice session created",
+          "result": "PASS"
+        },
+        {
+          "name": "Inline conversation disclosure, microphone retry and text validation",
+          "result": "PASS"
+        },
+        {
+          "name": "Typed guide to page action \u2014 MOCKED API integration only",
+          "result": "PASS"
+        },
+        {
+          "name": "All suggested conversation buttons \u2014 MOCKED API integration only",
+          "result": "PASS",
+          "detail": {
+            "prompts": 5
+          }
+        },
+        {
+          "name": "Every main/footer/hero section navigation and keyboard skip link",
+          "result": "PASS",
+          "detail": {
+            "links": 9
+          }
+        },
+        {
+          "name": "Every project filter and visible counts",
+          "result": "PASS"
+        },
+        {
+          "name": "All 9 project dialogs, images, external-link safety, close and Escape",
+          "result": "PASS",
+          "detail": {
+            "projects": 9,
+            "externalLinks": "URLs and rel inspected, external demo services not activated"
+          }
+        },
+        {
+          "name": "Dynamic project explanation prompt \u2014 MOCKED API",
+          "result": "PASS"
+        },
+        {
+          "name": "All 10 career disclosures expand/collapse",
+          "result": "PASS",
+          "detail": {
+            "count": 10
+          }
+        },
+        {
+          "name": "Local undo and reset buttons",
+          "result": "PASS"
+        },
+        {
+          "name": "All bridge navigation targets, themes, density, emotion, highlight and safe rewrite",
+          "result": "PASS",
+          "detail": {
+            "validActions": 22,
+            "rejectedActions": 5
+          }
+        },
+        {
+          "name": "Session restoration after refresh",
+          "result": "PASS"
+        },
+        {
+          "name": "Desktop screenshots, image validity and overflow",
+          "result": "PASS"
+        },
+        {
+          "name": "Mobile controls, navigation and screenshots at 390px",
+          "result": "PASS"
+        },
+        {
+          "name": "Tablet and narrow mobile overflow",
+          "result": "PASS"
+        },
+        {
+          "name": "No browser runtime errors or failed first-party resources",
+          "result": "PASS",
+          "detail": {
+            "consoleErrors": [],
+            "failedThirdPartyRequests": []
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "mockedApi": [
+        {
+          "endpoint": "/api/chat",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED \u2014 no backend/model call"
+        }
+      ],
+      "headers": {
+        "accept-ranges": "bytes",
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "cache-status": "\"Netlify Edge\"; fwd=stale; fwd-status=200; stored",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Fri, 11 Sep 2026 15:42:08 GMT",
+        "etag": "\"811f2620935c9459c4264a0dc80192fe-ssl-df\"",
+        "netlify-hosting": "provider=Netlify; deploy=\"https://netlify.new/?utm_campaign=ai-legible&utm_source=header&utm_medium=referral&utm_id=296ec6fb-3f43-4253-9aad-c55f677685d0\"",
+        "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-nf-request-id": "01M28J48HA7YG5DH90QHNE373Y"
+      },
+      "primaryControlInventory": [
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Skip to selected work",
+          "visible": true,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "SM\u2733SHANTOMATHEW",
+          "visible": true,
+          "disabled": false,
+          "href": "#home"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Selected work",
+          "visible": false,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "The person",
+          "visible": false,
+          "disabled": false,
+          "href": "#story"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Experience",
+          "visible": false,
+          "disabled": false,
+          "href": "#experience"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Let\u2019s talk \u2197",
+          "visible": false,
+          "disabled": false,
+          "href": "#contact"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "menu-toggle",
+          "text": "Menu +",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Explore the work \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Or, ask for a tour \u2733",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "undo-changes",
+          "text": "Undo",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "reset-changes",
+          "text": "Reset page \u21ba",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Try microphone",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Mute mic",
+          "visible": true,
+          "disabled": true,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "End",
+          "visible": true,
+          "disabled": true,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Type or view conversation \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "live-message",
+          "text": "Type your question\u2026",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "\u2197",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Reset view",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "\u201cShow me the voice AI work\u201d \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "\u201cI\u2019m here to hire\u201d \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "\u201cMake it midnight\u201d \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "All work 09",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Voice AI",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Security",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Agents",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Creative",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "01 / FIELD NOTES\u2197Voice & experienceNocturne / Poe ConciergeA hospitality interface that brings rooms",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "02 / FIELD NOTES\u2197Security & applied AISOC AI / Analyst workflowAn inspectable incident workflow conn",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "03 / FIELD NOTES\u2197Voice & learningY22 / Voice roleplayA voice-led practice environment for personas, ",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "04 / FIELD NOTES\u2197Agents & operationsRevenue Ops / WorkbenchA workspace for buyer-intent context, cam",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "05 / FIELD NOTES\u2197Voice & deliveryForwardOps / Pilot deliveryA forward-deployed pilot workspace for s",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "06 / FIELD NOTES\u2197Voice & deliveryVoice AI / Launch consoleA launch-room interface for readiness, sce",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "07 / FIELD NOTES\u2197Voice & navigationGrok / Experience navigatorA voice-guided experience center that ",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "08 / FIELD NOTES\u2197Voice & operationsGrok / Medical front deskA synthetic front-desk console exploring",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "09 / FIELD NOTES\u2197Creative systemsFlux Atlas / Creative codingA generative flow field with live motio",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Connect the dots for me \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jul 2026 \u2014 PresentWells FargoForward Deployed Engineer / AI Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jan 2026 \u2014 PresentCDWSenior SOAR Engineer / AI Security Automation",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jun 2024 \u2014 Sep 2025Bank of AmericaSenior SOAR Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jan 2024 \u2014 May 2024MastercardSenior Information Security Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Aug 2022 \u2014 Jan 2024Heritage BankSenior Security Automation Specialist",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Apr 2022 \u2014 Aug 2022BHPData Scientist",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Nov 2019 \u2014 Apr 2022SplunkSenior Security Solutions Engineer / Professional Services Consultant",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Oct 2018 \u2014 Jun 2019NBNSecurity Automation Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Aug 2012 \u2014 Sep 2018Commonwealth Bank of AustraliaSupport Engineer \u2192 Python Developer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Feb 2011 \u2014 Jul 2012Rogers CommunicationTester",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Find me on LinkedIn \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": "https://www.linkedin.com/in/shanto-mathew/"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Explore my GitHub \u2197",
+          "visible": true,
+          "disabled": false,
+          "href": "https://github.com/shanto12"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "SHANTO MATHEW \u2733",
+          "visible": true,
+          "disabled": false,
+          "href": "#home"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "BACK TO TOP \u2191",
+          "visible": true,
+          "disabled": false,
+          "href": "#home"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "close-project",
+          "text": "\u00d7",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "close-navigation",
+          "text": "\u00d7",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Selected work \u2197",
+          "visible": false,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "The person \u2197",
+          "visible": false,
+          "disabled": false,
+          "href": "#story"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Experience \u2197",
+          "visible": false,
+          "disabled": false,
+          "href": "#experience"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Let\u2019s talk \u2197",
+          "visible": false,
+          "disabled": false,
+          "href": "#contact"
+        }
+      ]
+    }
+  ]
+}

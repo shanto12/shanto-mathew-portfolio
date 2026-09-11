@@ -1,0 +1,51 @@
+{
+  "testedAtCentral": "9/11/2026, 2:28:06 PM Central Time",
+  "deploys": {
+    "agentmart": "6aa4558881648b360c6c09bd",
+    "portfolio": "6aa4558ccfe137b224f65145"
+  },
+  "voiceSHA256": "ad5b36e502ee6b8aa2fcbeeb67fc2d4654f1dbecc1c37c9a08ebe81e3584ff4e",
+  "checks": 79,
+  "passed": 79,
+  "failed": 0,
+  "suites": [
+    {
+      "name": "production",
+      "expected": 33,
+      "checks": 33,
+      "passed": 33,
+      "failed": 0,
+      "json": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/production-2026-09-11-14-26-27/verification.json",
+      "matrix": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/production-2026-09-11-14-26-27/EVIDENCE_MATRIX.md",
+      "screenshots": 18,
+      "browserErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "awareness",
+      "expected": 32,
+      "checks": 32,
+      "passed": 32,
+      "failed": 0,
+      "json": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/awareness-2026-09-11-14-26-27/verification.json",
+      "matrix": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/awareness-2026-09-11-14-26-27/EVIDENCE_MATRIX.md",
+      "screenshots": 4,
+      "browserErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "recovery",
+      "expected": 14,
+      "checks": 14,
+      "passed": 14,
+      "failed": 0,
+      "json": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/recovery-2026-09-11-14-26-27/verification.json",
+      "matrix": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/recovery-2026-09-11-14-26-27/EVIDENCE_MATRIX.md",
+      "screenshots": 8,
+      "browserErrors": [],
+      "consoleErrors": []
+    }
+  ],
+  "assetHealthHeaders": "/Users/shanto/Documents/Playground/gpt-live-sites/output/recovery-production-assets.json",
+  "limitation": "All mutating browser requests, microphone, RTC and AI responses mocked. No paid calls or admissions consumed. Real voice and real Chrome profile evidence are separate."
+}

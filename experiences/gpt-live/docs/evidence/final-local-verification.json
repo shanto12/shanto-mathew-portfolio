@@ -1,0 +1,20 @@
+{
+  "recordedAtCentral": "2026-09-11T11:04:01.198734-05:00",
+  "method": "Observed successful npm run verify tool results after synchronized compact-avatar source; final permission-invitation refinement separately syntax checked and exercised by 32 mocked checks.",
+  "apps": {
+    "agentmart": {
+      "typescriptBuild": "PASS",
+      "voiceSyntax": "PASS",
+      "unitTestsPassed": 20,
+      "unitTestsFailed": 0
+    },
+    "portfolio": {
+      "typescriptBuild": "PASS",
+      "voiceSyntax": "PASS",
+      "unitTestsPassed": 20,
+      "unitTestsFailed": 0
+    }
+  },
+  "sharedAvatarMockChecksPassed": 32,
+  "productionDependencyVulnerabilities": 0
+}

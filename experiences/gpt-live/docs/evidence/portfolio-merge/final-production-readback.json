@@ -1,0 +1,80 @@
+{
+  "checkedAtCentral": "2026-09-11T16:36:01.842457-05:00",
+  "deploy": "6aa473d7c5c59ac1e5dc1dbd",
+  "source": "d266c38",
+  "assets": [
+    {
+      "name": "index.html",
+      "status": 200,
+      "sha256": "62d26af346083dc45b18787f89be4d1004f67ef893971523dada7ff418d0ed5d",
+      "exactSourceMatch": true
+    },
+    {
+      "name": "app.js",
+      "status": 200,
+      "sha256": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163",
+      "exactSourceMatch": true
+    },
+    {
+      "name": "site-guide.js",
+      "status": 200,
+      "sha256": "426c21ee2efa670b0ec1ab05b51d449b777c734cbff892fdc24b809c7798008f",
+      "exactSourceMatch": true
+    },
+    {
+      "name": "styles.css",
+      "status": 200,
+      "sha256": "0f0fd2faa8011c834416ec53b7ce1afd636b7c66e8a0e396b52878cc1d69fb8c",
+      "exactSourceMatch": true
+    },
+    {
+      "name": "voice.js",
+      "status": 200,
+      "sha256": "e062175293f6e3dbb900511120d7018a6f7195e41058f8fb1d8371927fd0459e",
+      "exactSourceMatch": true
+    },
+    {
+      "name": "voice.css",
+      "status": 200,
+      "sha256": "8cc7a4e77d00e238e5849a83de119a6559923e0cd8ff20771b80a3248031fa2a",
+      "exactSourceMatch": true
+    }
+  ],
+  "headers": {
+    "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+    "Permissions-Policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  },
+  "health": {
+    "site": "portfolio",
+    "voiceModel": "gpt-live-1",
+    "plannerModel": "gpt-5.6-luna",
+    "configured": true,
+    "voiceAvailable": true,
+    "sessionSeconds": 120,
+    "budget": {
+      "siteEnvelopeUSD": 4,
+      "totalApprovedUSD": 10,
+      "developmentHoldUSD": 2,
+      "reservationUSD": 0.5,
+      "maxSessions": 100,
+      "admittedSessions": 13,
+      "reservedUSD": 3.423338,
+      "remainingUSD": 0.576662,
+      "blockingConnection": false
+    },
+    "changes": "visitor session only"
+  },
+  "customDomain": {
+    "status": 200,
+    "sha256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb"
+  },
+  "originalNetlify": {
+    "status": 200,
+    "sha256": "c787cd6c253dfd735e756ac60e0cf16172b3ff185667c229b5594e3eda7576bb"
+  },
+  "originalsUnchanged": true
+}

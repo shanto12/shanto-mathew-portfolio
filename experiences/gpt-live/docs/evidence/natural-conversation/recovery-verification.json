@@ -1,0 +1,130 @@
+{
+  "testedAtCentral": "9/11/2026, 2:38:38 PM Central Time",
+  "mode": "Isolated Chrome; actual shipped scripts; mocked microphone/RTC/play and all POST requests. No provider/admission calls.",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "checks": [
+        {
+          "name": "Pending microphone gives visible accessible recovery instructions; Escape clears them",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "Denied microphone gives a compact visible permission-recovery hint",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "429 allowance is visible and releases acquired microphone tracks",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live"
+          ]
+        },
+        {
+          "name": "Autoplay rejection explains tap recovery; avatar resumes audio and hides hint",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Connected avatar has no recovery writing; End stops tracks and stays quiet",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Stale getUserMedia resolves without replacing or stopping the current microphone",
+          "result": "PASS",
+          "detail": {
+            "mockedStarts": 2,
+            "providerAdmissions": 0
+          },
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Stale microphone completion cannot dismiss a newer permission prompt",
+          "result": "PASS",
+          "interceptedRequests": []
+        }
+      ],
+      "screenshots": [
+        "agentmart-mic-denied.png",
+        "agentmart-mic-denied-mobile.png",
+        "agentmart-allowance.png",
+        "agentmart-autoplay.png"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Pending microphone gives visible accessible recovery instructions; Escape clears them",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "Denied microphone gives a compact visible permission-recovery hint",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "429 allowance is visible and releases acquired microphone tracks",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live"
+          ]
+        },
+        {
+          "name": "Autoplay rejection explains tap recovery; avatar resumes audio and hides hint",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Connected avatar has no recovery writing; End stops tracks and stays quiet",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Stale getUserMedia resolves without replacing or stopping the current microphone",
+          "result": "PASS",
+          "detail": {
+            "mockedStarts": 2,
+            "providerAdmissions": 0
+          },
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Stale microphone completion cannot dismiss a newer permission prompt",
+          "result": "PASS",
+          "interceptedRequests": []
+        }
+      ],
+      "screenshots": [
+        "portfolio-mic-denied.png",
+        "portfolio-mic-denied-mobile.png",
+        "portfolio-allowance.png",
+        "portfolio-autoplay.png"
+      ]
+    }
+  ]
+}

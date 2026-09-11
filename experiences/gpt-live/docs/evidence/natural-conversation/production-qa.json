@@ -1,0 +1,61 @@
+{
+  "testedAtCentral": "9/11/2026, 2:40:27 PM Central Time",
+  "deploys": {
+    "agentmart": "6aa4582db05d02b7879629e7",
+    "portfolio": "6aa4582cc9bb54ebee90fbd5"
+  },
+  "source": {
+    "agentmart": "a73dafc",
+    "portfolio": "616229a"
+  },
+  "voiceSHA256": "e062175293f6e3dbb900511120d7018a6f7195e41058f8fb1d8371927fd0459e",
+  "checks": 79,
+  "passed": 79,
+  "failed": 0,
+  "additionalAssertions": {
+    "outgoingOpeningUsesOwnFreshWords": true,
+    "fixedSiteGreetingAbsent": true,
+    "blankProactiveResponseDoesNotSpeakFallbackOrRenderDelivery": true
+  },
+  "suites": [
+    {
+      "name": "production",
+      "expected": 33,
+      "checks": 33,
+      "passed": 33,
+      "failed": 0,
+      "json": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/production-2026-09-11-14-38-38/verification.json",
+      "matrix": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/production-2026-09-11-14-38-38/EVIDENCE_MATRIX.md",
+      "screenshots": 18,
+      "browserErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "awareness",
+      "expected": 32,
+      "checks": 32,
+      "passed": 32,
+      "failed": 0,
+      "json": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/awareness-2026-09-11-14-38-38/verification.json",
+      "matrix": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/awareness-2026-09-11-14-38-38/EVIDENCE_MATRIX.md",
+      "screenshots": 4,
+      "browserErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "recovery",
+      "expected": 14,
+      "checks": 14,
+      "passed": 14,
+      "failed": 0,
+      "json": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/recovery-2026-09-11-14-38-38/verification.json",
+      "matrix": "/Users/shanto/Documents/Playground/gpt-live-sites/output/playwright/recovery-2026-09-11-14-38-38/EVIDENCE_MATRIX.md",
+      "screenshots": 8,
+      "browserErrors": [],
+      "consoleErrors": []
+    }
+  ],
+  "assetHealthHeaders": "/Users/shanto/Documents/Playground/gpt-live-sites/output/natural-production-assets.json",
+  "healthSnapshotNote": "Historical2:39PM Central snapshot. AgentMart availability false at that instant while remainingreservationcapacity was below0.50; root is separately checking final accounting after real sessions ended. No paid requests made by these fixtures.",
+  "limitation": "All mutating browser requests, microphone, RTC and AI responses mocked. No paid calls/admissions. Opener assertion verifies outgoing instructions, not actual model wording. Actual voice and real Chrome profile evidence separate."
+}

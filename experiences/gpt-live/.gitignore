@@ -1,0 +1,5 @@
+node_modules/
+.netlify/
+.env*
+output/
+public/.playwright-cli/

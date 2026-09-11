@@ -1,0 +1,244 @@
+{
+  "testedAtCentral": "9/11/2026, 10:41:46 AM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Please change this website to the rose pink colour theme, and give your avatar a playful expression.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Real typed guide request changes the palette and navigates the website",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "liveRequests": 1,
+      "greeting": {
+        "transcript": "Hi! I\u2019m Shanto\u2019s AI portfolio guide.",
+        "rmsMax": 0.19186993688146967,
+        "audibleSamples": 25,
+        "recordedBytes": 49416,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Please change this website to the rose pink color theme. If your avatar a",
+      "spokenActionState": {
+        "section": "home",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I\u2019m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "playful",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel \u00b7 Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "pageState": {
+        "section": "work",
+        "theme": "ocean",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I\u2019m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "playful",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel \u00b7 Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "beforeEnd": {
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 133269,
+            "packetsReceived": 964,
+            "packetsLost": 0,
+            "jitter": 0.008,
+            "totalAudioEnergy": 1.4077926650199064,
+            "totalSamplesDuration": 20.260000000000367
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 46064,
+            "packetsSent": 1021
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.2209035747263355,
+        "audibleSamples": 141,
+        "remoteBytes": 315349,
+        "transcript": "Guide: Hi! I\u2019m Shanto\u2019s AI portfolio guide. Think of me as theYou:  Please change this website to the rose pink color theme. If your avatar a playful expressionGuide: Sure, switching to rose pink and dialing up the playfulnessYou: Please make the website ocean blue using the ocean theme and navigate to Selected work, section ID work. Apply both changes now.Guide: Oh, done. Rose theme\u2019s on and I\u2019m feeling extra cheeky already. Shall we take this pink energy and splash it over the projects",
+        "inputTranscript": " Please change this website to the rose pink color theme. If your avatar a playful expression",
+        "outputTranscript": "Hi! I\u2019m Shanto\u2019s AI portfolio guide. Think of me as theSure, switching to rose pink and dialing up the playfulnessOh, done. Rose theme\u2019s on and I\u2019m feeling extra cheeky already. Shall we take this pink energy and splash it over the projects",
+        "events": [
+          "session.started",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.thinking.appended",
+          "session.instructions.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "elapsedSeconds": 29.1
+    }
+  ]
+}

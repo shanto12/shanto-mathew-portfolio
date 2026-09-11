@@ -1,0 +1,16 @@
+[
+  {
+    "site": "portfolio",
+    "deployId": "6aa41dd7e9b537de0e28c3a9",
+    "asset": "voice.js",
+    "matchesLocalSource": true,
+    "sha256": "c3ed2809e745892e4c5d53e04cf90da3699cfca45a1fc200c23374239a00094a"
+  },
+  {
+    "site": "portfolio",
+    "deployId": "6aa41dd7e9b537de0e28c3a9",
+    "asset": "voice.css",
+    "matchesLocalSource": true,
+    "sha256": "5f5a64ccfdfafcfb40fd337753f1bc0228e5b7c111609be9e21e0f00a99520a2"
+  }
+]

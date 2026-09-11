@@ -1,0 +1,1535 @@
+{
+  "testedAtCentral": "9/11/2026, 2:38:39 PM Central Time",
+  "mode": "Production GUI; microphone initially denied then synthetic media/RTC for delegated action tests; all paid API endpoints intercepted; AI responses mocked",
+  "sites": [
+    {
+      "id": "agentmart",
+      "url": "https://agentmart-live-shanto.netlify.app",
+      "checks": [
+        {
+          "name": "Page, bridge and compact avatar with failure-only recovery hint",
+          "result": "PASS"
+        },
+        {
+          "name": "Microphone denied with compact recovery hint and no paid session",
+          "result": "PASS"
+        },
+        {
+          "name": "Avatar retry, delegated site actions and seven expressions — MOCKED RTC/API",
+          "result": "PASS",
+          "detail": {
+            "transport": "Mock RTCPeerConnection and synthetic microphone, no real audio or provider call",
+            "expressions": 7
+          }
+        },
+        {
+          "name": "Five runtime effects, particle bounds, cleanup and reduced motion — MOCKED API",
+          "result": "PASS",
+          "detail": {
+            "effects": 5,
+            "particleLimit": 40,
+            "cleanupDeadlineMs": 5000,
+            "reducedMotion": "static accent; no particle overlay"
+          }
+        },
+        {
+          "name": "All catalog category tabs and counts",
+          "result": "PASS"
+        },
+        {
+          "name": "Search, no-results recovery and sorting",
+          "result": "PASS"
+        },
+        {
+          "name": "Grid/list layout toggles",
+          "result": "PASS"
+        },
+        {
+          "name": "Every sample product detail, save/unsave and acquisition flow",
+          "result": "PASS",
+          "detail": {
+            "products": 12,
+            "fulfillment": "All acquisitions local demo only"
+          }
+        },
+        {
+          "name": "Saved resources views and comparison limits",
+          "result": "PASS"
+        },
+        {
+          "name": "Create/edit/pause/resume/remove demo agent",
+          "result": "PASS"
+        },
+        {
+          "name": "Seller form validation, safe local draft, workspace and help dialogs",
+          "result": "PASS"
+        },
+        {
+          "name": "All theme swatches, undo and reset",
+          "result": "PASS"
+        },
+        {
+          "name": "All bridge navigation targets, themes, density, emotion, highlight and safe rewrite",
+          "result": "PASS",
+          "detail": {
+            "validActions": 35,
+            "rejectedActions": 5
+          }
+        },
+        {
+          "name": "Session restoration after refresh",
+          "result": "PASS"
+        },
+        {
+          "name": "Desktop screenshots, image validity and overflow",
+          "result": "PASS"
+        },
+        {
+          "name": "Mobile controls, navigation and screenshots at 390px",
+          "result": "PASS"
+        },
+        {
+          "name": "Tablet and narrow mobile overflow",
+          "result": "PASS"
+        },
+        {
+          "name": "No browser runtime errors or failed first-party resources",
+          "result": "PASS",
+          "detail": {
+            "consoleErrors": [],
+            "failedThirdPartyRequests": []
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "mockedApi": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/live",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        }
+      ],
+      "screenshots": [
+        "agentmart-desktop-initial.png",
+        "agentmart-confetti-effect.png",
+        "agentmart-sparkles-effect.png",
+        "agentmart-desktop.png",
+        "agentmart-desktop-full.png",
+        "agentmart-mobile.png",
+        "agentmart-mobile-full.png",
+        "agentmart-768px.png",
+        "agentmart-320px.png"
+      ],
+      "headers": {
+        "accept-ranges": "bytes",
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "cache-status": "\"Netlify Edge\"; fwd=stale; fwd-status=200; stored",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Fri, 11 Sep 2026 19:38:40 GMT",
+        "etag": "\"899ec116ea78845861ea8c182bf4d90d-ssl-df\"",
+        "netlify-hosting": "provider=Netlify; deploy=\"https://netlify.new/?utm_campaign=ai-legible&utm_source=header&utm_medium=referral&utm_id=96b11755-dbb1-43fa-ad22-784b95c23a6b\"",
+        "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-nf-request-id": "01M28ZNBSZ8T61JNVKTZSAZRVG"
+      },
+      "primaryControlInventory": [
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Skip to catalog",
+          "visible": true,
+          "disabled": false,
+          "href": "#main"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "amagentmartSTUDIO",
+          "visible": true,
+          "disabled": false,
+          "href": "./"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Discover",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "My resources 12",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "My agents",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "sell",
+          "text": "Become a seller ↗",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "profile",
+          "text": "S",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "◈All capabilities 12",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "▦Software 4",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "⌘APIs & data 3",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "▣Compute 3",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "⌑Equipment 2",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡Saved for later 1",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "compare-side",
+          "text": "⇄Compare 0",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "help",
+          "text": "ⓘ How AgentMart works ↗",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡ Saved",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "mobile-help",
+          "text": "ⓘ How it works",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Original sage theme",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Midnight theme",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Ocean theme",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Rose theme",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Forest theme",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "session-undo",
+          "text": "↶ Undo",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "session-reset",
+          "text": "Reset",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "grid-view",
+          "text": "▦",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "list-view",
+          "text": "☰",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "search",
+          "text": "Search products",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "sort",
+          "text": "Curated for youPrice: low to highName: A to Z",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Everything",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Software",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "APIs & data",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Compute",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Equipment",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♥",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Parallel↗A quieter place for projects, plans, and the work between.SoftwareProductivity",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Openfield↗Fresh web search. Structured answers. Room to explore.APIsWeb intelligence",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Northstar GPU↗Dedicated GPU time for ideas that need a little more power.ComputeInfrastructure",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Form Studio↗From a rough thought to a considered visual identity.SoftwareCreative tools",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Trace↗Turn complex documents into clean, useful data.APIsDocument intelligence",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Fieldbook Pro 14↗Thoughtfully built. Ready for your next chapter.EquipmentHardware",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Archive↗Give every useful idea a place to stay.SoftwareKnowledge",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Relay↗Email infrastructure that simply gets the message across.APIsCommunication",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Cedar Machines↗A clean Linux machine. Ready when your agent is.ComputeCloud compute",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Canvas 27↗More space to think. A clear view of what comes next.EquipmentWorkspace",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Harbor Storage↗A dependable home for datasets, backups, and big ideas.ComputeStorage",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "♡",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Fieldnotes↗A small space to turn observations into your next good idea.SoftwareWriting",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "+",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "clear-compare",
+          "text": "Clear",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "open-compare",
+          "text": "Compare capabilities ↗",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "×",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "✳·",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Try microphone",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Mute mic",
+          "visible": false,
+          "disabled": true,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "End",
+          "visible": false,
+          "disabled": true,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Type or view conversation ↗",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "live-message",
+          "text": "Type your question…",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "↗",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Reset view",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Page, bridge and compact avatar with failure-only recovery hint",
+          "result": "PASS"
+        },
+        {
+          "name": "Microphone denied with compact recovery hint and no paid session",
+          "result": "PASS"
+        },
+        {
+          "name": "Avatar retry, delegated site actions and seven expressions — MOCKED RTC/API",
+          "result": "PASS",
+          "detail": {
+            "transport": "Mock RTCPeerConnection and synthetic microphone, no real audio or provider call",
+            "expressions": 7
+          }
+        },
+        {
+          "name": "Five runtime effects, particle bounds, cleanup and reduced motion — MOCKED API",
+          "result": "PASS",
+          "detail": {
+            "effects": 5,
+            "particleLimit": 40,
+            "cleanupDeadlineMs": 5000,
+            "reducedMotion": "static accent; no particle overlay"
+          }
+        },
+        {
+          "name": "Every main/footer/hero section navigation and keyboard skip link",
+          "result": "PASS",
+          "detail": {
+            "links": 9
+          }
+        },
+        {
+          "name": "Every project filter and visible counts",
+          "result": "PASS"
+        },
+        {
+          "name": "All 9 project dialogs, images, external-link safety, close and Escape",
+          "result": "PASS",
+          "detail": {
+            "projects": 9,
+            "externalLinks": "URLs and rel inspected, external demo services not activated"
+          }
+        },
+        {
+          "name": "All 10 career disclosures expand/collapse",
+          "result": "PASS",
+          "detail": {
+            "count": 10
+          }
+        },
+        {
+          "name": "Local undo and reset buttons",
+          "result": "PASS"
+        },
+        {
+          "name": "All bridge navigation targets, themes, density, emotion, highlight and safe rewrite",
+          "result": "PASS",
+          "detail": {
+            "validActions": 22,
+            "rejectedActions": 5
+          }
+        },
+        {
+          "name": "Session restoration after refresh",
+          "result": "PASS"
+        },
+        {
+          "name": "Desktop screenshots, image validity and overflow",
+          "result": "PASS"
+        },
+        {
+          "name": "Mobile controls, navigation and screenshots at 390px",
+          "result": "PASS"
+        },
+        {
+          "name": "Tablet and narrow mobile overflow",
+          "result": "PASS"
+        },
+        {
+          "name": "No browser runtime errors or failed first-party resources",
+          "result": "PASS",
+          "detail": {
+            "consoleErrors": [],
+            "failedThirdPartyRequests": []
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "mockedApi": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/live",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST",
+          "label": "INTERCEPTED — no backend/model call"
+        }
+      ],
+      "screenshots": [
+        "portfolio-desktop-initial.png",
+        "portfolio-confetti-effect.png",
+        "portfolio-sparkles-effect.png",
+        "portfolio-desktop.png",
+        "portfolio-desktop-full.png",
+        "portfolio-mobile.png",
+        "portfolio-mobile-full.png",
+        "portfolio-768px.png",
+        "portfolio-320px.png"
+      ],
+      "headers": {
+        "accept-ranges": "bytes",
+        "age": "30",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "cache-status": "\"Netlify Edge\"; hit; ttl=31535970",
+        "content-encoding": "br",
+        "content-length": "3262",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Fri, 11 Sep 2026 19:39:22 GMT",
+        "etag": "\"e9e8f34e950b3c8a632c5e8e3b9a2725-ssl-df\"",
+        "netlify-hosting": "provider=Netlify; deploy=\"https://netlify.new/?utm_campaign=ai-legible&utm_source=header&utm_medium=referral&utm_id=296ec6fb-3f43-4253-9aad-c55f677685d0\"",
+        "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-nf-request-id": "01M28ZPN0J8G50NHEVPWHN90FQ"
+      },
+      "primaryControlInventory": [
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Skip to selected work",
+          "visible": true,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "SM✳SHANTOMATHEW",
+          "visible": true,
+          "disabled": false,
+          "href": "#home"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Selected work",
+          "visible": false,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "The person",
+          "visible": false,
+          "disabled": false,
+          "href": "#story"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Experience",
+          "visible": false,
+          "disabled": false,
+          "href": "#experience"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Let’s talk ↗",
+          "visible": false,
+          "disabled": false,
+          "href": "#contact"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "menu-toggle",
+          "text": "Menu +",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Explore the work ↗",
+          "visible": true,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "undo-changes",
+          "text": "Undo",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "reset-changes",
+          "text": "Reset page ↺",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "All work 09",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Voice AI",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Security",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Agents",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Creative",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "01 / FIELD NOTES↗Voice & experienceNocturne / Poe ConciergeA hospitality interface that brings rooms",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "02 / FIELD NOTES↗Security & applied AISOC AI / Analyst workflowAn inspectable incident workflow conn",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "03 / FIELD NOTES↗Voice & learningY22 / Voice roleplayA voice-led practice environment for personas, ",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "04 / FIELD NOTES↗Agents & operationsRevenue Ops / WorkbenchA workspace for buyer-intent context, cam",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "05 / FIELD NOTES↗Voice & deliveryForwardOps / Pilot deliveryA forward-deployed pilot workspace for s",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "06 / FIELD NOTES↗Voice & deliveryVoice AI / Launch consoleA launch-room interface for readiness, sce",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "07 / FIELD NOTES↗Voice & navigationGrok / Experience navigatorA voice-guided experience center that ",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "08 / FIELD NOTES↗Voice & operationsGrok / Medical front deskA synthetic front-desk console exploring",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "09 / FIELD NOTES↗Creative systemsFlux Atlas / Creative codingA generative flow field with live motio",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jul 2026 — PresentWells FargoForward Deployed Engineer / AI Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jan 2026 — PresentCDWSenior SOAR Engineer / AI Security Automation",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jun 2024 — Sep 2025Bank of AmericaSenior SOAR Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Jan 2024 — May 2024MastercardSenior Information Security Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Aug 2022 — Jan 2024Heritage BankSenior Security Automation Specialist",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Apr 2022 — Aug 2022BHPData Scientist",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Nov 2019 — Apr 2022SplunkSenior Security Solutions Engineer / Professional Services Consultant",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Oct 2018 — Jun 2019NBNSecurity Automation Engineer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Aug 2012 — Sep 2018Commonwealth Bank of AustraliaSupport Engineer → Python Developer",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "text": "Feb 2011 — Jul 2012Rogers CommunicationTester",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Find me on LinkedIn ↗",
+          "visible": true,
+          "disabled": false,
+          "href": "https://www.linkedin.com/in/shanto-mathew/"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Explore my GitHub ↗",
+          "visible": true,
+          "disabled": false,
+          "href": "https://github.com/shanto12"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "SHANTO MATHEW ✳",
+          "visible": true,
+          "disabled": false,
+          "href": "#home"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "BACK TO TOP ↑",
+          "visible": true,
+          "disabled": false,
+          "href": "#home"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "close-project",
+          "text": "×",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "close-navigation",
+          "text": "×",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Selected work ↗",
+          "visible": false,
+          "disabled": false,
+          "href": "#work"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "The person ↗",
+          "visible": false,
+          "disabled": false,
+          "href": "#story"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Experience ↗",
+          "visible": false,
+          "disabled": false,
+          "href": "#experience"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "text": "Let’s talk ↗",
+          "visible": false,
+          "disabled": false,
+          "href": "#contact"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "✳·",
+          "visible": true,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Try microphone",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Mute mic",
+          "visible": false,
+          "disabled": true,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "End",
+          "visible": false,
+          "disabled": true,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Type or view conversation ↗",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "live-message",
+          "text": "Type your question…",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "↗",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "text": "Reset view",
+          "visible": false,
+          "disabled": false,
+          "href": null
+        }
+      ]
+    }
+  ]
+}
