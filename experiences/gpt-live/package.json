@@ -1,0 +1,21 @@
+{
+  "name": "live-site-guide",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && node --check public/voice.js",
+    "test": "tsx --test test/*.test.ts",
+    "verify": "npm run build && npm test"
+  },
+  "dependencies": {
+    "@netlify/blobs": "11.0.3",
+    "@netlify/functions": "6.0.0",
+    "ws": "8.21.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.2",
+    "@types/ws": "8.18.1",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2"
+  }
+}

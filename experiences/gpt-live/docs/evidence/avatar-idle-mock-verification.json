@@ -1,0 +1,43 @@
+{
+  "checkedAtCentral": "9/11/2026, 10:55:27 AM Central Time",
+  "result": "PASS",
+  "checks": 32,
+  "scope": "Isolated Chrome with mocked HTTP/media; timer/effect suite uses virtual clock. No paid API calls. This is not production evidence.",
+  "runtimeSha256": "1231985bc345b6bf61ba87254b6991ddc5667ac5dd47189ec4c772890ecb2952",
+  "timerAndEffectChecks": [
+    "Explicit microphone denial recorded",
+    "No invitation after explicit denial",
+    "Pending permission invitation fires once at18s",
+    "Invitation never retries",
+    "First nudge at20s",
+    "AI output does not reset visitor inactivity",
+    "Second nudge at50s",
+    "Inactivity cutoff does not fire before180s",
+    "180s visitor inactivity requests closure",
+    "Closure cleanup clears timers",
+    "Muted session suppresses idle nudges",
+    "Effect accepted: confetti",
+    "Confetti particle cap32",
+    "Effect accepted: sparkles",
+    "Sparkles replace old particles",
+    "Effect accepted: bounce",
+    "Effect accepted: spotlight",
+    "Spotlight prefers visible card",
+    "Effect accepted: clear",
+    "Clear removes effects",
+    "Effects auto-clean within5s",
+    "Status is screen-reader-only",
+    "Single visible avatar button",
+    "100px desktop",
+    "76px mobile",
+    "Reduced-motion static accent auto-cleanup"
+  ],
+  "avatarControlChecks": [
+    "Avatar click mutes microphone and updates accessible label",
+    "Keyboard Space unmutes microphone",
+    "Avatar click resumes blocked audio instead of toggling mute",
+    "Escape ends conversation and still dismisses native dialog",
+    "Provider close cleans microphone and enables reconnect",
+    "Disconnected avatar starts one new voice session"
+  ]
+}

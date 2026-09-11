@@ -1,0 +1,90 @@
+{
+  "checkedAtCentral": "2026-09-11T10:38:33.760943-05:00",
+  "audits": [
+    {
+      "site": "portfolio",
+      "command": "npm audit --omit=dev --json",
+      "exitCode": 0,
+      "auditReportVersion": 2,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 50,
+        "dev": 53,
+        "optional": 47,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 102
+      }
+    }
+  ],
+  "credentialScan": [
+    {
+      "site": "portfolio",
+      "candidateFiles": 40,
+      "publicFiles": 18,
+      "scannedFiles": 40,
+      "credentialPatternFindings": [],
+      "scope": "Git tracked plus untracked nonignored app candidates and all public assets; patterns only, never secret values"
+    }
+  ],
+  "synchronizedFiles": [
+    {
+      "file": "netlify/functions/api.mts",
+      "bothCopiesMatch": true,
+      "sha256": "dfb35332fdd8f0ad5c5ccf3c82e9927c964d9a5315925a91e932aaaa98204030"
+    },
+    {
+      "file": "netlify/functions/watchdog-background.mts",
+      "bothCopiesMatch": true,
+      "sha256": "e42ad96c8fc001cddccd4b6f1bef7877f12259eb8ace13c50dec06b8e65b2ea3"
+    },
+    {
+      "file": "netlify/functions/policy.mts",
+      "bothCopiesMatch": true,
+      "sha256": "d8b2aa2499dbdc76808f3bcd6065ec2430532cbbaf72f8fee52128bdc9ce88e0"
+    },
+    {
+      "file": "public/voice.js",
+      "bothCopiesMatch": true,
+      "sha256": "e9b7c37fe713c75ad07d40ddaf88177205a05168ab5afac1ecfc7cc6e43301e7"
+    },
+    {
+      "file": "public/voice.css",
+      "bothCopiesMatch": true,
+      "sha256": "5f5a64ccfdfafcfb40fd337753f1bc0228e5b7c111609be9e21e0f00a99520a2"
+    },
+    {
+      "file": "test/watchdog.test.ts",
+      "bothCopiesMatch": true,
+      "sha256": "4607c9a83df4ad9f639bcb52e93dfc7c458b8d6f75ab4ea9df5283eddb44943a"
+    }
+  ],
+  "scope": "Read-only review of local synchronized release candidates; npm registry audit. No paid API calls or remote configuration changes.",
+  "lifecycleReview": {
+    "reviewedAtCentral": "2026-09-11T10:41:05.899223-05:00",
+    "shutdownRace": "Fixed in canonical shared/public/voice.js and verified in isolated Chrome with all HTTP and media mocked.",
+    "regressionChecks": [
+      "Ending blocks late delegation without creating a new chat permit",
+      "Ending blocks typed input, suggestions and restart",
+      "Ending blocks sideband append sends",
+      "Provider close cleans tracks",
+      "Stale peer events cannot create another session",
+      "Intentional text conversation after completed shutdown works",
+      "New voice start restores Mute microphone accessible label"
+    ],
+    "paidApiCalls": 0,
+    "residuals": [
+      "Provider closure can remain unconfirmed during transport/provider failures; known session_id_not_found is recorded separately without invented usage or refunded reservation.",
+      "The finite public admission envelope can be consumed by public visitors; Origin validation is not account authentication.",
+      "The application reservation/deadline controls are not a provider-enforced hard billing cap."
+    ],
+    "codeEdits": "Only canonical shared/public/voice.js modified after explicit parent authorization; parent handles synchronization and deployment."
+  }
+}

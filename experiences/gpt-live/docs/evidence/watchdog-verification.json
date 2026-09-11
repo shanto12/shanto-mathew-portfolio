@@ -1,0 +1,282 @@
+{
+  "url": "https://shanto-portfolio-live.netlify.app",
+  "testedAtCentral": "9/11/2026, 10:12:40 AM Central Time",
+  "mode": "Actual deployed server watchdog test with only the 110-second browser close timer suppressed; isolated Chrome and silent fake microphone. No server controls or API responses bypassed.",
+  "requests": [
+    {
+      "endpoint": "/api/live",
+      "method": "POST",
+      "elapsedSeconds": 5.281,
+      "at": 1789139567666
+    }
+  ],
+  "liveRequests": 1,
+  "checks": [
+    {
+      "name": "Actual voice session started and exactly the 110-second client timer was suppressed",
+      "result": "PASS"
+    },
+    {
+      "name": "Provider session.closed confirms server-initiated close near the 120-second reservation deadline",
+      "result": "PASS"
+    },
+    {
+      "name": "Provider close event triggered complete application microphone/peer cleanup",
+      "result": "PASS"
+    },
+    {
+      "name": "Actual incoming WebRTC audio bytes and non-silent greeting observed",
+      "result": "PASS"
+    }
+  ],
+  "pageErrors": [],
+  "httpErrors": [],
+  "liveRequestAt": 1789139567666,
+  "observed": {
+    "startedAt": 1789139570326,
+    "closed": {
+      "at": 1789139688414,
+      "reason": "close_requested",
+      "usageSeconds": 117
+    },
+    "suppressedTimers": [
+      {
+        "delay": 110000,
+        "at": 1789139569983
+      }
+    ],
+    "stats": [
+      {
+        "type": "inbound-rtp",
+        "kind": "audio",
+        "bytesReceived": 470935,
+        "packetsReceived": 5826,
+        "packetsLost": 0,
+        "jitter": 0,
+        "totalAudioEnergy": 1.216718115287528,
+        "totalSamplesDuration": 117.41000000002316
+      },
+      {
+        "type": "outbound-rtp",
+        "kind": "audio",
+        "bytesSent": 205201,
+        "packetsSent": 5932
+      }
+    ],
+    "sentEvents": [
+      {
+        "type": "session.instructions.append",
+        "at": 1789139570328
+      },
+      {
+        "type": "session.commentary.append",
+        "at": 1789139571342
+      }
+    ],
+    "events": [
+      {
+        "type": "session.started",
+        "at": 1789139570326
+      },
+      {
+        "type": "session.instructions.appended",
+        "at": 1789139571342
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139571851
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139572050
+      },
+      {
+        "type": "session.commentary.appended",
+        "at": 1789139572052
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139572245
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139572420
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139572843
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139573032
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139573624
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139574238
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139574445
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139574643
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139574849
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139575041
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139575417
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139575842
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139576042
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139576657
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139576847
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139577071
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139577248
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139577635
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139578459
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139578658
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139578857
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139579064
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139579267
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139579456
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139579851
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139580666
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139580838
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139581235
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139581858
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139582049
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139582248
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139582463
+      },
+      {
+        "type": "session.output_transcript.delta",
+        "at": 1789139582623
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139583234
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139598236
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139613235
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139628234
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139643236
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139658234
+      },
+      {
+        "type": "session.usage.updated",
+        "at": 1789139673234
+      },
+      {
+        "type": "session.closed",
+        "at": 1789139688414
+      }
+    ],
+    "outputTranscript": " Hi! I\u2019m Shanto\u2019s AI portfolio guide. Think of me as the tour guide who actually knows where the good stuff is. So, are you here for the AI projects, the engineering story, or a little of both?",
+    "inputTranscript": "",
+    "rmsMax": 0.228121092003778,
+    "audibleSamples": 108,
+    "localTracks": [
+      "ended"
+    ],
+    "remoteTracks": [
+      "ended"
+    ],
+    "connections": [
+      "closed"
+    ],
+    "status": "Conversation ended",
+    "error": ""
+  },
+  "requestToProviderCloseSeconds": 120.748,
+  "connectedToProviderCloseSeconds": 118.088,
+  "elapsedSeconds": 126.436,
+  "hardTimedOut": false
+}

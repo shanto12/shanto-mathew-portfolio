@@ -1,0 +1,268 @@
+{
+  "testedAtCentral": "9/11/2026, 10:59:16 AM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-live.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Synthetic spoken visitor request is transcribed over the real WebRTC connection",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken request changes the page and expressive avatar",
+          "result": "PASS"
+        },
+        {
+          "name": "Spoken navigation and confetti effect apply through the real planner",
+          "result": "PASS"
+        },
+        {
+          "name": "Portfolio guide explains Shanto\u2019s professional fit through real voice delegation",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "liveRequests": 1,
+      "greeting": {
+        "transcript": "Hi, I\u2019m Pip, Shanto\u2019s AI wingman. He",
+        "rmsMax": 0.20493430184632552,
+        "audibleSamples": 26,
+        "recordedBytes": 54002,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "voiceInputTranscript": " Change this website to rose pink, look playful, show selected work, and",
+      "spokenActionState": {
+        "section": "work",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I\u2019m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "playful",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel \u00b7 Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "pageState": {
+        "section": "work",
+        "theme": "rose",
+        "density": "comfortable",
+        "filter": "all",
+        "hero": "I\u2019m Shanto. I connect AI, security and software to the real work people need to do.",
+        "emotion": "playful",
+        "highlight": null,
+        "project": null,
+        "availableFilters": [
+          "all",
+          "voice",
+          "security",
+          "agents",
+          "creative"
+        ],
+        "canUndo": true,
+        "visibleProjects": [
+          "Nocturne Hotel \u00b7 Poe Concierge",
+          "SOC AI Agent Demo",
+          "Y22 Roleplay",
+          "Agentic Marketing Operations Workbench",
+          "ForwardOps Voice Pilot Command Center",
+          "Enterprise Voice AI Launch Console",
+          "Grok Experience Navigator",
+          "Grok Medical Front Desk",
+          "Flux Atlas"
+        ]
+      },
+      "effects": [
+        "confetti"
+      ],
+      "careerPitch": "Okay,Ta-da! Rose glow on, playful face engaged, work section up... And just a teeny confetti burst. No one saw me, promise. Heh. Quick version: he's that rare blend of strong Python,",
+      "beforeEnd": {
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 190834,
+            "packetsReceived": 1465,
+            "packetsLost": 0,
+            "jitter": 0.001,
+            "totalAudioEnergy": 1.677029744334792,
+            "totalSamplesDuration": 30.710000000002
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 73200,
+            "packetsSent": 1542
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.20493430184632552,
+        "audibleSamples": 207,
+        "remoteBytes": 479823,
+        "transcript": "You:  Change this website to rose pink, look playful, show selected work, and celebrate with confettiGuide: Oh, absolutely? Getting that rose glow on.Okay,Ta-da! Rose glowYou:  Why isGuide:  on,You:  Shanto, for aGuide:  playful faceYou:  senior AIGuide:  engaged,You:  engineerGuide:  workYou:  roleGuide:  sectionYou: , please keep itGuide:  up...You:  briefGuide:  And just a teeny confetti burst. No one saw me, promise. Heh. Quick version: he's that rare blend of strong Python,",
+        "inputTranscript": " Change this website to rose pink, look playful, show selected work, and celebrate with confetti Why is Shanto, for a senior AI engineer role, please keep it brief",
+        "outputTranscript": "Hi, I\u2019m Pip, Shanto\u2019s AI wingman. He builds the systems.Oh, absolutely? Getting that rose glow on.Okay,Ta-da! Rose glow on, playful face engaged, work section up... And just a teeny confetti burst. No one saw me, promise. Heh. Quick version: he's that rare blend of strong Python,",
+        "events": [
+          "session.started",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "elapsedSeconds": 36
+    }
+  ]
+}

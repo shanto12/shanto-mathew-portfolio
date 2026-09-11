@@ -1,0 +1,166 @@
+{
+  "scope": "Final release ledger snapshot; known voice cost only, not total API bill",
+  "records": [
+    {
+      "site": "agentmart",
+      "admissions": 6,
+      "reservedUSD": 3,
+      "remainingAdmissions": 2,
+      "knownVoiceUSD": 0.1825,
+      "sessions": [
+        {
+          "slot": 0,
+          "voice": true,
+          "closed": false,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": null,
+          "finalization": "provider_unavailable",
+          "watchdogReason": "session_id_not_found",
+          "providerUnavailable": true
+        },
+        {
+          "slot": 1,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 79,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 2,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 37,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 3,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 16,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 4,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 15,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 5,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 72,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        }
+      ]
+    },
+    {
+      "site": "portfolio",
+      "admissions": 7,
+      "reservedUSD": 3.5,
+      "remainingAdmissions": 1,
+      "knownVoiceUSD": 0.29083333333333333,
+      "sessions": [
+        {
+          "slot": 0,
+          "voice": true,
+          "closed": false,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": null,
+          "finalization": "provider_unavailable",
+          "watchdogReason": "session_id_not_found",
+          "providerUnavailable": true
+        },
+        {
+          "slot": 1,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 20,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 2,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 52,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 3,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 109,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 4,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 109,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 5,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 29,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        },
+        {
+          "slot": 6,
+          "voice": true,
+          "closed": true,
+          "stopRequested": true,
+          "ready": false,
+          "usageSeconds": 30,
+          "finalization": "confirmed",
+          "watchdogReason": "close_requested",
+          "providerUnavailable": false
+        }
+      ]
+    }
+  ]
+}
