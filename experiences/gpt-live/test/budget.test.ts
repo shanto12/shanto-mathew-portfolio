@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {BUDGET_KEY,inspectBudget,reserveAdmission,type BudgetStore} from '../netlify/functions/budget.mjs';
+import {BUDGET_KEY,inspectBudget,reserveAdmission,budgetConfig,type BudgetStore} from '../netlify/functions/budget.mjs';
 const NOW=1_000_000;
+const expanded=budgetConfig('portfolio',key=>({LIVE_TOTAL_APPROVED_USD:'20',LIVE_AGENTMART_BUDGET_USD:'9',LIVE_PORTFOLIO_BUDGET_USD:'9'} as Record<string,string>)[key]);
 function session(overrides:Record<string,unknown>={}){return {tokenHash:'a'.repeat(64),createdAt:1,deadline:120001,sessionId:'test-session',closed:true,usageFinal:true,finalization:'confirmed',usageSeconds:15,...overrides};}
 class MemoryStore implements BudgetStore {
  values=new Map<string,{data:unknown;etag:string}>();counter=0;ambiguous=false;conflicts=0;
@@ -27,15 +28,15 @@ test('concurrent first reservations serialize bootstrap and cannot overspend or 
  const store=new MemoryStore();const original=structuredClone([...store.values]);
  const results=await Promise.allSettled(Array.from({length:12},()=>reserveAdmission(store,NOW)));
  const admissions=results.filter((r):r is PromiseFulfilledResult<Awaited<ReturnType<typeof reserveAdmission>>>=>r.status==='fulfilled');
- assert.deepEqual(admissions.map(r=>r.value.slot).sort((a,b)=>a-b),[8,9,10,11]);
- const current=await inspectBudget(store,NOW);assert.equal(current.reservedMicros,3700000);assert.equal(current.remainingMicros,300000);assert.equal(current.voiceAvailable,false);
+ assert.deepEqual(admissions.map(r=>r.value.slot).sort((a,b)=>a-b),[8]);
+ const current=await inspectBudget(store,NOW);assert.equal(current.reservedMicros,2950000);assert.equal(current.remainingMicros,1050000);assert.equal(current.voiceAvailable,false);
  for(const [key,value]of original)assert.deepEqual(store.values.get(key),value);
 });
 test('settlement is applied once; later requests do not repeatedly refund the same session',async()=>{
- const store=new MemoryStore();await reserveAdmission(store,NOW);await reserveAdmission(store,NOW);
- const info=await inspectBudget(store,NOW);assert.equal(info.reservedMicros,2700000);
+ const store=new MemoryStore();await reserveAdmission(store,NOW,expanded);await reserveAdmission(store,NOW,expanded);
+ const info=await inspectBudget(store,NOW);assert.equal(info.reservedMicros,4200000);
  store.put('sessions/0',session({usageSeconds:0}));
- assert.equal((await inspectBudget(store,NOW)).reservedMicros,2700000);
+ assert.equal((await inspectBudget(store,NOW)).reservedMicros,4200000);
 });
 test('unknown close and unavailable-provider states retain complete holds',async()=>{
  const store=new MemoryStore({closed:false,usageFinal:false,providerUnavailable:true,finalization:'provider_unavailable'});
@@ -61,8 +62,8 @@ test('missing/malformed history, corrupt accounting and missing etags fail close
  for(const bad of [null,{}, {version:1,nextSlot:8,entries:{}},{version:1,nextSlot:101,entries:{}}, {version:1,nextSlot:8,entries:Object.fromEntries(Array.from({length:8},(_,n)=>[n,{chargeMicros:-1,settled:true}]))}]){
   const s=new MemoryStore();s.put(BUDGET_KEY,bad);await assert.rejects(reserveAdmission(s,NOW),/accounting/);
  }
- const s=new MemoryStore();s.ambiguous=true;await assert.rejects(reserveAdmission(s,NOW),/confirm/);
- s.ambiguous=false;const next=await reserveAdmission(s,NOW);assert.equal(next.slot,9);
+ const s=new MemoryStore();s.ambiguous=true;await assert.rejects(reserveAdmission(s,NOW,expanded),/confirm/);
+ s.ambiguous=false;const next=await reserveAdmission(s,NOW,expanded);assert.equal(next.slot,9);
  const ledger=s.values.get(BUDGET_KEY)!;ledger.etag='';await assert.rejects(inspectBudget(s,NOW),/confirmed/);
 });
 test('nonfinal/invalid usage does not release holds and slot ceiling stays finite',async()=>{
@@ -76,4 +77,45 @@ test('CAS contention failure creates no reusable slot or accidental budget debit
  const store=new MemoryStore();store.conflicts=20;await assert.rejects(reserveAdmission(store,NOW),/busy/);
  assert.equal(store.values.has(BUDGET_KEY),false);
  store.conflicts=0;assert.equal((await reserveAdmission(store,NOW)).slot,8);
+});
+
+test('approved allocation defaults stay at $10 total; explicit tiers never remove the development hold',()=>{
+ const defaults=budgetConfig('portfolio');assert.equal(defaults.siteBudgetMicros,4_000_000);assert.equal(defaults.totalApprovedMicros,10_000_000);assert.equal(defaults.developmentHoldMicros,2_000_000);
+ assert.equal(expanded.siteBudgetMicros,9_000_000);
+ for(const values of [{LIVE_TOTAL_APPROVED_USD:'11'},{LIVE_TOTAL_APPROVED_USD:'31'},{LIVE_TOTAL_APPROVED_USD:'20',LIVE_PORTFOLIO_BUDGET_USD:'15'},{LIVE_PORTFOLIO_BUDGET_USD:'4.001'},{LIVE_PORTFOLIO_BUDGET_USD:'NaN'},{LIVE_PORTFOLIO_BUDGET_USD:'-1'},{LIVE_PORTFOLIO_BUDGET_USD:''}])assert.throws(()=>budgetConfig('portfolio',key=>(values as Record<string,string>)[key]),/budget/);
+ assert.throws(()=>budgetConfig('unknown'),/allocation/);
+ const tier30=budgetConfig('agentmart',key=>({LIVE_TOTAL_APPROVED_USD:'30',LIVE_AGENTMART_BUDGET_USD:'14',LIVE_PORTFOLIO_BUDGET_USD:'14'} as Record<string,string>)[key]);
+ assert.equal(tier30.agentmartBudgetMicros+tier30.portfolioBudgetMicros+tier30.developmentHoldMicros,tier30.totalApprovedMicros);
+});
+test('migration preserves old settled floors, unresolved holds and the append-only slot sequence',async()=>{
+ const store=new MemoryStore();
+ const entries=Object.fromEntries(Array.from({length:14},(_,n)=>[String(n),n===12?{chargeMicros:500_000,settled:false}:{chargeMicros:212_500,settled:true}]));
+ store.put(BUDGET_KEY,{version:1,nextSlot:14,entries});
+ const history=structuredClone([...store.values].filter(([key])=>key.startsWith('sessions/')));
+ const admitted=await reserveAdmission(store,NOW,expanded);assert.equal(admitted.slot,14);
+ const current=(await inspectBudget(store,NOW,expanded)).ledger;
+ for(let n=0;n<14;n++)assert.deepEqual(current.entries[String(n)],entries[String(n)]);
+ assert.deepEqual(current.entries['14'],{chargeMicros:1_250_000,settled:false,reservationMicros:1_250_000,plannerHoldMicros:600_000});
+ assert.deepEqual([...store.values].filter(([key])=>key.startsWith('sessions/')),history);
+});
+test('ten minute settlement reserves every planner request and waits for confirmed final usage plus grace',async()=>{
+ const store=new MemoryStore();await reserveAdmission(store,NOW,expanded);
+ const deadline=NOW+600_000;
+ store.put('sessions/8',session({createdAt:NOW,deadline,usageSeconds:600}));
+ const before=await inspectBudget(store,deadline+29_999,expanded);assert.equal(before.ledger.entries['8']!.chargeMicros,1_250_000);assert.equal(before.ledger.entries['8']!.settled,false);
+ const after=await inspectBudget(store,deadline+30_000,expanded);assert.equal(after.ledger.entries['8']!.chargeMicros,1_100_000);assert.equal(after.ledger.entries['8']!.plannerHoldMicros,600_000);
+ store.put('sessions/8',session({createdAt:NOW,deadline,usageSeconds:0}));assert.equal((await inspectBudget(store,deadline+30_000,expanded)).ledger.entries['8']!.chargeMicros,612_500);
+ store.put('sessions/8',session({createdAt:NOW,deadline,usageSeconds:900}));assert.equal((await inspectBudget(store,deadline+30_000,expanded)).ledger.entries['8']!.chargeMicros,1_350_000);
+});
+test('new-policy corrupted holds cannot be read as cheaper legacy entries',async()=>{
+ for(const entry of [{chargeMicros:500_000,settled:false,reservationMicros:1_250_000,plannerHoldMicros:600_000},{chargeMicros:212_500,settled:true,reservationMicros:1_250_000,plannerHoldMicros:600_000},{chargeMicros:1_250_000,settled:false,reservationMicros:1_250_000}]){
+  const store=new MemoryStore();const entries=Object.fromEntries(Array.from({length:8},(_,n)=>[n,n===0?entry:{chargeMicros:212_500,settled:true}]));store.put(BUDGET_KEY,{version:1,nextSlot:8,entries});await assert.rejects(inspectBudget(store,NOW),/accounting/);
+ }
+});
+test('concurrent longer admissions enforce the configured ceiling across mixed policy histories',async()=>{
+ const store=new MemoryStore();const results=await Promise.allSettled(Array.from({length:12},()=>reserveAdmission(store,NOW,expanded)));
+ assert.equal(results.filter(result=>result.status==='fulfilled').length,5);
+ const info=await inspectBudget(store,NOW,expanded);assert.equal(info.reservedMicros,7_950_000);assert.equal(info.remainingMicros,1_050_000);assert.equal(info.voiceAvailable,false);
+ // A lower allocation preserves every existing debit and refuses new starts.
+ assert.equal((await inspectBudget(store,NOW)).reservedMicros,7_950_000);await assert.rejects(reserveAdmission(store,NOW),/approved usage/);
 });

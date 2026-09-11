@@ -15,8 +15,8 @@ type SessionRecord = {
   [key: string]: unknown;
 };
 
-const MAX_SESSION_MS = 120_000;
-const MAX_WATCHDOG_MS = 8 * 60_000;
+const MAX_SESSION_MS = 600_000;
+const MAX_WATCHDOG_MS = 14 * 60_000;
 const POLL_MS = 2_000;
 const STORE_TIMEOUT_MS = 4_000;
 const sleep = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms));

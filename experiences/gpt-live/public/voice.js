@@ -207,30 +207,43 @@ function emotion(value) {
   q('.live-face').setAttribute('aria-label',`Your AI guide, feeling ${value}`);
 }
 function cleanup() {
+  // Detach this generation before closing resources: close() may synchronously
+  // dispatch another connection event, and one broken resource must not leave
+  // the existing avatar permanently disabled in its ending state.
+  const oldPeer=peer,oldChannel=channel,oldMic=mic,oldAudio=visualAudio;
+  peer=channel=mic=visualAudio=undefined;sessionReady=connecting=ending=false;
+  generation++;requestController?.abort();token=undefined;queue=Promise.resolve();
+  clearTimeout(timer);clearTimeout(closeTimer);cancelAnimationFrame(visualFrame);
   clearVisitorTimers();cancelPermissionPrompt();clearAwareness();
-  generation++;requestController?.abort();token=undefined;
-  clearTimeout(timer);clearTimeout(closeTimer);cancelAnimationFrame(visualFrame);visualAudio?.close().catch(()=>{});visualAudio=undefined;root.classList.remove('speaking');root.style.setProperty('--voice-energy','0');
-  mic?.getTracks().forEach(track => track.stop());
-  channel?.close(); peer?.close(); audio.srcObject = null;
-  peer = channel = mic = undefined; sessionReady = connecting = false; ending = false;
-  q('.live-start').disabled = false; q('.live-start').textContent = 'Talk again';
-  q('.live-mute').disabled = true; q('.live-stop').disabled = true;
-  root.classList.remove('connected');audioBlocked=false;muted=false;clearEffects();refreshAvatar();
+  try{oldAudio?.close()?.catch(()=>{});}catch{}
+  for(const track of oldMic?.getTracks()||[]){try{track.stop();}catch{}}
+  try{oldChannel?.close();}catch{}
+  try{oldPeer?.close();}catch{}
+  try{audio.srcObject=null;}catch{}
+  root.classList.remove('speaking','connected');root.style.setProperty('--voice-energy','0');
+  q('.live-start').disabled=false;q('.live-start').textContent='Talk again';
+  q('.live-mute').disabled=true;q('.live-stop').disabled=true;
+  audioBlocked=false;muted=false;clearEffects();refreshAvatar();
 }
 async function end(options = {}) {
   if(ending)return;
   if(options?.preserveRecovery !== true) { recoveryMessage='';q('.live-error').textContent=''; }
   ending=true;clearEffects();clearVisitorTimers();cancelPermissionPrompt();clearAwareness();
   generation++;requestController?.abort();queue=Promise.resolve();
-  const activeToken = token; token = undefined;
-  if (sessionReady) channel?.send(JSON.stringify({type:'session.close', event_id:crypto.randomUUID()}));
+  const activeToken=token,closingPeer=peer,closingGeneration=generation;token=undefined;
   status(sessionReady?'Ending conversation…':'Conversation ended');
   q('.live-stop').disabled=true;q('.live-mute').disabled=true;
   mic?.getAudioTracks().forEach(track=>track.enabled=false);
-  // The server owns the session deadline, even when this page disappears.
-  if (activeToken) fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:activeToken}),keepalive:true}).catch(()=>{});
-  if(sessionReady)closeTimer=setTimeout(()=>{cleanup();status('Disconnected');},5000);
-  else cleanup();
+  // Arm local recovery before attempting a potentially failed data-channel send.
+  // The provider watchdog remains responsible for authoritative session closure.
+  if(sessionReady)closeTimer=setTimeout(()=>{
+    if(closingGeneration!==generation||closingPeer!==peer)return;
+    cleanup();status('Disconnected');
+  },5000);
+  if(activeToken)fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:activeToken}),keepalive:true}).catch(()=>{});
+  if(sessionReady){
+    try{if(channel?.readyState==='open')channel.send(JSON.stringify({type:'session.close',event_id:crypto.randomUUID()}));}catch{/* The fallback releases local resources even after a failed send. */}
+  }else cleanup();
 }
 async function act(message, delegationId = null, expectedGeneration = generation, options = {}) {
   if(ending||expectedGeneration!==generation||(options.proactive&&!token))return;
@@ -301,6 +314,7 @@ async function start() {
     channel.addEventListener('message',({data})=>{
       if(connection!==peer)return;
       let event; try {event=JSON.parse(data);} catch {return;}
+      if(ending&&event.type!=='session.closed')return;
       if(event.type==='session.started') {
         sessionReady=true; connecting=false; recoveryMessage='';q('.live-error').textContent='';root.classList.add('connected'); status('Listening · you can interrupt');
         idleNudges=0;lastProactiveAt=Date.now();lastSpeechAt=Date.now();visitorActivity();publishContext();

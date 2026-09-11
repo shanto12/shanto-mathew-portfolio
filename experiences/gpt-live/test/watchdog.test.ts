@@ -18,6 +18,7 @@ const mode = process.argv[2];
 const stop = mode === 'stop';
 const race = mode === 'race';
 const maxClamp = mode === 'deadline';
+const fullDuration = mode === 'full-duration';
 const unavailable = mode === 'unavailable';
 const unexpectedCode = mode === 'unexpected-code';
 const pendingError = mode === 'pending-error';
@@ -36,7 +37,7 @@ function schedule(callback, delay = 0, repeat = false, args = []) {
 async function runWithClock(promise) {
   let settled = false, value, failure;
   promise.then(result => { value = result; settled = true; }, error => { failure = error; settled = true; });
-  for (let step = 0; step < 1000 && !settled; step++) {
+  for (let step = 0; step < 5000 && !settled; step++) {
     // Mock websocket events use microtasks. Yield to the host event loop so
     // all request-body, store, websocket, and persistence chains settle first.
     await new Promise(setImmediate);
@@ -56,8 +57,8 @@ async function runWithClock(promise) {
 }
 let record = {
   sessionId: 'live_test', tokenHash: 'test-reservation-identity',
-  createdAt: virtualNow - (maxClamp ? 119000 : 0),
-  deadline: virtualNow + (maxClamp ? 60000 : 2000),
+  createdAt: virtualNow - (maxClamp ? 599000 : 0),
+  deadline: virtualNow + (maxClamp ? 60000 : fullDuration ? 600000 : 2000),
   closed: false, stopRequested: stop, ready: false,
 };
 let version = 1;
@@ -184,7 +185,7 @@ if (unavailable || unexpectedCode) {
     assert.equal(record.providerUnavailable, undefined);
     assert.equal(record.finalization, 'unconfirmed');
     assert.equal(record.watchdogReason, 'close_unconfirmed');
-    assert.ok(virtualNow - began >= 480000, 'Unknown 404 should retry up to the bounded watchdog deadline');
+    assert.ok(virtualNow - began >= 840000, 'Unknown 404 should retry up to the bounded watchdog deadline');
   }
 } else {
 assert.equal(sent, 1);
@@ -207,16 +208,18 @@ if (!race && !stop) {
   assert.equal(becameReady, true);
   assert.ok(pings > 0, 'Readiness must confirm the sideband is responsive');
 }
-if (maxClamp) assert.equal(virtualNow - began, 1000, 'createdAt + 120 seconds must clamp a later deadline');
+if (fullDuration) assert.equal(virtualNow - began, 600000, 'Absent browser must still be closed after exactly ten minutes');
+if (maxClamp) assert.equal(virtualNow - began, 1000, 'createdAt + 600 seconds must clamp a later deadline');
 }
 `;
 
 const sourcePath = fileURLToPath(new URL('../netlify/functions/watchdog-background.mts', import.meta.url));
 const cases = [
+  ['full-duration', 'independently closes a full ten-minute session with no browser stop event'],
   ['normal', 'authenticates, confirms readiness, and persists provider closure and usage'],
   ['stop', 'closes an already stopped reservation without publishing readiness'],
   ['race', 'preserves concurrent stop requests through a conditional-write conflict'],
-  ['deadline', 'caps the deadline at 120 seconds from session creation'],
+  ['deadline', 'caps the deadline at 600 seconds from session creation'],
   ['unavailable', 'reconciles only authenticated session_id_not_found without inventing closure or usage'],
   ['unexpected-code', 'keeps unrelated 404 responses unconfirmed and retries within the watchdog bound'],
   ['pending-error', 'waits for confirmed closure and usage after a pending-command error during shutdown'],

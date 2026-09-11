@@ -3,11 +3,11 @@ import {getStore} from '@netlify/blobs';
 import {randomBytes} from 'node:crypto';
 import WebSocket from 'ws';
 import {hash,equal,validateAwareness,sanitizeGuideState,validateGuideReply} from './policy.mjs';
-import {inspectBudget,reserveAdmission,MAX_SLOTS} from './budget.mjs';
+import {inspectBudget,reserveAdmission,MAX_SLOTS,budgetConfig,SESSION_SECONDS,MAX_PLANNER_REQUESTS,RESERVATION_MICROS} from './budget.mjs';
 import site from '../../site-context.json' with {type:'json'};
 
 declare const Netlify:{env:{get(name:string):string|undefined}};
-type Session={sessionId?:string;tokenHash:string;createdAt:number;deadline:number;closed:boolean;stopRequested:boolean;ready:boolean;usageSeconds?:number;providerUnavailable?:boolean};
+type Session={sessionId?:string;tokenHash:string;createdAt:number;deadline:number;closed:boolean;stopRequested:boolean;ready:boolean;usageSeconds?:number;providerUnavailable?:boolean;plannerLimit?:number};
 const env=(key:string)=>Netlify.env.get(key)||'';
 const trustedItems=((site as {items?:{id:string;label:string;description?:string;summary?:string;kind?:string}[]}).items||[]).slice(0,24).map(item=>({id:item.id.slice(0,80),label:item.label.slice(0,100),description:(item.description||'').slice(0,300),summary:(item.summary||'').slice(0,500)}));
 const character=site.id==='portfolio'?"Your name is Pip, Shanto's AI career wingman: perceptive, warmly confident, quick-witted and a little mischievous. Your personality is charming without being pushy.":"Your name is M, AgentMart's curious little market scout: playful, resourceful and lightly mischievous. You enjoy finding the right tool and a well-timed pun.";
@@ -33,7 +33,7 @@ async function authorize(token:unknown):Promise<{slot:number;session:Session}>{
  if(typeof token!=='string'||!/^\d{1,2}\.[a-f0-9]{48}$/.test(token))throw new Error('Start a conversation to use the guide');
  const slot=Number(token.split('.')[0]);if(slot<0||slot>=MAX_SLOTS)throw new Error('Invalid conversation');
  const session=await store().get(`sessions/${slot}`,{type:'json'}) as Session|null;
- if(!session||!equal(hash(token),session.tokenHash)||session.closed||session.stopRequested||Date.now()>session.deadline)throw new Error('This conversation ended. Start a new one to continue');
+ if(!session||!equal(hash(token),session.tokenHash)||session.closed||session.stopRequested||Date.now()>=session.deadline)throw new Error('This conversation ended. Start a new one to continue');
  return {slot,session};
 }
 async function update(slot:number,change:Partial<Session>){
@@ -71,8 +71,9 @@ export default async function handler(request:Request){
  if(route==='health'&&request.method==='GET'){
   const configured=!!env('OPENAI_API_KEY')&&!!env('WATCHDOG_SECRET');
   try{
-   const accounting=await inspectBudget(store());
-   return json({site:site.id,voiceModel:'gpt-live-1',plannerModel:'gpt-5.6-luna',configured,voiceAvailable:configured&&accounting.voiceAvailable,sessionSeconds:120,budget:{siteEnvelopeUSD:4,totalApprovedUSD:10,developmentHoldUSD:2,reservationUSD:.5,maxSessions:MAX_SLOTS,admittedSessions:accounting.ledger.nextSlot,reservedUSD:accounting.reservedMicros/1e6,remainingUSD:Math.max(0,accounting.remainingMicros)/1e6,blockingConnection:accounting.blockingConnection},changes:'visitor session only'});
+   const allocation=budgetConfig(site.id,key=>Netlify.env.get(key));
+   const accounting=await inspectBudget(store(),Date.now(),allocation);
+   return json({site:site.id,voiceModel:'gpt-live-1',plannerModel:'gpt-5.6-luna',configured,voiceAvailable:configured&&accounting.voiceAvailable,sessionSeconds:SESSION_SECONDS,plannerRequests:MAX_PLANNER_REQUESTS,budget:{siteEnvelopeUSD:allocation.siteBudgetMicros/1e6,totalApprovedUSD:allocation.totalApprovedMicros/1e6,developmentHoldUSD:allocation.developmentHoldMicros/1e6,reservationUSD:RESERVATION_MICROS/1e6,maxSessions:MAX_SLOTS,admittedSessions:accounting.ledger.nextSlot,reservedUSD:accounting.reservedMicros/1e6,remainingUSD:Math.max(0,accounting.remainingMicros)/1e6,blockingConnection:accounting.blockingConnection},changes:'visitor session only'});
   }catch{return json({site:site.id,configured,voiceAvailable:false,accountingAvailable:false,message:'Usage accounting is temporarily unavailable'},503);}
  }
  if(request.method!=='POST')return json({message:'Method not allowed'},405);
@@ -83,11 +84,11 @@ export default async function handler(request:Request){
   if(route==='live'||route==='chat'){
    if(route==='live'&&(typeof input.sdp!=='string'||!input.sdp.startsWith('v=0')||input.sdp.length>24000))return json({message:'Invalid voice connection request'},400);
    // Atomic reservations share one ledger; ambiguous starts retain their hold.
-   const {slot}=await reserveAdmission(store());
+   const {slot}=await reserveAdmission(store(),Date.now(),budgetConfig(site.id,key=>Netlify.env.get(key)));
    const token=`${slot}.${randomBytes(24).toString('hex')}`;
-   const now=Date.now();
-   if(!await claim(`sessions/${slot}`,{tokenHash:hash(token),createdAt:now,deadline:now+120000,closed:false,stopRequested:false,ready:false}))throw new Error('The conversation reservation could not be confirmed');
-   if(route==='chat'){await update(slot,{ready:true});return json({token,durationSeconds:120});}
+   const now=Date.now(),deadline=now+SESSION_SECONDS*1000;
+   if(!await claim(`sessions/${slot}`,{tokenHash:hash(token),createdAt:now,deadline,closed:false,stopRequested:false,ready:false,plannerLimit:MAX_PLANNER_REQUESTS}))throw new Error('The conversation reservation could not be confirmed');
+   if(route==='chat'){await update(slot,{ready:true});return json({token,deadline,durationSeconds:Math.max(0,Math.floor((deadline-Date.now())/1000))});}
    let id='';
    try{
     const result=await provider('live/sessions',{session:{model:'gpt-live-1',instructions:`You are a warm, witty AI website guide for ${site.title}. Speak naturally, with light humor and expressive warmth. Be persuasive through useful explanations, never pressure. When visitors are frustrated, acknowledge it briefly and help. Keep routine replies to one or two short sentences. ${character} ${portfolioPitch} ${marketGuidance} ${expressiveStyle} ${spontaneousStyle} Use an occasional thoughtful hmm or delighted ta-da when natural, never repetitive noises. Respect silence and mute; never shame visitors into speaking.
@@ -114,14 +115,17 @@ Delegate before giving an answer that depends on backend work. Do not guess resu
      await new Promise(resolve=>setTimeout(resolve,250));
     }
     if(!ready)throw new Error('The voice safety timer did not connect. Please try again.');
-    return json({token,sdp:result.transport.sdp,durationSeconds:110});
+    if(Date.now()>=deadline)throw new Error('This conversation ended before voice connected. Please try again.');
+    return json({token,sdp:result.transport.sdp,deadline,durationSeconds:Math.max(0,Math.floor((deadline-Date.now())/1000))});
    }catch(e){if(id)await emergencyClose(id);await update(slot,{stopRequested:true});throw e;}
   }
   if(route==='end'){
    const {slot}=await authorize(input.token);await update(slot,{stopRequested:true});return json({ended:true});
   }
   if(route==='guide'){
-   const {slot}=await authorize(input.token);
+   const {slot,session}=await authorize(input.token);
+   const plannerLimit=session.plannerLimit===undefined?10:session.plannerLimit;
+   if(plannerLimit!==10&&plannerLimit!==MAX_PLANNER_REQUESTS)throw new Error('Conversation allowance is unavailable');
    if(typeof input.message!=='string'||!input.message.trim()||input.message.length>600)return json({message:'Use a message of 1 to 600 characters'},400);
    const mode=input.mode===undefined?'visitor':input.mode;
    if(mode!=='visitor'&&mode!=='proactive')throw new Error('Invalid guide mode');
@@ -130,8 +134,8 @@ Delegate before giving an answer that depends on backend work. Do not guess resu
    const awareness=validateAwareness(input.awareness,awarenessIds);
    const safeState=sanitizeGuideState(input.state,awarenessIds);
    let permitted=false;
-   for(let n=0;n<10;n++)if(await claim(`requests/${slot}/${n}`,{at:Date.now()})){permitted=true;break;}
-   if(!permitted)return json({message:'This conversation has reached its ten-action allowance. You can continue exploring manually.'},429);
+   for(let n=0;n<plannerLimit;n++)if(await claim(`requests/${slot}/${n}`,{at:Date.now()})){permitted=true;break;}
+   if(!permitted)return json({message:`This conversation has reached its ${plannerLimit}-request guide allowance. You can continue exploring manually.`},429);
    // A claimed permit never authorizes a request after the conversation ends.
    await authorize(input.token);
    const history=JSON.stringify(input.history||[]).slice(-3500);
