@@ -16,6 +16,7 @@ import assert from 'node:assert/strict';
 
 const mode = process.argv[2];
 const stop = mode === 'stop';
+const review = mode === 'review';
 const race = mode === 'race';
 const maxClamp = mode === 'deadline';
 const fullDuration = mode === 'full-duration';
@@ -140,18 +141,22 @@ const context = vm.createContext({
   setTimeout: (callback, delay, ...args) => schedule(callback, delay, false, args),
   setInterval: (callback, delay, ...args) => schedule(callback, delay, true, args),
   clearTimeout: id => timers.delete(id), clearInterval: id => timers.delete(id),
-  Netlify: { env: { get: key => key === 'WATCHDOG_SECRET' ? secret : key === 'OPENAI_API_KEY' ? 'test-key' : undefined } },
+  Netlify: { env: { get: key => key === 'WATCHDOG_SECRET' ? secret : key === 'OPENAI_API_KEY' ? 'test-key' : review ? ({LIVE_TOTAL_APPROVED_USD:'30',LIVE_AGENTMART_BUDGET_USD:'14',LIVE_PORTFOLIO_BUDGET_USD:'14',LIVE_REVIEW_BUDGET_USD:'3.75',LIVE_BUDGET_STORE:'live-budget-atmosphere-review-v1'})[key] : undefined } },
 });
 const imports = {
   'node:crypto': { createHash, timingSafeEqual },
   '@netlify/blobs': { getStore: options => {
-    assert.deepEqual({ ...options }, { name: 'live-budget-release-v1', consistency: 'strong' });
+    assert.deepEqual({ ...options }, { name: review?'live-budget-atmosphere-review-v1':'live-budget-release-v1', consistency: 'strong' });
     return store;
   } },
   ws: { default: Socket },
 };
 const module = new vm.SourceTextModule(source, { context });
-await module.link(specifier => {
+await module.link(async specifier => {
+  if(specifier==='./budget.mjs'){
+    const budget=new vm.SourceTextModule(stripTypeScriptTypes(fs.readFileSync(process.argv[3].replace('watchdog-background.mts','budget.mts'),'utf8')),{context});
+    await budget.link(()=>{throw new Error('Unexpected budget import')});return budget;
+  }
   const values = imports[specifier];
   assert.ok(values, 'Unexpected import: ' + specifier);
   return new vm.SyntheticModule(Object.keys(values), function () {
@@ -215,6 +220,7 @@ if (maxClamp) assert.equal(virtualNow - began, 1000, 'createdAt + 600 seconds mu
 
 const sourcePath = fileURLToPath(new URL('../netlify/functions/watchdog-background.mts', import.meta.url));
 const cases = [
+  ['review', 'uses the same explicitly configured review budget store as admissions'],
   ['full-duration', 'independently closes a full ten-minute session with no browser stop event'],
   ['normal', 'authenticates, confirms readiness, and persists provider closure and usage'],
   ['stop', 'closes an already stopped reservation without publishing readiness'],

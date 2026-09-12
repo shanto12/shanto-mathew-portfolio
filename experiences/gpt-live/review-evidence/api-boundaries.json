@@ -1,0 +1,38 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/live",
+    "status": 405,
+    "cacheControl": "no-store"
+  },
+  {
+    "method": "POST",
+    "path": "/api/live",
+    "status": 403,
+    "cacheControl": "no-store"
+  },
+  {
+    "method": "POST",
+    "path": "/api/guide",
+    "status": 400,
+    "cacheControl": "no-store"
+  },
+  {
+    "method": "POST",
+    "path": "/api/end",
+    "status": 400,
+    "cacheControl": "no-store"
+  },
+  {
+    "method": "GET",
+    "path": "/.env",
+    "status": 404,
+    "cacheControl": "public,max-age=0,must-revalidate"
+  },
+  {
+    "method": "GET",
+    "path": "/netlify/functions/api.mts",
+    "status": 404,
+    "cacheControl": "public,max-age=0,must-revalidate"
+  }
+]

@@ -201,3 +201,10 @@ test('secret comparison does not throw when UTF-8 byte lengths differ', () => {
   assert.equal(equal('a', 'é'), false);
   assert.equal(equal('é', 'é'), true);
 });
+
+test('atmosphere scenes and clear use only a fixed browser action enum, never arbitrary rendering commands',()=>{
+ for(const value of ['rain','snow','wind','pond','aurora','constellation','spotlight','surprise','clear'])assert.deepEqual(validateGuideReply({answer:'I can show that scene.',actions:[{type:'effect',value}]},sectionIds).actions,[{type:'effect',value}]);
+ for(const value of ['storm','lightning','ocean_url','eval','RAIN','rain;fetch(document.cookie)'])assert.throws(()=>validateActions([{type:'effect',value}],sectionIds));
+ for(const field of ['duration','particles','script','url','audio','intensity'])assert.throws(()=>validateActions([{type:'effect',value:'rain',[field]:'anything'}],sectionIds));
+ assert.deepEqual(validateGuideReply({answer:'Would you like a little snow?',actions:[{type:'effect',value:'snow'}]},sectionIds,'proactive').actions,[]);
+});

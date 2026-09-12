@@ -1,0 +1,44 @@
+[
+  {
+    "asset": "voice.js",
+    "remoteSha256": "1873e3b48d0b903448411c55ae0d20e122db28cbee268d46323bc4704f563b51",
+    "localSha256": "1873e3b48d0b903448411c55ae0d20e122db28cbee268d46323bc4704f563b51",
+    "identical": true
+  },
+  {
+    "asset": "scenes.js",
+    "remoteSha256": "a6e4e6442b3b64507f6dd7c5d610b6c150a62ed05b4ecc0c91eafac55e437bf1",
+    "localSha256": "a6e4e6442b3b64507f6dd7c5d610b6c150a62ed05b4ecc0c91eafac55e437bf1",
+    "identical": true
+  },
+  {
+    "asset": "scenes.css",
+    "remoteSha256": "5c74cb2c6196d5b2f3a85aee5560737f2c17ab96af810669f0f14e76ce908721",
+    "localSha256": "5c74cb2c6196d5b2f3a85aee5560737f2c17ab96af810669f0f14e76ce908721",
+    "identical": true
+  },
+  {
+    "asset": "voice.css",
+    "remoteSha256": "8cc7a4e77d00e238e5849a83de119a6559923e0cd8ff20771b80a3248031fa2a",
+    "localSha256": "8cc7a4e77d00e238e5849a83de119a6559923e0cd8ff20771b80a3248031fa2a",
+    "identical": true
+  },
+  {
+    "asset": "app.js",
+    "remoteSha256": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163",
+    "localSha256": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163",
+    "identical": true
+  },
+  {
+    "asset": "site-guide.js",
+    "remoteSha256": "426c21ee2efa670b0ec1ab05b51d449b777c734cbff892fdc24b809c7798008f",
+    "localSha256": "426c21ee2efa670b0ec1ab05b51d449b777c734cbff892fdc24b809c7798008f",
+    "identical": true
+  },
+  {
+    "asset": "styles.css",
+    "remoteSha256": "0f0fd2faa8011c834416ec53b7ce1afd636b7c66e8a0e396b52878cc1d69fb8c",
+    "localSha256": "0f0fd2faa8011c834416ec53b7ce1afd636b7c66e8a0e396b52878cc1d69fb8c",
+    "identical": true
+  }
+]

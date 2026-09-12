@@ -2,6 +2,7 @@ import { createHash, timingSafeEqual } from 'node:crypto';
 import { getStore } from '@netlify/blobs';
 import type { Config } from '@netlify/functions';
 import WebSocket from 'ws';
+import {budgetConfig} from './budget.mjs';
 
 type SessionRecord = {
   sessionId: string;
@@ -75,7 +76,7 @@ export default async (request: Request): Promise<Response> => {
   }
   if (!Number.isSafeInteger(input.slot) || Number(input.slot) < 0) return new Response(null, { status: 400 });
 
-  const store = getStore({ name: 'live-budget-release-v1', consistency: 'strong' });
+  const store = getStore({ name: budgetConfig('portfolio',key=>Netlify.env.get(key)).storeName, consistency: 'strong' });
   const key = `sessions/${input.slot}`;
   const startedAt = Date.now();
   const finishBy = startedAt + MAX_WATCHDOG_MS;

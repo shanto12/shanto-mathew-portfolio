@@ -1,0 +1,428 @@
+{
+  "autoplayPolicy": "Default Chrome policy; no user gesture bypass; microphone pre-granted",
+  "testedAtCentral": "9/11/2026, 6:49:47 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-atmosphere.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: rain",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: snow",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: wind",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: pond",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: aurora",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: constellation",
+          "result": "PASS"
+        },
+        {
+          "name": "Live workflow",
+          "result": "FAIL",
+          "error": "page.waitForFunction: Timeout 18000ms exceeded."
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-mTJ4cJaTm2Gw95GeXEpZdvEEY9ybh6FZu1bwcNE7QlY='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "failedRequests": [],
+      "screenshots": [
+        "portfolio-greeting.png",
+        "portfolio-scene-rain.png",
+        "portfolio-scene-snow.png",
+        "portfolio-scene-wind.png",
+        "portfolio-scene-pond.png",
+        "portfolio-scene-aurora.png",
+        "portfolio-scene-constellation.png",
+        "portfolio-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "timing": {
+          "documentInitMs": 866,
+          "microphoneRequestMs": 2102.9000000059605,
+          "microphoneGrantedMs": 4252.800000011921,
+          "sessionStartedMs": 9263.59999999404,
+          "firstRemoteTrackMs": 8867.800000011921,
+          "firstAudibleRemoteSampleMs": 10720.300000011921,
+          "firstAudioElementPlayingMs": 8909,
+          "domContentLoadedMs": 2106.4000000059605,
+          "pageLoadMs": 2763.2000000178814
+        },
+        "userClicks": 0,
+        "transcript": " Hey, I'm Pip, Shanto's AI career wingman",
+        "rmsMax": 0.20096585095542258,
+        "audibleSamples": 23,
+        "recordedBytes": 44542,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "sceneCommands": [
+        {
+          "command": "rain",
+          "state": {
+            "scene": "rain",
+            "particleCount": 110,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170657844
+          },
+          "input": " Make it rain on this page.",
+          "output": " something specific? Okay."
+        },
+        {
+          "command": "snow",
+          "state": {
+            "scene": "snow",
+            "particleCount": 75,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170665815
+          },
+          "input": " Stop the rain and make it snow.",
+          "output": " One snowy scene coming up."
+        },
+        {
+          "command": "wind",
+          "state": {
+            "scene": "wind",
+            "particleCount": 27,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170673840
+          },
+          "input": " Replace the snow with wind and leaves.",
+          "output": " Mmh. Swapping snow for a leafy"
+        },
+        {
+          "command": "pond",
+          "state": {
+            "scene": "pond",
+            "particleCount": 7,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170681493
+          },
+          "input": " Turn the scene into a pond with ripples.",
+          "output": " gust, One moment."
+        },
+        {
+          "command": "aurora",
+          "state": {
+            "scene": "aurora",
+            "particleCount": 75,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170688824
+          },
+          "input": " Show the Northern Lights.",
+          "output": " Hmm. Okay."
+        },
+        {
+          "command": "constellation",
+          "state": {
+            "scene": "constellation",
+            "particleCount": 24,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170696983
+          },
+          "input": " Show the skills constellation",
+          "output": " and steady across thi- Absolutely."
+        }
+      ],
+      "beforeEnd": {
+        "timing": {
+          "documentInitMs": 866,
+          "microphoneRequestMs": 2102.9000000059605,
+          "microphoneGrantedMs": 4252.800000011921,
+          "sessionStartedMs": 9263.59999999404,
+          "firstRemoteTrackMs": 8867.800000011921,
+          "firstAudibleRemoteSampleMs": 10720.300000011921,
+          "firstAudioElementPlayingMs": 8909
+        },
+        "userClicks": 0,
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 433753,
+            "packetsReceived": 3518,
+            "packetsLost": 0,
+            "jitter": 0.002,
+            "totalAudioEnergy": 3.884918525894837,
+            "totalSamplesDuration": 73.47000000000068
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 130262,
+            "packetsSent": 3717
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.24929758508502342,
+        "audibleSamples": 416,
+        "remoteBytes": 1164838,
+        "transcript": "You:  Make it rain on this page.Guide:  Okay. On it; bringing a little rain to the page.You:  Stop the rain and make it snow.Guide:  One snowy scene coming up. There, rain's gone, snow's falling.You:  Replace the snow with wind and leaves.Guide:  Mmh. Swapping snow for a leafy breeze. There we go, a little gust,You:  Turn the scene into a pond with ripples.Guide:  One moment. Ta da. A gentle little pond,You:  Show the Northern Lights.Guide:  Hmm. Okay. Gasp. There it is, soft and steady acrossYou:  ShowGuide:  thi-You:  the skills constellationGuide:  Absolutely. There, a neat little constellation lighting up Python, applied AI,You:  Spotlight a project.Guide:  Sure. Happy to. Which project would you like to see? AgentProof, Relay, Swarm Nexus, or something else?",
+        "inputTranscript": " Make it rain on this page. Stop the rain and make it snow. Replace the snow with wind and leaves. Turn the scene into a pond with ripples. Show the Northern Lights. Show the skills constellation Spotlight a project.",
+        "outputTranscript": " Hey, I'm Pip, Shanto's AI career wingman. Want a quick tour or something specific? Okay. On it; bringing a little rain to the page. One snowy scene coming up. There, rain's gone, snow's falling. Mmh. Swapping snow for a leafy breeze. There we go, a little gust, One moment. Ta da. A gentle little pond, Hmm. Okay. Gasp. There it is, soft and steady across thi- Absolutely. There, a neat little constellation lighting up Python, applied AI, Sure. Happy to. Which project would you like to see? AgentProof, Relay, Swarm Nexus, or something else?",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "portfolio-remote-audio.webm",
+        "bytes": 1177882,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 87.7
+    }
+  ]
+}

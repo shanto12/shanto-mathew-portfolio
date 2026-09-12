@@ -1,0 +1,13 @@
+{
+  "sourceSite": "96b11755-dbb1-43fa-ad22-784b95c23a6b",
+  "reviewSite": "025c3e75-39a9-4f35-bc44-6b2dfa47856f",
+  "earmarkedUSD": 3.75,
+  "totalApprovedUSD": 30,
+  "slots": [
+    14,
+    15,
+    16
+  ],
+  "reason": "Owner-approved separate portfolio scene review; allocation is inside existing AgentMart envelope, not an API charge",
+  "createdCentral": "9/11/2026, 6:43:08 PM"
+}

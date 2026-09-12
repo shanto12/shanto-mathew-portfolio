@@ -8,7 +8,8 @@ export const SESSION_SECONDS = 600;
 export const MAX_PLANNER_REQUESTS = 30;
 export const PLANNER_HOLD_MICROS = 600_000; // Reserve all 30 bounded requests, even when unused.
 export const RESERVATION_MICROS = 1_250_000; // $0.50 voice + $0.60 planner + $0.15 close/retry margin.
-export type BudgetConfig = {siteBudgetMicros:number;totalApprovedMicros:number;developmentHoldMicros:number;agentmartBudgetMicros:number;portfolioBudgetMicros:number};
+export const REVIEW_STORE = 'live-budget-atmosphere-review-v1';
+export type BudgetConfig = {siteBudgetMicros:number;totalApprovedMicros:number;developmentHoldMicros:number;agentmartBudgetMicros:number;portfolioBudgetMicros:number;storeName:string;reviewBudgetMicros:number};
 // Both deployments must receive the same allocation map. Raising an approved
 // total is an operator action after user approval, never a browser parameter.
 export function budgetConfig(siteId:string,read:(key:string)=>string|undefined=()=>undefined):BudgetConfig {
@@ -26,7 +27,15 @@ export function budgetConfig(siteId:string,read:(key:string)=>string|undefined=(
  const agentmartBudgetMicros=amount('LIVE_AGENTMART_BUDGET_USD',SITE_BUDGET_MICROS);
  const portfolioBudgetMicros=amount('LIVE_PORTFOLIO_BUDGET_USD',SITE_BUDGET_MICROS);
  if(agentmartBudgetMicros+portfolioBudgetMicros>totalApprovedMicros-developmentHoldMicros)throw new Error('Site allocations exceed the approved budget');
- return {siteBudgetMicros:siteId==='agentmart'?agentmartBudgetMicros:portfolioBudgetMicros,totalApprovedMicros,developmentHoldMicros,agentmartBudgetMicros,portfolioBudgetMicros};
+ const reviewBudgetMicros=amount('LIVE_REVIEW_BUDGET_USD',0);
+ const requestedStore=read('LIVE_BUDGET_STORE');
+ // This is a suballocation already earmarked in AgentMart's parent ledger,
+ // not a third additive envelope. Only the separately provisioned review site
+ // may opt in; original sites keep their mandatory historical bootstrap.
+ if(reviewBudgetMicros){
+  if(siteId!=='portfolio'||reviewBudgetMicros!==3_750_000||requestedStore!==REVIEW_STORE||totalApprovedMicros!==30_000_000||agentmartBudgetMicros<reviewBudgetMicros)throw new Error('Invalid review budget allocation');
+ }else if(requestedStore!==undefined&&requestedStore!=='live-budget-release-v1')throw new Error('Invalid budget store configuration');
+ return {siteBudgetMicros:reviewBudgetMicros||(siteId==='agentmart'?agentmartBudgetMicros:portfolioBudgetMicros),totalApprovedMicros,developmentHoldMicros,agentmartBudgetMicros,portfolioBudgetMicros,storeName:reviewBudgetMicros?REVIEW_STORE:'live-budget-release-v1',reviewBudgetMicros};
 }
 export const MAX_SLOTS = 100;
 export type BudgetStore = {
@@ -35,15 +44,17 @@ export type BudgetStore = {
  setJSON(key:string, value:unknown, options:{onlyIfNew:true;onlyIfMatch?:never}|{onlyIfNew?:never;onlyIfMatch:string}):Promise<{modified:boolean;etag?:string}>;
 };
 type Entry = {chargeMicros:number;settled:boolean;reservationMicros?:number;plannerHoldMicros?:number};
-export type BudgetLedger = {version:1;nextSlot:number;entries:Record<string,Entry>};
+export type BudgetLedger = {version:1;nextSlot:number;entries:Record<string,Entry>;reviewStore?:typeof REVIEW_STORE};
 type Session = {tokenHash?:unknown;createdAt?:unknown;deadline?:unknown;sessionId?:unknown;closed?:unknown;usageFinal?:unknown;finalization?:unknown;usageSeconds?:unknown;providerUnavailable?:unknown};
 export type BudgetSnapshot = {ledger:BudgetLedger;reservedMicros:number;remainingMicros:number;voiceAvailable:boolean;blockingConnection:boolean;maxSlots:number};
-function validateLedger(value:unknown):BudgetLedger {
+function validateLedger(value:unknown,config:BudgetConfig):BudgetLedger {
  if(!value||typeof value!=='object')throw new Error('Usage accounting is unavailable');
  const r=value as BudgetLedger;
- if(r.version!==1||!Number.isSafeInteger(r.nextSlot)||r.nextSlot<8||r.nextSlot>MAX_SLOTS||!r.entries||typeof r.entries!=='object'||Array.isArray(r.entries)||Object.keys(r.entries).length!==r.nextSlot)throw new Error('Usage accounting is unavailable');
+ if(config.reviewBudgetMicros?r.reviewStore!==REVIEW_STORE:r.reviewStore!==undefined)throw new Error('Usage accounting mode does not match the configured budget');
+ if(r.version!==1||!Number.isSafeInteger(r.nextSlot)||r.nextSlot<(config.reviewBudgetMicros?0:8)||r.nextSlot>MAX_SLOTS||!r.entries||typeof r.entries!=='object'||Array.isArray(r.entries)||Object.keys(r.entries).length!==r.nextSlot)throw new Error('Usage accounting is unavailable');
  for(let n=0;n<r.nextSlot;n++){
   const e=r.entries[String(n)];
+  if(config.reviewBudgetMicros&&(!e||e.reservationMicros!==RESERVATION_MICROS||e.plannerHoldMicros!==PLANNER_HOLD_MICROS))throw new Error('Review usage accounting is unavailable');
   if(e&&(e.reservationMicros!==undefined||e.plannerHoldMicros!==undefined)&&(e.reservationMicros!==RESERVATION_MICROS||e.plannerHoldMicros!==PLANNER_HOLD_MICROS))throw new Error('Usage accounting is unavailable');
   const reservation=e?.reservationMicros??LEGACY_RESERVATION_MICROS,planner=e?.plannerHoldMicros??LEGACY_PLANNER_HOLD_MICROS;
   if(!e||typeof e.settled!=='boolean'||!Number.isSafeInteger(e.chargeMicros)||e.chargeMicros<0||(!e.settled&&e.chargeMicros!==reservation)||(e.settled&&e.chargeMicros<planner))throw new Error('Usage accounting is unavailable');
@@ -82,9 +93,16 @@ function reconcile(ledger:BudgetLedger,sessions:(Session|null)[],now:number,conf
 async function load(store:BudgetStore,now:number,config:BudgetConfig){
  const found=await store.getWithMetadata(BUDGET_KEY,{type:'json'});
  if(found&&!found.etag)throw new Error('Usage accounting could not be confirmed');
- const ledger=found?validateLedger(found.data):null;
- const sessions=await records(store,ledger?.nextSlot??8);
- return {found,snapshot:reconcile(ledger??bootstrap(sessions),sessions,now,config)};
+ const ledger=found?validateLedger(found.data,config):null;
+ const sessions=await records(store,ledger?.nextSlot??(config.reviewBudgetMicros?MAX_SLOTS:8));
+ let initial=ledger;
+ if(!initial&&config.reviewBudgetMicros){
+  // A missing ledger beside existing sessions is corruption, never permission
+  // to reset spending. Health only inspects; CAS persists on first admission.
+  if(sessions.some(s=>s!==null&&s!==undefined))throw new Error('Review usage accounting could not be verified');
+  initial={version:1,nextSlot:0,entries:{},reviewStore:REVIEW_STORE};
+ }
+ return {found,snapshot:reconcile(initial??bootstrap(sessions),sessions,now,config)};
 }
 // Read-only estimate: health cannot consume permits or rewrite accounting.
 export async function inspectBudget(store:BudgetStore,now=Date.now(),config=budgetConfig('portfolio')):Promise<BudgetSnapshot>{return (await load(store,now,config)).snapshot;}

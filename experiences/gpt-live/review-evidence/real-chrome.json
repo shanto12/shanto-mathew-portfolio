@@ -1,0 +1,22 @@
+{
+  "target": "https://shanto-portfolio-atmosphere.netlify.app/",
+  "method": "Native CUA on Shanto real Google Chrome profile, September 11 2026, approximately 7:00-7:03 PM Central Time",
+  "permission": "First visit automatically opened the native microphone request. Selected Allow this time. Budget admission correctly refused a fourth session while testing reservations were held; no paid call was created.",
+  "verified": [
+    "Work/About/Experience/Contact section navigation",
+    "All five filters with matching collection counts",
+    "All fourteen project previews with matching accessible announcements",
+    "Previous and next project",
+    "Flux Atlas case study and collection return",
+    "Image inspection, zoom 100 to150 percent, zoom out, fit and close",
+    "Pause and resume motion",
+    "Reset page and hero visual inspection",
+    "No added visible avatar buttons",
+    "Owned test tab closed at end"
+  ],
+  "limitations": [
+    "Actual audible speech and scene commands verified in isolated Chrome with real provider API and synthetic microphone, not through the real-profile microphone.",
+    "Mobile, all fourteen full case-study flows and other error cases covered by Playwright, not repeated manually in real Chrome.",
+    "Native screenshot and AX observations are recorded in this Codex task; no unrelated tab content exported."
+  ]
+}

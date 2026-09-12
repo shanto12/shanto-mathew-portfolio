@@ -1,0 +1,71 @@
+{
+  "checkedCentral": "9/11/2026, 7:06:31 PM",
+  "checks": [
+    {
+      "url": "https://shantomathew.com/",
+      "status": 200,
+      "before": "62d26af346083dc45b18787f89be4d1004f67ef893971523dada7ff418d0ed5d",
+      "after": "62d26af346083dc45b18787f89be4d1004f67ef893971523dada7ff418d0ed5d",
+      "unchanged": true
+    },
+    {
+      "url": "https://shantomathew.com/voice.js",
+      "status": 200,
+      "before": "1a168c7de50ab459362e3be3bd010af9dea598789e1249e521cb9141ac02ac10",
+      "after": "1a168c7de50ab459362e3be3bd010af9dea598789e1249e521cb9141ac02ac10",
+      "unchanged": true
+    },
+    {
+      "url": "https://shantomathew.com/app.js",
+      "status": 200,
+      "before": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163",
+      "after": "b783b8fe11e7fe9ce919d5bf14e91522fb44e78a5849a49dd3eebcac329ed163",
+      "unchanged": true
+    },
+    {
+      "url": "https://shanto-portfolio-live.netlify.app/",
+      "status": 200,
+      "before": "ba6ea52c3d47f3b36eec010a8aa7a3a97a84e0a7fd7b153ea7cb3a6856c38679",
+      "after": "ba6ea52c3d47f3b36eec010a8aa7a3a97a84e0a7fd7b153ea7cb3a6856c38679",
+      "unchanged": true
+    },
+    {
+      "url": "https://shanto-fieldwork-portfolio.netlify.app/",
+      "status": 200,
+      "before": "3665a59d7776e6171f6d2ab5c0fe848dbc72608c10581dd3e12d250a4ff00579",
+      "after": "3665a59d7776e6171f6d2ab5c0fe848dbc72608c10581dd3e12d250a4ff00579",
+      "unchanged": true
+    }
+  ],
+  "deployments": [
+    {
+      "site": "296ec6fb-3f43-4253-9aad-c55f677685d0",
+      "name": "shanto-portfolio-live",
+      "domain": "shantomathew.com",
+      "aliases": [
+        "www.shantomathew.com"
+      ],
+      "deploy": "6aa48294fa3641527184f0bc",
+      "state": "ready",
+      "badge": false
+    },
+    {
+      "site": "ee94b075-3cd9-4394-b5f3-9e4ad0458a4d",
+      "name": "shanto-fieldwork-portfolio",
+      "domain": null,
+      "aliases": [],
+      "deploy": "6aa1d197f09280f08595e246",
+      "state": "ready",
+      "badge": false
+    },
+    {
+      "site": "025c3e75-39a9-4f35-bc44-6b2dfa47856f",
+      "name": "shanto-portfolio-atmosphere",
+      "domain": null,
+      "aliases": [],
+      "deploy": "6aa4957de275bbaec8c7c780",
+      "state": "ready",
+      "badge": false
+    }
+  ]
+}
