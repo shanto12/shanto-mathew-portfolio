@@ -1,0 +1,238 @@
+{
+  "checkedAtCentral": "2026-09-12T11:59:15.217051-05:00",
+  "expectedVoiceSha256": "d1f085b342287f7d0c54b3b44ff03247caed2c4c730f527f912c8dac66dd4c57",
+  "sites": [
+    {
+      "origin": "https://shantomathew.com",
+      "page": {
+        "url": "https://shantomathew.com/",
+        "finalUrl": "https://shantomathew.com/",
+        "status": 200,
+        "tlsVerified": true,
+        "headers": {
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+          "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cache-control": "public,max-age=0,must-revalidate",
+          "x-nf-request-id": "01M2B8Y03XDZRTB00WJ5FGQ0YR"
+        },
+        "htmlSha256": "62d26af346083dc45b18787f89be4d1004f67ef893971523dada7ff418d0ed5d"
+      },
+      "voiceAsset": {
+        "url": "https://shantomathew.com/voice.js",
+        "finalUrl": "https://shantomathew.com/voice.js",
+        "status": 200,
+        "sha256": "d1f085b342287f7d0c54b3b44ff03247caed2c4c730f527f912c8dac66dd4c57",
+        "matchesExpected": true
+      },
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 27,
+          "reservedUSD": 12.496674,
+          "remainingUSD": 1.503326,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      },
+      "checks": {
+        "httpsCertificateValidated": true,
+        "page200": true,
+        "expectedVoiceSource": true,
+        "microphoneAllowedForSameOrigin": true,
+        "cspBoundedScriptsFramesAndObjects": true,
+        "securityHeadersPresent": true,
+        "apiConfigured": true,
+        "voiceAvailable": true,
+        "capRemains30": true
+      }
+    },
+    {
+      "origin": "https://www.shantomathew.com",
+      "page": {
+        "url": "https://www.shantomathew.com/",
+        "finalUrl": "https://shantomathew.com/",
+        "status": 200,
+        "tlsVerified": true,
+        "headers": {
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+          "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cache-control": "public,max-age=0,must-revalidate",
+          "x-nf-request-id": "01M2B8Y21T1NB6GN06SWCVE89X"
+        },
+        "htmlSha256": "62d26af346083dc45b18787f89be4d1004f67ef893971523dada7ff418d0ed5d"
+      },
+      "voiceAsset": {
+        "url": "https://www.shantomathew.com/voice.js",
+        "finalUrl": "https://shantomathew.com/voice.js",
+        "status": 200,
+        "sha256": "d1f085b342287f7d0c54b3b44ff03247caed2c4c730f527f912c8dac66dd4c57",
+        "matchesExpected": true
+      },
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 27,
+          "reservedUSD": 12.496674,
+          "remainingUSD": 1.503326,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      },
+      "checks": {
+        "httpsCertificateValidated": true,
+        "page200": true,
+        "expectedVoiceSource": true,
+        "microphoneAllowedForSameOrigin": true,
+        "cspBoundedScriptsFramesAndObjects": true,
+        "securityHeadersPresent": true,
+        "apiConfigured": true,
+        "voiceAvailable": true,
+        "capRemains30": true
+      }
+    },
+    {
+      "origin": "https://shanto-portfolio-live.netlify.app",
+      "page": {
+        "url": "https://shanto-portfolio-live.netlify.app/",
+        "finalUrl": "https://shanto-portfolio-live.netlify.app/",
+        "status": 200,
+        "tlsVerified": true,
+        "headers": {
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+          "permissions-policy": "microphone=(self), camera=(), geolocation=(), payment=()",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cache-control": "public,max-age=0,must-revalidate",
+          "x-nf-request-id": "01M2B8Y3T9QBPPHSHKYYNEY4NN"
+        },
+        "htmlSha256": "62d26af346083dc45b18787f89be4d1004f67ef893971523dada7ff418d0ed5d"
+      },
+      "voiceAsset": {
+        "url": "https://shanto-portfolio-live.netlify.app/voice.js",
+        "finalUrl": "https://shanto-portfolio-live.netlify.app/voice.js",
+        "status": 200,
+        "sha256": "d1f085b342287f7d0c54b3b44ff03247caed2c4c730f527f912c8dac66dd4c57",
+        "matchesExpected": true
+      },
+      "health": {
+        "site": "portfolio",
+        "voiceModel": "gpt-live-1",
+        "plannerModel": "gpt-5.6-luna",
+        "configured": true,
+        "voiceAvailable": true,
+        "sessionSeconds": 600,
+        "plannerRequests": 30,
+        "budget": {
+          "siteEnvelopeUSD": 14,
+          "totalApprovedUSD": 30,
+          "developmentHoldUSD": 2,
+          "reservationUSD": 1.25,
+          "maxSessions": 100,
+          "admittedSessions": 27,
+          "reservedUSD": 12.496674,
+          "remainingUSD": 1.503326,
+          "blockingConnection": false
+        },
+        "changes": "visitor session only"
+      },
+      "checks": {
+        "httpsCertificateValidated": true,
+        "page200": true,
+        "expectedVoiceSource": true,
+        "microphoneAllowedForSameOrigin": true,
+        "cspBoundedScriptsFramesAndObjects": true,
+        "securityHeadersPresent": true,
+        "apiConfigured": true,
+        "voiceAvailable": true,
+        "capRemains30": true
+      }
+    }
+  ],
+  "verificationMode": "Read-only HTTPS GET with certificate verification. No voice admissions.",
+  "netlifyMetadata": [
+    {
+      "role": "portfolio",
+      "id": "296ec6fb-3f43-4253-9aad-c55f677685d0",
+      "name": "shanto-portfolio-live",
+      "url": "https://shantomathew.com",
+      "sslUrl": "https://shantomathew.com",
+      "customDomain": "shantomathew.com",
+      "domainAliases": [
+        "www.shantomathew.com"
+      ],
+      "publishedDeploy": {
+        "id": "6aa5832350d7dce61c8fe0f6",
+        "state": "ready",
+        "publishedAtCentral": "2026-09-12T11:53:07.595000-05:00"
+      },
+      "expectedPublishedDeploy": "6aa5832350d7dce61c8fe0f6",
+      "matchesExpected": true
+    },
+    {
+      "role": "weatherReview",
+      "id": "025c3e75-39a9-4f35-bc44-6b2dfa47856f",
+      "name": "shanto-portfolio-atmosphere",
+      "url": "http://shanto-portfolio-atmosphere.netlify.app",
+      "sslUrl": "https://shanto-portfolio-atmosphere.netlify.app",
+      "customDomain": null,
+      "domainAliases": [],
+      "publishedDeploy": {
+        "id": "6aa4957de275bbaec8c7c780",
+        "state": "ready",
+        "publishedAtCentral": "2026-09-11T18:58:02.251000-05:00"
+      },
+      "expectedPublishedDeploy": "6aa4957de275bbaec8c7c780",
+      "matchesExpected": true
+    },
+    {
+      "role": "backup",
+      "id": "ee94b075-3cd9-4394-b5f3-9e4ad0458a4d",
+      "name": "shanto-fieldwork-portfolio",
+      "url": "https://shanto-fieldwork-portfolio.netlify.app",
+      "sslUrl": "https://shanto-fieldwork-portfolio.netlify.app",
+      "customDomain": null,
+      "domainAliases": [],
+      "publishedDeploy": {
+        "id": "6aa1d197f09280f08595e246",
+        "state": "ready",
+        "publishedAtCentral": "2026-09-09T16:37:29.532000-05:00"
+      },
+      "expectedPublishedDeploy": "6aa1d197f09280f08595e246",
+      "matchesExpected": true
+    }
+  ],
+  "allChecksPassed": true,
+  "budgetNote": "Read-only health snapshots show 27 admitted sessions and $1.503326 remaining application allowance after natural settlement. These are conservative reservations, not invoiced spending. No admissions or budget changes were performed by this preflight."
+}

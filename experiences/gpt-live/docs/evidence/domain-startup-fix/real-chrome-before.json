@@ -1,0 +1,14 @@
+{
+  "url": "https://shantomathew.com/",
+  "method": "User real Chrome profile, extension DOM state and native accessibility",
+  "observed": {
+    "status": "Conversation ended",
+    "recoveryHint": "",
+    "audioPaused": true,
+    "audioCurrentTime": 0,
+    "audioReadyState": 0,
+    "visibility": "visible",
+    "consoleWarningsAndErrors": []
+  },
+  "notes": "Saved microphone origin permission permits access. These observations do not establish which startup failure occurred on the original visit. Native reload was interrupted by other browser interaction; no admission was created."
+}

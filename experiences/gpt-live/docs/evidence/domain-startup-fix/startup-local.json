@@ -1,0 +1,294 @@
+{
+  "testedAtCentral": "9/12/2026, 11:48:56 AM Central Time",
+  "mode": "Isolated Chrome; actual shipped scripts; mocked microphone/RTC/play and all POST requests. No provider/admission calls.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "http://127.0.0.1:8818",
+      "checks": [
+        {
+          "name": "Page load starts microphone and dynamic greeting without any page interaction",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Normal page click unlocks blocked audio without clicking the avatar or admitting a second call",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Normal keyboard interaction unlocks blocked audio without avatar activation",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Browser microphone permission grant resumes failed startup without an avatar click",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Pending microphone gives visible accessible recovery instructions; Escape clears them",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "Denied microphone gives a compact visible permission-recovery hint",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "429 allowance is visible and releases acquired microphone tracks",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live"
+          ]
+        },
+        {
+          "name": "Autoplay rejection explains tap recovery; avatar resumes audio and hides hint",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Connected avatar has no recovery writing; End stops tracks and stays quiet",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Active avatar mutes and unmutes; normal End then avatar click starts exactly one fresh call",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Expired session returns avatar to restartable state without automatic admission",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Provider-ended session enables explicit avatar restart and ignores old events",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Lost connection closes resources and same avatar recovers after explicit click",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Rejected admission retries only after avatar click and releases old microphone",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Denied microphone can recover on the same avatar after browser permission changes",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Failed close send and resource cleanup cannot wedge restart or revive late events",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Missing provider closure falls back locally and allows an explicit restart",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Three-minute visitor inactivity still closes a longer fixture call",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Missing greeting ACK gets one bounded fresh opening and ignores a late acknowledgment",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Normal greeting acknowledgment does not duplicate its opening at fallback deadline",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Opening fallback respects prior visitor speech",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Opening fallback respects prior model output",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Opening fallback respects mute and explicit End",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Initially hidden page defers microphone and admission until first visible return",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Hidden during pending microphone resumes one unpaid startup and releases the stale stream",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Explicit Escape cancels deferred startup before any microphone or paid admission",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "Pagehide cancels deferred startup and does not resume on visible return",
+          "result": "PASS",
+          "interceptedRequests": []
+        },
+        {
+          "name": "Hidden connected conversation stays ended on visible return with avatar recovery",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Missing session.started has visible connecting guidance and 30-second resource cleanup",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Pending admission times out locally while a late token is still closed exactly once",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Hidden admission attempt never auto-retries and its late token is closed",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Old greeting timers and ACK cannot greet or end a newly restarted connection",
+          "result": "PASS",
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end",
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Stale getUserMedia resolves without replacing or stopping the current microphone",
+          "result": "PASS",
+          "detail": {
+            "mockedStarts": 2,
+            "providerAdmissions": 0
+          },
+          "interceptedRequests": [
+            "/api/live",
+            "/api/end"
+          ]
+        },
+        {
+          "name": "Stale microphone completion cannot dismiss a newer permission prompt",
+          "result": "PASS",
+          "interceptedRequests": []
+        }
+      ],
+      "screenshots": [
+        "portfolio-mic-denied.png",
+        "portfolio-mic-denied-mobile.png",
+        "portfolio-allowance.png",
+        "portfolio-autoplay.png"
+      ]
+    }
+  ]
+}

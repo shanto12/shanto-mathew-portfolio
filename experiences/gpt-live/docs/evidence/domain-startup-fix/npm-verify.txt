@@ -1,0 +1,71 @@
+
+> verify
+> npm run build && npm test
+
+
+> build
+> tsc --noEmit && node --check public/voice.js
+
+
+> test
+> tsx --test test/*.test.ts
+
+✔ health estimates confirmed final usage without creating or mutating ledger/history (57.381625ms)
+✔ concurrent first reservations serialize bootstrap and cannot overspend or reuse slots (93.867333ms)
+✔ settlement is applied once; later requests do not repeatedly refund the same session (2.377625ms)
+✔ unknown close and unavailable-provider states retain complete holds (3.852708ms)
+✔ unconfirmed active connection blocks admission even when other sessions settle (2.309417ms)
+✔ final usage floor, upward rounding, grace interval and over-reservation debits are conservative (12.422375ms)
+✔ missing/malformed history, corrupt accounting and missing etags fail closed (42.042709ms)
+✔ nonfinal/invalid usage does not release holds and slot ceiling stays finite (17.00075ms)
+✔ CAS contention failure creates no reusable slot or accidental budget debit (9.612542ms)
+✔ approved allocation defaults stay at $10 total; explicit tiers never remove the development hold (2.303583ms)
+✔ migration preserves old settled floors, unresolved holds and the append-only slot sequence (2.26275ms)
+✔ ten minute settlement reserves every planner request and waits for confirmed final usage plus grace (1.645375ms)
+✔ new-policy corrupted holds cannot be read as cheaper legacy entries (5.794208ms)
+✔ concurrent longer admissions enforce the configured ceiling across mixed policy histories (266.41125ms)
+✔ accepts the explicit portfolio preview and custom domains (2.475708ms)
+✔ rejects missing, opaque, insecure, suffix and unrelated origins (25.100583ms)
+✔ invalid deployment origin configuration fails closed (26.478583ms)
+✔ awareness contains only copied known IDs and bounded coarse activity (6.536417ms)
+✔ awareness rejects injected fields, unknown IDs, raw DOM and sensitive inferred labels (0.998ms)
+✔ awareness limits arrays and ID lengths before they enter a model request (10.331167ms)
+✔ legacy page state drops raw searches, form values, HTML and agent budgets (1.87525ms)
+✔ performance accepts fixed expressive enums and rejects executable or arbitrary instructions (1.073334ms)
+✔ proactive recommendations preserve generated wording but never execute page changes (0.873416ms)
+✔ invalid proactive output stays silent without a canned fallback or expression (0.589125ms)
+✔ safe unprompted expressions retain each model-selected emotion and delivery (0.428083ms)
+✔ unsuitable or malformed unprompted expressions are omitted without replacing generated speech (0.413583ms)
+✔ guide replies preserve valid requested actions but reject malformed performance as a whole (0.569084ms)
+✔ screen effects are limited to short predefined visual treatments (0.480125ms)
+✔ allows bounded presentation actions and trusted navigation IDs (0.192083ms)
+✔ rejects an entire mixed batch when one action exceeds website permission (0.287791ms)
+✔ rejects executable, network and persistence-shaped actions (0.420958ms)
+✔ enforces four-action response boundary without truncating a dangerous tail (4.866458ms)
+✔ allows only supported theme, emotion and density values (1.512792ms)
+✔ enforces text boundaries and permits an intentional empty catalog filter (0.574792ms)
+✔ malformed filter values are rejected rather than converted into clearing the filter (0.550833ms)
+✔ returns fresh allowlisted action objects without untrusted fields (1.382958ms)
+✔ finite default admission permits accept exactly twenty unique slot numbers (0.277125ms)
+✔ budget policy rejects invalid caps instead of opening an unbounded envelope (0.196333ms)
+✔ hash is deterministic and tokens differing by one character do not compare equal (1.209958ms)
+✔ secret comparison does not throw when UTF-8 byte lengths differ (0.659667ms)
+✔ session API reports the authoritative ten-minute deadline minus setup latency and denies late calls (1338.4525ms)
+✔ session API allows thirty new-session guide requests while preserving ten legacy permits (903.184041ms)
+✔ session API fails closed before writes/provider calls for invalid allocation and defaults to existing approval (709.687459ms)
+✔ watchdog independently closes a full ten-minute session with no browser stop event (1504.31075ms)
+✔ watchdog authenticates, confirms readiness, and persists provider closure and usage (771.1455ms)
+✔ watchdog closes an already stopped reservation without publishing readiness (645.491875ms)
+✔ watchdog preserves concurrent stop requests through a conditional-write conflict (776.174958ms)
+✔ watchdog caps the deadline at 600 seconds from session creation (780.7875ms)
+✔ watchdog reconciles only authenticated session_id_not_found without inventing closure or usage (565.51475ms)
+✔ watchdog keeps unrelated 404 responses unconfirmed and retries within the watchdog bound (848.037958ms)
+✔ watchdog waits for confirmed closure and usage after a pending-command error during shutdown (663.587666ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9615.922125

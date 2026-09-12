@@ -31,6 +31,7 @@ let recoveryMessage = '';
 let ending=false, audioBlocked=false, playbackRecovering=false, permissionRetry=false, effectTimer, effectOverlay, effectTarget;
 let idleTimer, nudgeTimer, permissionPending=false, lastVisitorAt=0, idleNudges=0;
 let generation=0, greetingEvent, requestController, inputEndMs=0, visualAudio, visualFrame;
+let startupTimer, greetingTimer, openingSettled=false, deferredStartup=false, admissionAttempted=false;
 let peer, channel, mic, token, timer, closeTimer, sessionReady = false, connecting = false, muted = false, transcript = [], queue = Promise.resolve(), lastInput = '', collapsing = true;
 let contextTimer, proactiveTimer, performanceTimer, awarenessRevision=0, lastContext='', lastProactiveAt=0, lastSpeechAt=0, proactiveController, quietMode=false, professionalMode=false;
 const plannerRequests=new Set();
@@ -130,7 +131,8 @@ function refreshAvatar(){
   root.classList.toggle('audio-blocked',audioBlocked);root.classList.toggle('has-error',!!q('.live-error').textContent);
   const hint = ending ? '' : permissionPending
     ? 'Allow microphone access in your browser to start talking.'
-    : audioBlocked ? 'Sound is paused. Select the avatar to hear your guide.' : recoveryMessage;
+    : audioBlocked ? 'Sound is paused. Select the avatar to hear your guide.'
+      : connecting ? 'Connecting your voice guide… Press Escape to cancel.' : recoveryMessage;
   recoveryHint.textContent = hint;
   recoveryHint.hidden = !hint;
   const control=q('.live-presence');control.disabled=ending||connecting;
@@ -206,6 +208,15 @@ function emotion(value) {
   q('.live-face').dataset.emotion = value;
   q('.live-face').setAttribute('aria-label',`Your AI guide, feeling ${value}`);
 }
+function clearStartupTimers(){clearTimeout(startupTimer);clearTimeout(greetingTimer);}
+function beginGreeting(expectedGeneration,connection){
+  if(expectedGeneration!==generation||connection!==peer||openingSettled||!sessionReady||ending||muted||audioBlocked||document.hidden)return;
+  // Ordered data-channel events preserve the opening instructions. A missing
+  // acknowledgment must not leave a connected visitor waiting indefinitely.
+  if(send('session.commentary.append','Begin naturally now, following the opening guidance without reading the instructions aloud.'))openingSettled=true;
+  clearTimeout(greetingTimer);
+}
+function noteConversationStarted(){openingSettled=true;clearTimeout(greetingTimer);}
 function cleanup() {
   // Detach this generation before closing resources: close() may synchronously
   // dispatch another connection event, and one broken resource must not leave
@@ -213,7 +224,7 @@ function cleanup() {
   const oldPeer=peer,oldChannel=channel,oldMic=mic,oldAudio=visualAudio;
   peer=channel=mic=visualAudio=undefined;sessionReady=connecting=ending=false;
   generation++;requestController?.abort();token=undefined;queue=Promise.resolve();
-  clearTimeout(timer);clearTimeout(closeTimer);cancelAnimationFrame(visualFrame);
+  clearTimeout(timer);clearTimeout(closeTimer);clearStartupTimers();cancelAnimationFrame(visualFrame);
   clearVisitorTimers();cancelPermissionPrompt();clearAwareness();
   try{oldAudio?.close()?.catch(()=>{});}catch{}
   for(const track of oldMic?.getTracks()||[]){try{track.stop();}catch{}}
@@ -226,7 +237,8 @@ function cleanup() {
   audioBlocked=false;playbackRecovering=false;muted=false;clearEffects();refreshAvatar();
 }
 async function end(options = {}) {
-  permissionRetry=false;
+  deferredStartup=options?.resumeStartup===true;
+  clearStartupTimers();permissionRetry=false;
   if(ending)return;
   if(options?.preserveRecovery !== true) { recoveryMessage='';q('.live-error').textContent=''; }
   ending=true;clearEffects();clearVisitorTimers();cancelPermissionPrompt();clearAwareness();
@@ -276,6 +288,8 @@ async function act(message, delegationId = null, expectedGeneration = generation
 }
 async function start() {
   if(ending)return;
+  if(document.hidden){if(!connecting&&!sessionReady&&!token)deferredStartup=true;return;}
+  deferredStartup=false;
   if (connecting || sessionReady) {
     if(playbackRecovering)return;
     playbackRecovering=true;
@@ -285,6 +299,7 @@ async function start() {
     finally{if(playbackGeneration===generation)playbackRecovering=false;} return;
   }
   generation++; if(token) { fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token}),keepalive:true}).catch(()=>{}); token=undefined; }
+  clearStartupTimers();openingSettled=false;admissionAttempted=false;greetingEvent=undefined;
   permissionRetry=false;muted=false;lastInput='';inputEndMs=0;clearTimeout(timer);q('.live-mute').textContent='Mute mic';q('.live-mute').setAttribute('aria-pressed','false');q('.live-mute').setAttribute('aria-label','Mute microphone');
   ending=false;audioBlocked=false;
   const startGeneration=generation;
@@ -298,6 +313,14 @@ async function start() {
     finally{if(startGeneration===generation)cancelPermissionPrompt();}
     if(startGeneration!==generation){acquiredStream?.getTracks().forEach(track=>track.stop());return;}
     mic = acquiredStream;
+    startupTimer=setTimeout(()=>{
+      if(startGeneration!==generation||!connecting||sessionReady||ending)return;
+      error('Voice connection timed out. Select the avatar to try again.');
+      recoveryMessage='The voice connection took too long. Select the avatar to try again.';
+      // Do not abort /api/live: if its response arrives late, the generation
+      // guard below still receives the token and closes that provider session.
+      void end({preserveRecovery:true});
+    },30000);
     status('Connecting your guide…');
     peer = new RTCPeerConnection();
     const connection = peer;
@@ -320,18 +343,21 @@ async function start() {
       let event; try {event=JSON.parse(data);} catch {return;}
       if(ending&&event.type!=='session.closed')return;
       if(event.type==='session.started') {
+        if(sessionReady)return;
+        clearTimeout(startupTimer);
         sessionReady=true; connecting=false; recoveryMessage='';q('.live-error').textContent='';root.classList.add('connected'); status('Listening · you can interrupt');
         idleNudges=0;lastProactiveAt=Date.now();lastSpeechAt=Date.now();visitorActivity();publishContext();
         q('.live-mute').disabled=false; q('.live-stop').disabled=false;
         greetingEvent=send('session.instructions.append','Speak English unless the visitor asks for another language. Open the conversation now in your own fresh words, keeping your established character. Briefly identify yourself as the site’s AI guide, then offer one natural invitation suited to the current page context. Keep the opening to one or two short sentences and leave room for the visitor. Do not recite a fixed catchphrase, a list of capabilities, or a prepared monologue. Let wording, rhythm and light emotional expression emerge from the moment; do not force a joke. Treat browsing context as tentative evidence, not proof of intent. If the visitor has already spoken, answer them first instead of delivering an opening.');
+        greetingTimer=setTimeout(()=>beginGreeting(startGeneration,connection),750);
       } else if(event.type==='session.instructions.appended'&&event.client_event_id===greetingEvent) {
-        send('session.commentary.append','Begin naturally now, following the opening guidance without reading the instructions aloud.');
+        beginGreeting(startGeneration,connection);
       } else if(event.type==='session.input_transcript.delta') {
-        if(event.delta?.trim()){lastSpeechAt=Date.now();cancelProactive();visitorActivity();}
+        if(event.delta?.trim()){noteConversationStarted();lastSpeechAt=Date.now();cancelProactive();visitorActivity();}
         line('user',event.delta);
         if(typeof event.start_ms==='number'&&event.start_ms-inputEndMs>2200)lastInput='';
         lastInput=(lastInput+event.delta).slice(-600);inputEndMs=event.end_ms||inputEndMs;notePreference(lastInput);
-      } else if(event.type==='session.output_transcript.delta') {lastSpeechAt=Date.now();line('assistant',event.delta);}
+      } else if(event.type==='session.output_transcript.delta') {if(event.delta?.trim())noteConversationStarted();lastSpeechAt=Date.now();line('assistant',event.delta);}
       else if(event.type==='session.delegation.created') {
         if(ending)return;
         const id=event.delegation.id; const message=lastInput;const current=generation;
@@ -349,6 +375,7 @@ async function start() {
       connection.addEventListener('icegatheringstatechange',()=>{if(connection.iceGatheringState==='complete'){clearTimeout(t);resolve();}});
     });
     if(startGeneration!==generation||connection!==peer||ending)return;
+    admissionAttempted=true;
     const data=await api('live',{sdp:connection.localDescription.sdp});
     if(startGeneration!==generation){fetch('/api/end',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:data.token}),keepalive:true}).catch(()=>{});return;}
     token=data.token;
@@ -375,7 +402,7 @@ function toggleMute(){
 }
 q('.live-mute').addEventListener('click',toggleMute);
 q('.live-presence').addEventListener('click',()=>{if(ending||connecting)return;if(sessionReady&&!audioBlocked)toggleMute();else void start();});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(sessionReady||connecting||token))void end();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'){deferredStartup=false;clearTimeout(greetingTimer);if(sessionReady||connecting||token)void end();}});
 // If a browser blocks autoplay, a visitor's normal page interaction can unlock
 // sound too; the avatar remains the only dedicated control. No second session.
 function unlockPlayback(event){
@@ -386,7 +413,18 @@ document.addEventListener('click',unlockPlayback);
 document.addEventListener('keydown',unlockPlayback);
 document.addEventListener('click',event=>{if(event.isTrusted)visitorActivity();});
 document.addEventListener('keydown',event=>{if(event.isTrusted&&!['Shift','Control','Alt','Meta','Escape'].includes(event.key))visitorActivity();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){clearVisitorTimers();cancelPermissionPrompt();if(sessionReady||connecting||token)void end();}});
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){
+    clearVisitorTimers();cancelPermissionPrompt();
+    if(sessionReady||connecting||token){
+      const resumeStartup=connecting&&!sessionReady&&!admissionAttempted&&!token;
+      if(!resumeStartup)recoveryMessage='Voice paused while this tab was hidden. Select the avatar to reconnect.';
+      void end({resumeStartup,preserveRecovery:!resumeStartup});
+    }
+  }else if(deferredStartup&&!sessionReady&&!connecting&&!ending&&!token){
+    deferredStartup=false;void start();
+  }
+});
 q('.live-reset').addEventListener('click',()=>{guide.applyActions([{type:'reset'}]);emotion('happy');send('session.thinking.append','The visitor reset the website appearance.');});
 q('.live-collapse').addEventListener('click',()=>{collapsing=!collapsing;root.classList.toggle('collapsed',collapsing);q('.live-body').hidden=collapsing;q('.live-collapse').setAttribute('aria-expanded',String(!collapsing));q('.live-collapse').setAttribute('aria-label',collapsing?'Open conversation':'Close conversation');q('.live-collapse').textContent=collapsing?'Type or view conversation ↗':'Close conversation −';});
 q('.live-form').addEventListener('submit',event=>{
