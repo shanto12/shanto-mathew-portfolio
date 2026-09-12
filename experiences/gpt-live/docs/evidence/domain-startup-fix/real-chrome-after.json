@@ -1,0 +1,54 @@
+{
+  "testedAtCentral": "September 12, 2026, approximately 11:53–11:58 AM Central Time",
+  "url": "https://shantomathew.com/",
+  "method": "User real Chrome profile through browser extension; page reload; DOM audio and transcript inspection; no avatar interaction before greeting",
+  "before": {
+    "status": "Conversation ended",
+    "audioPaused": true,
+    "audioCurrentTime": 0
+  },
+  "immediatelyAfterReload": {
+    "visibility": "visible",
+    "status": "Allow microphone in your browser",
+    "recoveryHint": "Allow microphone access in your browser to start talking.",
+    "transcript": "",
+    "audioPaused": true
+  },
+  "automaticResult": {
+    "status": "Listening · you can interrupt",
+    "classes": "live-guide collapsed connected",
+    "recoveryHint": "",
+    "audioPaused": false,
+    "audioReadyState": 4,
+    "audioCurrentTimeSeconds": 103.839,
+    "greeting": "Hi there! I’m Pip, Shanto’s AI career wingman. Want me to show you something that fits what you’re hoping to find here?",
+    "dynamicFollowupsObserved": true
+  },
+  "afterEscape": {
+    "status": "Conversation ended",
+    "classes": "live-guide collapsed",
+    "audioPaused": true,
+    "audioReadyState": 0,
+    "audioCurrentTimeSeconds": 0
+  },
+  "consoleWarningsAndErrors": [],
+  "manualPageChecks": [
+    "Work navigation",
+    "Voice AI filter",
+    "All work filter",
+    "Next project",
+    "SOC AI case study navigation",
+    "About navigation",
+    "Experience navigation",
+    "Contact navigation",
+    "Pause motion",
+    "Reset page",
+    "Home navigation"
+  ],
+  "limits": [
+    "First-audio latency was not measured: native Chrome inspection was delayed by another foreground activity.",
+    "Evidence establishes generated greeting plus unpaused advancing browser audio; no subjective human-hearing claim.",
+    "Real Chrome manual pass is a subset; every primary flow and mobile layout were additionally exercised in isolated automated Chrome.",
+    "Microphone permission and browser autoplay policy still apply."
+  ]
+}

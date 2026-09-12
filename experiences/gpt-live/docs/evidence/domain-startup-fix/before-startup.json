@@ -1,0 +1,28 @@
+{
+  "testedAtCentral": "9/12/2026, 11:46:36 AM Central Time",
+  "mode": "Isolated Chrome; actual shipped scripts; mocked microphone/RTC/play and all POST requests. No provider/admission calls.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "http://127.0.0.1:8818",
+      "checks": [
+        {
+          "name": "Missing greeting ACK gets one bounded fresh opening and ignores a late acknowledgment",
+          "result": "FAIL",
+          "error": "Missing ACK left visitor without an opening"
+        },
+        {
+          "name": "Hidden during pending microphone resumes one unpaid startup and releases the stale stream",
+          "result": "FAIL",
+          "error": "page.waitForFunction: Timeout 6000ms exceeded."
+        },
+        {
+          "name": "Missing session.started has visible connecting guidance and 30-second resource cleanup",
+          "result": "FAIL",
+          "error": "Connecting state has no visible guidance"
+        }
+      ],
+      "screenshots": []
+    }
+  ]
+}

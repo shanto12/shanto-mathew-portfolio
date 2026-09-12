@@ -1,0 +1,7 @@
+{
+  "liveDomain": "https://shantomathew.com",
+  "productionRevision": "de975c6",
+  "voiceJsSHA256": "1a168c7de50ab459362e3be3bd010af9dea598789e1249e521cb9141ac02ac10",
+  "matchesDeployed": true,
+  "browserSettings": "Active Chrome profile has an allow entry for this origin microphone; no per-site sound-block entry found. No preference edited."
+}

@@ -1,0 +1,10 @@
+{
+  "site_id": "296ec6fb-3f43-4253-9aad-c55f677685d0",
+  "site_name": "shanto-portfolio-live",
+  "deploy_id": "6aa5832350d7dce61c8fe0f6",
+  "deploy_url": "https://6aa5832350d7dce61c8fe0f6--shanto-portfolio-live.netlify.app",
+  "logs": "https://app.netlify.com/projects/shanto-portfolio-live/deploys/6aa5832350d7dce61c8fe0f6",
+  "function_logs": "https://app.netlify.com/projects/shanto-portfolio-live/logs/functions",
+  "edge_function_logs": "https://app.netlify.com/projects/shanto-portfolio-live/logs/edge-functions",
+  "url": "https://shantomathew.com"
+}
