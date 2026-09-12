@@ -1,0 +1,96 @@
+{
+  "base": "https://shanto-portfolio-atmosphere.netlify.app",
+  "mode": "No-cost browser-local scene API tests; voice blocked",
+  "results": [
+    {
+      "viewport": 1440,
+      "scene": "rain",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "snow",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "wind",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "pond",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "aurora",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "constellation",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "spotlight",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "surprise",
+      "result": "PASS"
+    },
+    {
+      "viewport": 1440,
+      "scene": "Escape / pause-resume / reduced-motion / 45-second cleanup / no page errors",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "rain",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "snow",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "wind",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "pond",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "aurora",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "constellation",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "spotlight",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "surprise",
+      "result": "PASS"
+    },
+    {
+      "viewport": 390,
+      "scene": "Escape / pause-resume / reduced-motion / 45-second cleanup / no page errors",
+      "result": "PASS"
+    }
+  ]
+}

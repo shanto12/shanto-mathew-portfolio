@@ -1,0 +1,80 @@
+
+> verify
+> npm run build && npm test
+
+
+> build
+> tsc --noEmit && node --check public/voice.js
+
+
+> test
+> tsx --test test/*.test.ts
+
+✔ health estimates confirmed final usage without creating or mutating ledger/history (5.0555ms)
+✔ concurrent first reservations serialize bootstrap and cannot overspend or reuse slots (7.116792ms)
+✔ settlement is applied once; later requests do not repeatedly refund the same session (2.144917ms)
+✔ unknown close and unavailable-provider states retain complete holds (7.092084ms)
+✔ unconfirmed active connection blocks admission even when other sessions settle (0.861166ms)
+✔ final usage floor, upward rounding, grace interval and over-reservation debits are conservative (1.400666ms)
+✔ missing/malformed history, corrupt accounting and missing etags fail closed (3.406958ms)
+✔ nonfinal/invalid usage does not release holds and slot ceiling stays finite (2.57225ms)
+✔ CAS contention failure creates no reusable slot or accidental budget debit (3.5295ms)
+✔ approved allocation defaults stay at $10 total; explicit tiers never remove the development hold (5.123375ms)
+✔ migration preserves old settled floors, unresolved holds and the append-only slot sequence (1.209167ms)
+✔ ten minute settlement reserves every planner request and waits for confirmed final usage plus grace (1.402458ms)
+✔ new-policy corrupted holds cannot be read as cheaper legacy entries (0.966458ms)
+✔ concurrent longer admissions enforce the configured ceiling across mixed policy histories (25.369167ms)
+✔ review allocation is explicit, fixed and a parent suballocation, never additive to $30 (1.594666ms)
+✔ fresh review health is read only with zero phantom historical charges and first slot zero (16.097084ms)
+✔ review CAS races admit exactly three full holds and cannot exceed the funded $3.75 envelope (26.172625ms)
+✔ review bootstrap refuses orphan sessions and historical ledgers; historical mode never starts empty (7.019958ms)
+✔ review confirmed short sessions retain the full planner hold and never reset the ledger (2.378208ms)
+✔ accepts the explicit portfolio preview and custom domains (2.146166ms)
+✔ rejects missing, opaque, insecure, suffix and unrelated origins (1.213334ms)
+✔ invalid deployment origin configuration fails closed (0.709792ms)
+✔ awareness contains only copied known IDs and bounded coarse activity (4.248042ms)
+✔ awareness rejects injected fields, unknown IDs, raw DOM and sensitive inferred labels (0.799208ms)
+✔ awareness limits arrays and ID lengths before they enter a model request (2.030584ms)
+✔ legacy page state drops raw searches, form values, HTML and agent budgets (1.070583ms)
+✔ performance accepts fixed expressive enums and rejects executable or arbitrary instructions (2.238042ms)
+✔ proactive recommendations preserve generated wording but never execute page changes (0.908792ms)
+✔ invalid proactive output stays silent without a canned fallback or expression (0.400583ms)
+✔ safe unprompted expressions retain each model-selected emotion and delivery (0.370458ms)
+✔ unsuitable or malformed unprompted expressions are omitted without replacing generated speech (0.498792ms)
+✔ guide replies preserve valid requested actions but reject malformed performance as a whole (0.516042ms)
+✔ screen effects are limited to short predefined visual treatments (0.471208ms)
+✔ allows bounded presentation actions and trusted navigation IDs (0.207916ms)
+✔ rejects an entire mixed batch when one action exceeds website permission (0.398917ms)
+✔ rejects executable, network and persistence-shaped actions (1.163291ms)
+✔ enforces four-action response boundary without truncating a dangerous tail (0.52375ms)
+✔ allows only supported theme, emotion and density values (1.670708ms)
+✔ enforces text boundaries and permits an intentional empty catalog filter (2.140958ms)
+✔ malformed filter values are rejected rather than converted into clearing the filter (3.616709ms)
+✔ returns fresh allowlisted action objects without untrusted fields (0.434459ms)
+✔ finite default admission permits accept exactly twenty unique slot numbers (0.560791ms)
+✔ budget policy rejects invalid caps instead of opening an unbounded envelope (0.379ms)
+✔ hash is deterministic and tokens differing by one character do not compare equal (0.688ms)
+✔ secret comparison does not throw when UTF-8 byte lengths differ (0.166833ms)
+✔ atmosphere scenes and clear use only a fixed browser action enum, never arbitrary rendering commands (0.729417ms)
+✔ session API serves zero-cost fresh health and refuses a fourth funded admission (1168.095ms)
+✔ session API passes requested fixed scenes and rejects unknown provider actions (1198.234542ms)
+✔ session API reports the authoritative ten-minute deadline minus setup latency and denies late calls (887.430125ms)
+✔ session API allows thirty new-session guide requests while preserving ten legacy permits (1172.328084ms)
+✔ session API fails closed before writes/provider calls for invalid allocation and defaults to existing approval (878.41425ms)
+✔ watchdog uses the same explicitly configured review budget store as admissions (1234.343041ms)
+✔ watchdog independently closes a full ten-minute session with no browser stop event (1797.569625ms)
+✔ watchdog authenticates, confirms readiness, and persists provider closure and usage (1001.482417ms)
+✔ watchdog closes an already stopped reservation without publishing readiness (1093.272167ms)
+✔ watchdog preserves concurrent stop requests through a conditional-write conflict (630.80275ms)
+✔ watchdog caps the deadline at 600 seconds from session creation (582.947583ms)
+✔ watchdog reconciles only authenticated session_id_not_found without inventing closure or usage (762.998333ms)
+✔ watchdog keeps unrelated 404 responses unconfirmed and retries within the watchdog bound (746.101042ms)
+✔ watchdog waits for confirmed closure and usage after a pending-command error during shutdown (739.05525ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 60
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11525.662958

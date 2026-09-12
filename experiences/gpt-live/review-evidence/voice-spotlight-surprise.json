@@ -1,0 +1,255 @@
+{
+  "autoplayPolicy": "Default Chrome policy; no user gesture bypass; microphone pre-granted",
+  "testedAtCentral": "9/11/2026, 6:52:05 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-atmosphere.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: spotlight",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: surprise",
+          "result": "PASS"
+        },
+        {
+          "name": "Live workflow",
+          "result": "FAIL",
+          "error": "page.waitForFunction: Timeout 18000ms exceeded."
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-mTJ4cJaTm2Gw95GeXEpZdvEEY9ybh6FZu1bwcNE7QlY='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "failedRequests": [],
+      "screenshots": [
+        "portfolio-greeting.png",
+        "portfolio-scene-spotlight.png",
+        "portfolio-scene-surprise.png",
+        "portfolio-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "timing": {
+          "documentInitMs": 340.5,
+          "microphoneRequestMs": 769.2999999821186,
+          "microphoneGrantedMs": 2252.2999999821186,
+          "sessionStartedMs": 4907.299999982119,
+          "firstRemoteTrackMs": 4550.899999976158,
+          "firstAudibleRemoteSampleMs": 5836.899999976158,
+          "firstAudioElementPlayingMs": 4576.799999982119,
+          "domContentLoadedMs": 770.1999999880791,
+          "pageLoadMs": 1373
+        },
+        "userClicks": 0,
+        "transcript": " Hey there, I'm Pip, Shanto's AI career",
+        "rmsMax": 0.17103743517714992,
+        "audibleSamples": 25,
+        "recordedBytes": 40344,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "sceneCommands": [
+        {
+          "command": "spotlight",
+          "state": {
+            "scene": "spotlight",
+            "particleCount": 0,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170787570
+          },
+          "input": " Open Agent Proof and apply the spotlight visual effect to it",
+          "output": ". Hmm. Okay, I'll pull"
+        },
+        {
+          "command": "surprise",
+          "state": {
+            "scene": "rain",
+            "particleCount": 110,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789170794749
+          },
+          "input": " Surprise me with a scene",
+          "output": " AgentProof's right there. Ooh, a surprise? Alright, peeking"
+        }
+      ],
+      "beforeEnd": {
+        "timing": {
+          "documentInitMs": 340.5,
+          "microphoneRequestMs": 769.2999999821186,
+          "microphoneGrantedMs": 2252.2999999821186,
+          "sessionStartedMs": 4907.299999982119,
+          "firstRemoteTrackMs": 4550.899999976158,
+          "firstAudibleRemoteSampleMs": 5836.899999976158,
+          "firstAudioElementPlayingMs": 4576.799999982119
+        },
+        "userClicks": 0,
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 227528,
+            "packetsReceived": 1880,
+            "packetsLost": 0,
+            "jitter": 0.001,
+            "totalAudioEnergy": 1.8248463556412986,
+            "totalSamplesDuration": 38.5300000000009
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 74979,
+            "packetsSent": 1955
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.21331643253385935,
+        "audibleSamples": 217,
+        "remoteBytes": 612172,
+        "transcript": "Guide:  Hey there, I'm Pip, Shanto's AI career wingman.You:  Open Agent Proof andGuide:  Hmm.You:  apply the spotlight visual effect to itGuide:  Okay,I'll pull that section up. Ta-da! AgentProof's right there.You:  Surprise me with a sceneGuide:  Ooh, a surprise? Alright, peeking behind the curtain. And... [gasp]Look at that.You:  Clear all theGuide:  The rainYou:  effectsGuide:  effect just swept in, quiet and lovely.",
+        "inputTranscript": " Open Agent Proof and apply the spotlight visual effect to it Surprise me with a scene Clear all the effects",
+        "outputTranscript": " Hey there, I'm Pip, Shanto's AI career wingman. Hmm. Okay, I'll pull that section up. Ta-da! AgentProof's right there. Ooh, a surprise? Alright, peeking behind the curtain. And... [gasp] Look at that. The rain effect just swept in, quiet and lovely.",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.output_transcript.delta",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.usage.updated",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.instructions.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "portfolio-remote-audio.webm",
+        "bytes": 619400,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 45.4
+    }
+  ]
+}

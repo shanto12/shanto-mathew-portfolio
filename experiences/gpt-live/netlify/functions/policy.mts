@@ -1,7 +1,7 @@
 import {createHash, timingSafeEqual} from 'node:crypto';
 export const THEMES=['original','midnight','ocean','rose','forest'];
 export const EMOTIONS=['happy','thoughtful','excited','sad','playful','angry','calm'];
-export const EFFECTS=['confetti','sparkles','bounce','spotlight','clear'];
+export const EFFECTS=['confetti','sparkles','bounce','rain','snow','wind','pond','aurora','constellation','spotlight','surprise','clear'];
 export const DELIVERIES=['neutral','warm','laugh','mock_cry','mock_grumpy','whisper','surprised'];
 export const INTENTS=['exploring','comparing','evaluating','recruiting','technical','contact','unknown'];
 export const ACTIVITY_TYPES=['navigate','open','filter','save','compare','dismiss','view'];

@@ -1,0 +1,227 @@
+{
+  "autoplayPolicy": "Default Chrome policy; no user gesture bypass; microphone pre-granted",
+  "testedAtCentral": "9/11/2026, 6:58:24 PM Central Time",
+  "mode": "Actual deployed WebRTC/API, isolated Chrome, synthetic visitor audio; no API responses mocked. Does not verify a human microphone, subjective audio quality, or the real Chrome profile.",
+  "visitorSpeech": "Change this website to rose pink, look playful, show TARGET, and celebrate with confetti.",
+  "sites": [
+    {
+      "id": "portfolio",
+      "url": "https://shanto-portfolio-atmosphere.netlify.app",
+      "checks": [
+        {
+          "name": "Actual deployed session connects and automatically greets with audible remote audio",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: rain",
+          "result": "PASS"
+        },
+        {
+          "name": "Real spoken scene command: clear",
+          "result": "PASS"
+        },
+        {
+          "name": "Mute and unmute control the actual outgoing audio track",
+          "result": "PASS"
+        },
+        {
+          "name": "End closes the peer and stops all local/remote audio tracks",
+          "result": "PASS"
+        },
+        {
+          "name": "WebRTC statistics confirm incoming audio packets",
+          "result": "PASS"
+        }
+      ],
+      "apiRequests": [
+        {
+          "endpoint": "/api/live",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/guide",
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/end",
+          "method": "POST"
+        }
+      ],
+      "httpErrors": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "screenshots": [
+        "portfolio-greeting.png",
+        "portfolio-scene-rain.png",
+        "portfolio-scene-clear.png",
+        "portfolio-ended.png"
+      ],
+      "liveRequests": 1,
+      "greeting": {
+        "timing": {
+          "documentInitMs": 313.40000000596046,
+          "microphoneRequestMs": 752.4000000059605,
+          "microphoneGrantedMs": 2297,
+          "sessionStartedMs": 4734.100000023842,
+          "firstRemoteTrackMs": 4291,
+          "firstAudibleRemoteSampleMs": 5350.200000017881,
+          "firstAudioElementPlayingMs": 4314.800000011921,
+          "domContentLoadedMs": 753.4000000059605,
+          "pageLoadMs": 1019.9000000059605
+        },
+        "userClicks": 0,
+        "transcript": "Hi there, I'm Pip, the site's AI sidekick",
+        "rmsMax": 0.19715581577694968,
+        "audibleSamples": 18,
+        "recordedBytes": 30033,
+        "inputTranscript": "",
+        "audioPlaying": true
+      },
+      "sceneCommands": [
+        {
+          "command": "rain",
+          "state": {
+            "scene": "rain",
+            "particleCount": 110,
+            "running": true,
+            "reducedMotion": false,
+            "expiresAt": 1789171165673
+          },
+          "input": " Make it rain on this page",
+          "output": " a quick tour of what [laugh] Au-On it—sending a little"
+        },
+        {
+          "command": "clear",
+          "state": {
+            "scene": null,
+            "particleCount": 0,
+            "running": false,
+            "reducedMotion": false,
+            "expiresAt": null
+          },
+          "input": " Clear all the effects",
+          "output": "Sure thing.Clearing"
+        }
+      ],
+      "beforeEnd": {
+        "timing": {
+          "documentInitMs": 313.40000000596046,
+          "microphoneRequestMs": 752.4000000059605,
+          "microphoneGrantedMs": 2297,
+          "sessionStartedMs": 4734.100000023842,
+          "firstRemoteTrackMs": 4291,
+          "firstAudibleRemoteSampleMs": 5350.200000017881,
+          "firstAudioElementPlayingMs": 4314.800000011921
+        },
+        "userClicks": 2,
+        "stats": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "bytesReceived": 143723,
+            "packetsReceived": 1262,
+            "packetsLost": 0,
+            "jitter": 0.008,
+            "totalAudioEnergy": 1.0051473745361366,
+            "totalSamplesDuration": 26.36000000000132
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "bytesSent": 46655,
+            "packetsSent": 1330
+          }
+        ],
+        "connected": [
+          "connected"
+        ],
+        "rmsMax": 0.19715581577694968,
+        "audibleSamples": 120,
+        "remoteBytes": 412897,
+        "transcript": "Guide: Hi there, I'm Pip, the site's AI sidekick. Want a quick tour of whatYou:  Make it rain on this pageGuide:  [laugh] Au-On it—sending a little rain across the page. How's that mood feeling for you?You:  Clear all the effectsGuide: Sure thing.Clearing all the effects now.",
+        "inputTranscript": " Make it rain on this page Clear all the effects",
+        "outputTranscript": "Hi there, I'm Pip, the site's AI sidekick. Want a quick tour of what [laugh] Au-On it—sending a little rain across the page. How's that mood feeling for you?Sure thing.Clearing all the effects now.",
+        "events": [
+          "session.started",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.instructions.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.usage.updated",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.input_transcript.delta",
+          "session.delegation.created",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.thinking.appended",
+          "session.thinking.appended",
+          "session.commentary.appended",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta",
+          "session.output_transcript.delta"
+        ],
+        "error": ""
+      },
+      "afterEnd": {
+        "inputTracks": [
+          "ended"
+        ],
+        "remoteTracks": [
+          "ended"
+        ],
+        "connections": [
+          "closed"
+        ],
+        "providerClosedEventSeen": true,
+        "status": "Conversation ended"
+      },
+      "remoteRecording": {
+        "filename": "portfolio-remote-audio.webm",
+        "bytes": 423640,
+        "mimeType": "audio/webm;codecs=opus"
+      },
+      "elapsedSeconds": 35.1
+    }
+  ]
+}

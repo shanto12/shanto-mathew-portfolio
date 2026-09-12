@@ -119,3 +119,35 @@ test('concurrent longer admissions enforce the configured ceiling across mixed p
  // A lower allocation preserves every existing debit and refuses new starts.
  assert.equal((await inspectBudget(store,NOW)).reservedMicros,7_950_000);await assert.rejects(reserveAdmission(store,NOW),/approved usage/);
 });
+
+const reviewEnv:Record<string,string>={LIVE_TOTAL_APPROVED_USD:'30',LIVE_AGENTMART_BUDGET_USD:'14',LIVE_PORTFOLIO_BUDGET_USD:'14',LIVE_REVIEW_BUDGET_USD:'3.75',LIVE_BUDGET_STORE:'live-budget-atmosphere-review-v1'};
+const review=budgetConfig('portfolio',key=>reviewEnv[key]);
+function freshStore(){const store=new MemoryStore();store.values.clear();return store;}
+test('review allocation is explicit, fixed and a parent suballocation, never additive to $30',()=>{
+ assert.equal(review.siteBudgetMicros,3_750_000);assert.equal(review.reviewBudgetMicros,3_750_000);assert.equal(review.totalApprovedMicros,30_000_000);assert.equal(review.developmentHoldMicros,2_000_000);assert.equal(review.storeName,reviewEnv.LIVE_BUDGET_STORE);
+ for(const change of [{LIVE_REVIEW_BUDGET_USD:'4'}, {LIVE_BUDGET_STORE:'live-budget-release-v1'}, {LIVE_BUDGET_STORE:'arbitrary-store'}, {LIVE_TOTAL_APPROVED_USD:'20'}, {LIVE_REVIEW_BUDGET_USD:'0'}, {LIVE_AGENTMART_BUDGET_USD:'3'}, {LIVE_REVIEW_BUDGET_USD:undefined}, {LIVE_BUDGET_STORE:undefined}])assert.throws(()=>budgetConfig('portfolio',key=>({...reviewEnv,...change})[key as keyof typeof change]),/budget/);
+ assert.throws(()=>budgetConfig('agentmart',key=>reviewEnv[key]),/budget/);
+});
+test('fresh review health is read only with zero phantom historical charges and first slot zero',async()=>{
+ const store=freshStore();const before=structuredClone([...store.values]);const info=await inspectBudget(store,NOW,review);
+ assert.equal(info.reservedMicros,0);assert.equal(info.remainingMicros,3_750_000);assert.equal(info.ledger.nextSlot,0);assert.equal(info.voiceAvailable,true);assert.deepEqual([...store.values],before);
+ const admission=await reserveAdmission(store,NOW,review);assert.equal(admission.slot,0);assert.equal(admission.budget.reservedMicros,1_250_000);
+});
+test('review CAS races admit exactly three full holds and cannot exceed the funded $3.75 envelope',async()=>{
+ const store=freshStore();const results=await Promise.allSettled(Array.from({length:20},()=>reserveAdmission(store,NOW,review)));
+ const slots=results.filter((r):r is PromiseFulfilledResult<Awaited<ReturnType<typeof reserveAdmission>>>=>r.status==='fulfilled').map(r=>r.value.slot).sort();
+ assert.deepEqual(slots,[0,1,2]);const info=await inspectBudget(store,NOW,review);assert.equal(info.reservedMicros,3_750_000);assert.equal(info.remainingMicros,0);assert.equal(info.voiceAvailable,false);
+ await assert.rejects(reserveAdmission(store,NOW,review),/approved usage/);
+});
+test('review bootstrap refuses orphan sessions and historical ledgers; historical mode never starts empty',async()=>{
+ for(const slot of [0,7,99]){const store=freshStore();store.put(`sessions/${slot}`,session());await assert.rejects(inspectBudget(store,NOW,review),/accounting/);}
+ await assert.rejects(inspectBudget(freshStore(),NOW),/Historical usage/);
+ const historical=new MemoryStore();await reserveAdmission(historical,NOW);await assert.rejects(inspectBudget(historical,NOW,review),/accounting/);
+ const fresh=freshStore();await reserveAdmission(fresh,NOW,review);await assert.rejects(inspectBudget(fresh,NOW),/accounting/);
+ fresh.values.delete(BUDGET_KEY);fresh.put('sessions/0',session());await assert.rejects(reserveAdmission(fresh,NOW,review),/accounting/);
+});
+test('review confirmed short sessions retain the full planner hold and never reset the ledger',async()=>{
+ const store=freshStore();await reserveAdmission(store,NOW,review);store.put('sessions/0',session());
+ const info=await inspectBudget(store,NOW,review);assert.equal(info.reservedMicros,612_500);assert.equal(info.ledger.entries['0']!.plannerHoldMicros,600_000);
+ await reserveAdmission(store,NOW,review);const settled=await inspectBudget(store,NOW,review);assert.equal(settled.ledger.nextSlot,2);assert.equal(settled.reservedMicros,1_862_500);
+});

@@ -1,0 +1,10 @@
+{
+  "site_id": "025c3e75-39a9-4f35-bc44-6b2dfa47856f",
+  "site_name": "shanto-portfolio-atmosphere",
+  "deploy_id": "6aa4957de275bbaec8c7c780",
+  "deploy_url": "https://6aa4957de275bbaec8c7c780--shanto-portfolio-atmosphere.netlify.app",
+  "logs": "https://app.netlify.com/projects/shanto-portfolio-atmosphere/deploys/6aa4957de275bbaec8c7c780",
+  "function_logs": "https://app.netlify.com/projects/shanto-portfolio-atmosphere/logs/functions",
+  "edge_function_logs": "https://app.netlify.com/projects/shanto-portfolio-atmosphere/logs/edge-functions",
+  "url": "https://shanto-portfolio-atmosphere.netlify.app"
+}
